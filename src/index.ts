@@ -7,4 +7,4 @@ const meta = {
   namespace: "alextheman",
 };
 
-export default { meta, rules };
+export { meta, rules };
