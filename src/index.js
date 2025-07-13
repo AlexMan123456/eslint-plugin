@@ -10,5 +10,4 @@ const plugin = {
 	rules: {}
 };
 
-// for ESM
 export default plugin;
