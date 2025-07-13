@@ -8,7 +8,8 @@
     "format": "prettier --write --parser typescript 'src/**/*.ts' '__tests__/**/*.ts' && ESLINT_MODE=fix eslint --fix 'src/**/*.ts' '__tests__/**/*.ts'",
     "lint": "ESLINT_MODE=lint eslint 'src/**/*.ts' '__tests__/**/*.ts' && prettier --check --parser typescript 'src/**/*.ts' '__tests__/**/*.ts'",
     "update-dependencies": "npx npm-check-updates -u && npm install",
-    "prepare": "husky"
+    "prepare": "husky",
+    "build": "tsup"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
     "husky": "^9.1.7",
     "jest": "^30.0.4",
     "ts-jest": "^29.4.0",
+    "tsup": "^8.5.0",
     "typescript": "^5.8.3"
   }
 }

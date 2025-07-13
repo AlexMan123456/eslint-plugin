@@ -1,4 +1,5 @@
 import { name, version } from "package.json";
+import rules from "src/rules";
 
 const plugin = {
   meta: {
@@ -7,7 +8,7 @@ const plugin = {
     namespace: "alextheman",
   },
   configs: {},
-  rules: {},
+  rules,
 };
 
 export default plugin;
