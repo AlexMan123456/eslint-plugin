@@ -1,8 +1,9 @@
 {
   "name": "@alextheman/eslint-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "src/index.js",
+  "files": ["dist"],
   "scripts": {
     "test": "jest",
     "format": "prettier --write --parser typescript 'src/**/*.ts' '__tests__/**/*.ts' && ESLINT_MODE=fix eslint --fix 'src/**/*.ts' '__tests__/**/*.ts'",
