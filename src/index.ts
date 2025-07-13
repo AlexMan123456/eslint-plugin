@@ -1,13 +1,13 @@
-import {name, version} from "package.json"
+import { name, version } from "package.json";
 
 const plugin = {
-	meta: {
-		name,
-		version,
-		namespace: "alextheman"
-	},
-	configs: {},
-	rules: {}
+  meta: {
+    name,
+    version,
+    namespace: "alextheman",
+  },
+  configs: {},
+  rules: {},
 };
 
 export default plugin;
