@@ -7,6 +7,7 @@ export default defineConfig({
   dts: true,
   clean: true,
   external: [
-    ...Object.keys(packageInfo.peerDependencies)
+    ...Object.keys(packageInfo.peerDependencies),
+    "@typescript-eslint/utils"
   ]
 });
