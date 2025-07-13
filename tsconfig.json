@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // Specifies the JavaScript version to target when transpiling code.
+    "useDefineForClassFields": true, // Enables the use of 'define' for class fields.
+    "lib": ["ES2024"], // Specifies the libraries available for the code.
+    "module": "ESNext", // Defines the module system to use for code generation.
+    "skipLibCheck": true, // Skips type checking of declaration files.
+    "baseUrl": ".",
+    "rootDir": "src",
+
+    /* Bundler mode */
+    "moduleResolution": "bundler", // Specifies how modules are resolved when bundling.
+    "resolveJsonModule": true, // Enables importing JSON modules.
+    "isolatedModules": true, // Ensures each file is treated as a separate module.
+    "outDir": "dist", // Prevents TypeScript from emitting output files.
+
+    /* Linting */
+    "strict": true, // Enables strict type checking.
+    "noUnusedLocals": true, // Flags unused local variables.
+    "noUnusedParameters": true, // Flags unused function parameters.
+    "noFallthroughCasesInSwitch": true, // Requires handling all cases in a switch statement.
+    "declaration": true, // Generates declaration files for TypeScript.
+  },
+  "include": ["src"]
+}
