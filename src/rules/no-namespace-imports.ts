@@ -7,23 +7,46 @@ const noNamespaceImports = createRule({
       description: "Forbid the use of import *",
     },
     messages: {
-      message: "Import * is not allowed. Please use named imports instead.",
+      message:
+        'Import * from "{{source}}" is not allowed. Please use named imports instead.',
     },
     type: "suggestion",
-    schema: [],
+    schema: [
+      {
+        type: "object",
+        properties: {
+          allow: {
+            type: "array",
+            items: {
+              type: "string",
+            },
+            uniqueItems: true,
+          },
+        },
+        additionalProperties: false,
+      },
+    ],
   },
-  defaultOptions: [],
+  defaultOptions: [{ allow: [""] }],
   create(context) {
+    const allowableNamedImports = context.options[0]?.allow;
     return {
       ImportDeclaration(node) {
-        if (node.specifiers[0].type === "ImportNamespaceSpecifier") {
-          context.report({
-            node,
-            messageId: "message",
-            data: {
-              source: node.source,
-            },
-          });
+        const allSpecifiers = node.specifiers;
+        for (const specifier of allSpecifiers) {
+          if (
+            specifier.type === "ImportNamespaceSpecifier" &&
+            !allowableNamedImports?.includes(node.source.value)
+          ) {
+            context.report({
+              node,
+              messageId: "message",
+              data: {
+                source: node.source.value,
+              },
+            });
+            return;
+          }
         }
       },
     };
