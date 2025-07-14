@@ -32,17 +32,21 @@ const noNamespaceImports = createRule({
     const allowableNamedImports = context.options[0]?.allow;
     return {
       ImportDeclaration(node) {
-        if (
-          node.specifiers[0].type === "ImportNamespaceSpecifier" &&
-          !allowableNamedImports?.includes(node.source.value)
-        ) {
-          context.report({
-            node,
-            messageId: "message",
-            data: {
-              source: node.source.value,
-            },
-          });
+        const allSpecifiers = node.specifiers;
+        for (const specifier of allSpecifiers) {
+          if (
+            specifier.type === "ImportNamespaceSpecifier" &&
+            !allowableNamedImports?.includes(node.source.value)
+          ) {
+            context.report({
+              node,
+              messageId: "message",
+              data: {
+                source: node.source.value,
+              },
+            });
+            return;
+          }
         }
       },
     };

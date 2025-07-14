@@ -47,5 +47,16 @@ ruleTester.run("no-namespace-imports", rules["no-namespace-imports"], {
         },
       ],
     },
+    {
+      code: `import defaultExport, * as Utils from 'utils';`,
+      errors: [
+        {
+          messageId: "message",
+          data: {
+            source: "utils",
+          },
+        },
+      ],
+    },
   ],
 });
