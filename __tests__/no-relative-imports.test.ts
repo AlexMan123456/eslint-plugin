@@ -1,4 +1,4 @@
-import ruleTester from "rule-tester";
+import ruleTester from "__tests__/rule-tester";
 import rules from "src/rules";
 
 ruleTester.run("no-relative-imports", rules["no-relative-imports"], {

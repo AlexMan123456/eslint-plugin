@@ -8,5 +8,6 @@ export default {
   transform: {
     ...tsJestTransformCfg,
   },
-  moduleDirectories: ["node_modules", "."]
+  moduleDirectories: ["node_modules", "."],
+  testMatch: ['**/?(*.)+(test).[tj]s']
 };

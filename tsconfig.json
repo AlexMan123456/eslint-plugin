@@ -23,5 +23,5 @@
     "noFallthroughCasesInSwitch": true,
     "declaration": true
   },
-  "include": ["src", "__tests__", "create-rule.ts", "rule-tester.ts"]
+  "include": ["src", "__tests__", "create-rule.ts"]
 }
