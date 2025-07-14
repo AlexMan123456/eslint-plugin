@@ -1,5 +1,5 @@
 import ruleTester from "__tests__/rule-tester";
-import rules from "src/rules";
+import { rules } from "src";
 
 ruleTester.run("no-namespace-imports", rules["no-namespace-imports"], {
   valid: [
