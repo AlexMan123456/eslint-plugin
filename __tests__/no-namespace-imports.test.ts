@@ -1,9 +1,5 @@
-import { RuleTester } from "@typescript-eslint/rule-tester";
+import ruleTester from "rule-tester";
 import rules from "src/rules";
-
-const ruleTester = new RuleTester({
-  languageOptions: { ecmaVersion: "latest" },
-});
 
 ruleTester.run("no-namespace-imports", rules["no-namespace-imports"], {
   valid: [
