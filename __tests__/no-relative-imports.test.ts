@@ -1,15 +1,19 @@
-import ruleTester from "__tests__/rule-tester";
-import rules from "src/rules";
+import { ruleTesterWithParser } from "__tests__/rule-testers";
+import { getProjectRelativePath } from "__tests__/rule-testers/rule-tester-with-parser";
+import { rules } from "src";
 
-ruleTester.run("no-relative-imports", rules["no-relative-imports"], {
+ruleTesterWithParser.run("no-relative-imports", rules["no-relative-imports"], {
   valid: [
     {
       code: 'import myFunction from "src/utils/myFunction"',
+      filename: getProjectRelativePath("src/components/Button.tsx"),
     },
   ],
   invalid: [
     {
       code: 'import myFunction from "../utils/myFunction"',
+      filename: getProjectRelativePath("src/components/Button.tsx"),
+      output: 'import myFunction from "src/utils/myFunction"',
       errors: [
         {
           messageId: "message",
@@ -21,6 +25,8 @@ ruleTester.run("no-relative-imports", rules["no-relative-imports"], {
     },
     {
       code: 'import myFunction from "./myFunction"',
+      filename: getProjectRelativePath("src/utils/myOtherFunction.ts"),
+      output: 'import myFunction from "src/utils/myFunction"',
       errors: [
         {
           messageId: "message",
@@ -32,6 +38,8 @@ ruleTester.run("no-relative-imports", rules["no-relative-imports"], {
     },
     {
       code: 'import myFunction from "src/components/../utils/myFunction"',
+      filename: getProjectRelativePath("src/components/Button.tsx"),
+      output: 'import myFunction from "src/utils/myFunction"',
       errors: [
         {
           messageId: "message",
@@ -43,11 +51,26 @@ ruleTester.run("no-relative-imports", rules["no-relative-imports"], {
     },
     {
       code: 'import myFunction from "src/utils/./myFunction"',
+      filename: getProjectRelativePath("src/components/Button.tsx"),
+      output: 'import myFunction from "src/utils/myFunction"',
       errors: [
         {
           messageId: "message",
           data: {
             source: "src/utils/./myFunction",
+          },
+        },
+      ],
+    },
+    {
+      code: 'import myFunction from "../components/../utils/./myFunction"',
+      filename: getProjectRelativePath("src/components/Button.tsx"),
+      output: 'import myFunction from "src/utils/myFunction"',
+      errors: [
+        {
+          messageId: "message",
+          data: {
+            source: "../components/../utils/./myFunction",
           },
         },
       ],
