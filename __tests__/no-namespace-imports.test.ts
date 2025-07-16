@@ -1,7 +1,7 @@
-import ruleTester from "rule-tester";
-import rules from "src/rules";
+import { standardRuleTester } from "__tests__/rule-testers";
+import { rules } from "src";
 
-ruleTester.run("no-namespace-imports", rules["no-namespace-imports"], {
+standardRuleTester.run("no-namespace-imports", rules["no-namespace-imports"], {
   valid: [
     {
       code: 'import { useState } from "react"',

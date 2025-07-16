@@ -27,11 +27,12 @@
     "eslint-plugin-import": "^2.32.0"
   },
   "devDependencies": {
-    "@alextheman/eslint-config-typescript-base": "^1.0.7",
+    "@alextheman/eslint-config-typescript-base": "^1.0.9",
     "@types/eslint": "^9.6.1",
     "@types/jest": "^30.0.0",
-    "@typescript-eslint/rule-tester": "^8.36.0",
-    "@typescript-eslint/utils": "^8.36.0",
+    "@types/node": "^24.0.13",
+    "@typescript-eslint/rule-tester": "^8.37.0",
+    "@typescript-eslint/utils": "^8.37.0",
     "eslint": "^9.31.0",
     "eslint-plugin-eslint-plugin": "^6.5.0",
     "husky": "^9.1.7",
@@ -39,5 +40,8 @@
     "ts-jest": "^29.4.0",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@alextheman/utility": "^1.5.2"
   }
 }
