@@ -8,12 +8,29 @@ ruleTesterWithParser.run("no-relative-imports", rules["no-relative-imports"], {
       code: 'import myFunction from "src/utils/myFunction"',
       filename: getProjectRelativePath("src/components/Button.tsx"),
     },
+    {
+      code: 'import myFunction from "src/utils/myFunction";',
+      filename: getProjectRelativePath("src/components/Button.tsx"),
+    },
   ],
   invalid: [
     {
       code: 'import myFunction from "../utils/myFunction"',
       filename: getProjectRelativePath("src/components/Button.tsx"),
       output: 'import myFunction from "src/utils/myFunction"',
+      errors: [
+        {
+          messageId: "message",
+          data: {
+            source: "../utils/myFunction",
+          },
+        },
+      ],
+    },
+    {
+      code: 'import myFunction from "../utils/myFunction";',
+      filename: getProjectRelativePath("src/components/Button.tsx"),
+      output: 'import myFunction from "src/utils/myFunction";',
       errors: [
         {
           messageId: "message",
@@ -39,7 +56,7 @@ ruleTesterWithParser.run("no-relative-imports", rules["no-relative-imports"], {
     {
       code: 'import myFunction from "src/components/../utils/myFunction"',
       filename: getProjectRelativePath("src/components/Button.tsx"),
-      output: 'import myFunction from "src/utils/myFunction"',
+      output: null,
       errors: [
         {
           messageId: "message",
@@ -52,7 +69,7 @@ ruleTesterWithParser.run("no-relative-imports", rules["no-relative-imports"], {
     {
       code: 'import myFunction from "src/utils/./myFunction"',
       filename: getProjectRelativePath("src/components/Button.tsx"),
-      output: 'import myFunction from "src/utils/myFunction"',
+      output: null,
       errors: [
         {
           messageId: "message",
@@ -71,6 +88,32 @@ ruleTesterWithParser.run("no-relative-imports", rules["no-relative-imports"], {
           messageId: "message",
           data: {
             source: "../components/../utils/./myFunction",
+          },
+        },
+      ],
+    },
+    {
+      code: 'import { standardRuleTester } from "./../../../rule-testers"',
+      filename: getProjectRelativePath("src/components/Button.tsx"),
+      output: null,
+      errors: [
+        {
+          messageId: "message",
+          data: {
+            source: "./../../../rule-testers",
+          },
+        },
+      ],
+    },
+    {
+      code: 'import { standardRuleTester } from "src/../../rule-testers"',
+      filename: getProjectRelativePath("src/components/Button.tsx"),
+      output: null,
+      errors: [
+        {
+          messageId: "message",
+          data: {
+            source: "src/../../rule-testers",
           },
         },
       ],
