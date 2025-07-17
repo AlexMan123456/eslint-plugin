@@ -30,6 +30,33 @@ jobs:
       run: |
         npm ci
         npm run build --if-present
+        git fetch --unshallow origin main
+
+    - name: Check version number
+      run: |
+        echo "Checking version number..."
+        if git diff origin/main...HEAD --quiet "src/*"; then
+          echo "No source code changes found. Version does not need changing."
+          exit 0
+        fi
+
+        oldPackageVersion=$(git show origin/main:package.json | jq -r '.version')
+        newPackageVersion=$(jq -r '.version' package.json)
+
+        if [[ "$oldPackageVersion" == "$newPackageVersion" ]]; then
+          echo "❌ Version needs updating. Please run one of the following:"
+          echo "- \`npm run change-major\` (e.g. v1.2.3 -> v2.0.0)"
+          echo "- \`npm run change-minor\` (e.g. v1.2.3 -> v1.3.0)"
+          echo "- \`npm run change-patch\` (e.g. v1.2.3 -> v1.2.4)"
+          exit 1
+        fi
+
+        newLockVersion=$(jq -r '.version' package-lock.json)
+        if [[ "$newPackageVersion" != "$newLockVersion" ]]; then
+          echo "❌ package.json and package-lock.json out of sync. Please run \`npm install\` to fix this."
+          exit 1
+        fi
+        echo "Version has been updated."
     - name: Run tests
       run: npm test
     - name: Run linting checks
