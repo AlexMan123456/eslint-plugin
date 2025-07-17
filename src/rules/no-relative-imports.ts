@@ -6,7 +6,9 @@ const noRelativeImports = createRule({
   meta: {
     docs: { description: "Forbid the use of relative imports" },
     messages: {
-      message: "Relative import from '{{source}}' is not allowed.",
+      message: 'Relative import from "{{source}}" is not allowed.',
+      stupidPath:
+        'Who the hell imports from "{{source}}"?! Know your own project directory, Goddamnit!',
     },
     type: "suggestion",
     fixable: "code",
@@ -20,6 +22,21 @@ const noRelativeImports = createRule({
           node.source.value.includes("./") ||
           node.source.value.includes("../")
         ) {
+          if (
+            !node.source.value.startsWith("./") &&
+            !node.source.value.startsWith("../")
+          ) {
+            /* If the import directory doesn't contain ./ or ../ at the start, but does in the middle,
+            that's just beyond stupid and I'm not even giving them an easy fix! They can't get the best of me today. */
+            context.report({
+              node,
+              messageId: "stupidPath",
+              data: {
+                source: node.source.value,
+              },
+            });
+            return null;
+          }
           context.report({
             node,
             messageId: "message",
@@ -31,18 +48,7 @@ const noRelativeImports = createRule({
                 // If no root directory set in parserOptions, rule is not fixable
                 return null;
               }
-              if (
-                !node.source.value.startsWith("./") &&
-                !node.source.value.startsWith("../")
-              ) {
-                /* If the import directory doesn't contain ./ or ../ at the start, but does in the middle,
-                that's just beyond stupid and I'm not even giving them an easy fix! They can't get the best of me today. */
-                // eslint-disable-next-line no-console
-                console.warn(
-                  `Who the hell imports from ${node.source.value}?! Know your own project directory, Goddamnit!`,
-                );
-                return null;
-              }
+
               const fullImportPath = path.resolve(
                 path.dirname(context.physicalFilename),
                 node.source.value,

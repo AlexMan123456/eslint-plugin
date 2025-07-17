@@ -59,7 +59,7 @@ ruleTesterWithParser.run("no-relative-imports", rules["no-relative-imports"], {
       output: null,
       errors: [
         {
-          messageId: "message",
+          messageId: "stupidPath",
           data: {
             source: "src/components/../utils/myFunction",
           },
@@ -72,7 +72,7 @@ ruleTesterWithParser.run("no-relative-imports", rules["no-relative-imports"], {
       output: null,
       errors: [
         {
-          messageId: "message",
+          messageId: "stupidPath",
           data: {
             source: "src/utils/./myFunction",
           },
@@ -111,7 +111,7 @@ ruleTesterWithParser.run("no-relative-imports", rules["no-relative-imports"], {
       output: null,
       errors: [
         {
-          messageId: "message",
+          messageId: "stupidPath",
           data: {
             source: "src/../../rule-testers",
           },
