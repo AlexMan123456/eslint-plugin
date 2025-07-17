@@ -13,7 +13,10 @@
     "lint": "ESLINT_MODE=lint eslint 'src/**/*.ts' '__tests__/**/*.ts' && prettier --check --parser typescript 'src/**/*.ts' '__tests__/**/*.ts'",
     "update-dependencies": "npx npm-check-updates -u && npm install",
     "prepare": "husky",
-    "build": "tsup"
+    "build": "tsup",
+    "change-major": "npm version major -m \"Change version number to v%s\"",
+    "change-minor": "npm version minor -m \"Change version number to v%s\"",
+    "change-patch": "npm version patch -m \"Change version number to v%s\""
   },
   "keywords": [],
   "author": "",
