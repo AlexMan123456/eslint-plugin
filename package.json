@@ -1,6 +1,6 @@
 {
   "name": "@alextheman/eslint-plugin",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,17 +20,17 @@
   "license": "ISC",
   "type": "module",
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.36.0",
-    "@typescript-eslint/parser": "^8.36.0",
-    "eslint": "^9.31.0",
-    "eslint-import-resolver-typescript": "^4.4.4",
-    "eslint-plugin-import": "^2.32.0"
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "eslint-import-resolver-typescript": "^4.0.0",
+    "eslint-plugin-import": "^2.0.0"
   },
   "devDependencies": {
     "@alextheman/eslint-config-typescript-base": "^1.0.9",
     "@types/eslint": "^9.6.1",
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.0.13",
+    "@types/node": "^24.0.14",
     "@typescript-eslint/rule-tester": "^8.37.0",
     "@typescript-eslint/utils": "^8.37.0",
     "eslint": "^9.31.0",
