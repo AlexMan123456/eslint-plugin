@@ -34,28 +34,35 @@ jobs:
 
     - name: Check version number
       run: |
-        echo "Checking version number..."
+        newPackageVersion=$(jq -r '.version' package.json)
+        newLockVersion=$(jq -r '.version' package-lock.json)
+
+        if [[ "$newPackageVersion" != "$newLockVersion" ]]; then
+          echo "❌ package.json and package-lock.json out of sync. Please run \`npm install\` to fix this."
+          exit 1
+        fi
+
+        echo "Checking for source code changes..."
         if git diff origin/main...HEAD --quiet "src/*"; then
           echo "No source code changes found. Version does not need changing."
           exit 0
         fi
 
         oldPackageVersion=$(git show origin/main:package.json | jq -r '.version')
-        newPackageVersion=$(jq -r '.version' package.json)
 
         if [[ "$oldPackageVersion" == "$newPackageVersion" ]]; then
+          IFS='.' read -r major minor patch <<< "$oldPackageVersion"
+          newMajorPackageVersion="$((major + 1)).0.0"
+          newMinorPackageVersion="$major.$((minor + 1)).0"
+          newPatchPackageVersion="$major.$minor.$((patch + 1))"
+
           echo "❌ Version needs updating. Please run one of the following:"
-          echo "- \`npm run change-major\` (e.g. v1.2.3 -> v2.0.0)"
-          echo "- \`npm run change-minor\` (e.g. v1.2.3 -> v1.3.0)"
-          echo "- \`npm run change-patch\` (e.g. v1.2.3 -> v1.2.4)"
+          echo "- \`npm run change-major\` (v$oldPackageVersion -> v$newMajorPackageVersion)"
+          echo "- \`npm run change-minor\` (v$oldPackageVersion -> v$newMinorPackageVersion)"
+          echo "- \`npm run change-patch\` (v$oldPackageVersion -> v$newPatchPackageVersion)"
           exit 1
         fi
 
-        newLockVersion=$(jq -r '.version' package-lock.json)
-        if [[ "$newPackageVersion" != "$newLockVersion" ]]; then
-          echo "❌ package.json and package-lock.json out of sync. Please run \`npm install\` to fix this."
-          exit 1
-        fi
         echo "Version has been updated."
     - name: Run tests
       run: npm test
