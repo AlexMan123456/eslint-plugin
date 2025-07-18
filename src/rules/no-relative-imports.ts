@@ -2,7 +2,7 @@ import createRule from "create-rule";
 import path from "path";
 
 const noRelativeImports = createRule({
-  name: "",
+  name: "no-relative-imports",
   meta: {
     docs: { description: "Forbid the use of relative imports" },
     messages: {
