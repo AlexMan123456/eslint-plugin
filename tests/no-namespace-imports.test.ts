@@ -1,4 +1,4 @@
-import { standardRuleTester } from "__tests__/rule-testers";
+import { standardRuleTester } from "tests/rule-testers";
 import { rules } from "src";
 
 standardRuleTester.run("no-namespace-imports", rules["no-namespace-imports"], {

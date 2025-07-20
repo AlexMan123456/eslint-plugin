@@ -1,6 +1,6 @@
 {
   "name": "@alextheman/eslint-plugin",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,9 +8,10 @@
     "dist"
   ],
   "scripts": {
-    "test": "jest",
-    "format": "prettier --write --parser typescript 'src/**/*.ts' '__tests__/**/*.ts' && ESLINT_MODE=fix eslint --fix 'src/**/*.ts' '__tests__/**/*.ts'",
-    "lint": "ESLINT_MODE=lint eslint 'src/**/*.ts' '__tests__/**/*.ts' && prettier --check --parser typescript 'src/**/*.ts' '__tests__/**/*.ts'",
+    "test": "vitest run",
+    "test-watch": "vitest",
+    "format": "prettier --write --parser typescript 'src/**/*.ts' 'tests/**/*.ts' && ESLINT_MODE=fix eslint --fix 'src/**/*.ts' 'tests/**/*.ts'",
+    "lint": "ESLINT_MODE=lint eslint 'src/**/*.ts' 'tests/**/*.ts' && prettier --check --parser typescript 'src/**/*.ts' 'tests/**/*.ts'",
     "update-dependencies": "npx npm-check-updates -u && npm install",
     "prepare": "husky",
     "build": "tsup",
@@ -31,7 +32,6 @@
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
-    "@types/jest": "^30.0.0",
     "@types/node": "^24.0.14",
     "@typescript-eslint/rule-tester": "^8.37.0",
     "@typescript-eslint/utils": "^8.37.0",
@@ -39,11 +39,11 @@
     "eslint-plugin-eslint-plugin": "^6.5.0",
     "globals": "^16.3.0",
     "husky": "^9.1.7",
-    "jest": "^30.0.4",
     "prettier": "^3.6.2",
-    "ts-jest": "^29.4.0",
     "tsup": "^8.5.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4"
   },
   "dependencies": {
     "@alextheman/utility": "^1.5.2"
