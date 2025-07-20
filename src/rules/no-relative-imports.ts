@@ -1,4 +1,4 @@
-import createRule from "create-rule";
+import createRule from "src/create-rule";
 import path from "path";
 
 const noRelativeImports = createRule({
