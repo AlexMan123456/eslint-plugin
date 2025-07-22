@@ -1,11 +1,11 @@
-import js from "@eslint/js";
+import js  from "@eslint/js";
 import eslintPlugin from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
 import importPlugin from "eslint-plugin-import";
 import globals from "globals";
-import alexPlugin from "src";
 
 const warnOnFixButErrorOnLint =
+  // eslint-disable-next-line no-undef
   process.env.ESLINT_MODE === "fix" ? "warn" : "error";
 
 export default [
@@ -22,7 +22,6 @@ export default [
       globals: {
         ...globals.jest,
         ...globals.node,
-        ...globals.browser,
       },
     },
     settings: {
@@ -34,8 +33,7 @@ export default [
     ignores: ["dist"],
     plugins: {
       "@typescript-eslint": eslintPlugin,
-      import: importPlugin,
-      "@alextheman": alexPlugin,
+      import: importPlugin
     },
     rules: {
       "import/no-unresolved": warnOnFixButErrorOnLint,
@@ -76,7 +74,6 @@ export default [
       "sort-vars": "error",
       "no-cond-assign": "error",
       "no-undef": warnOnFixButErrorOnLint,
-      "@alextheman/no-namespace-imports": "error",
     },
   },
 ];
