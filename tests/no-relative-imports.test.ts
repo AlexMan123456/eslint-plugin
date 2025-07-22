@@ -1,6 +1,7 @@
 import { ruleTesterWithParser } from "tests/rule-testers";
 import { getProjectRelativePath } from "tests/rule-testers/rule-tester-with-parser";
-import { rules } from "src";
+import plugin from "src";
+const { rules } = plugin;
 
 ruleTesterWithParser.run("no-relative-imports", rules["no-relative-imports"], {
   valid: [
