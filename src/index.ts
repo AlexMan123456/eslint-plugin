@@ -7,4 +7,6 @@ const meta = {
   namespace: "alextheman",
 };
 
-export { meta, rules };
+export default { meta, rules };
+
+export * from "src/configs";
