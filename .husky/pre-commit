@@ -6,15 +6,7 @@ if git diff --cached --quiet; then
   exit 1
 fi
 
-echo "Checking for package.json and package-lock.json discrepancies..."
-newPackageVersion=$(jq -r ".version" package.json)
-newLockVersion=$(jq -r ".version" package-lock.json)
-if [[ "$newPackageVersion" != "$newLockVersion" ]]; then
-  echo "❌ ERROR: package.json and package-lock.json out of sync. Please run \`npm install\` to fix this."
-  exit 1
-else
-  echo "package.json and package-lock.json versions in sync."
-fi
+npx alex-c-line check-lockfile-version-discrepancy
 
 npm run format
 npm run lint
