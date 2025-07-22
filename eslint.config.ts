@@ -4,7 +4,7 @@ import tsparser from "@typescript-eslint/parser";
 import importPlugin from "eslint-plugin-import";
 import globals from "globals";
 
-const warnOnFixButErrorOnLint =
+export const warnOnFixButErrorOnLint =
   // eslint-disable-next-line no-undef
   process.env.ESLINT_MODE === "fix" ? "warn" : "error";
 
@@ -42,13 +42,6 @@ export default [
       "no-restricted-imports": [
         warnOnFixButErrorOnLint,
         {
-          paths: [
-            {
-              name: "@mui/material",
-              message:
-                'Please use `import Component from "@mui/material/Component"` instead. See https://mui.com/material-ui/guides/minimizing-bundle-size/ for more information.',
-            },
-          ],
           patterns: [
             {
               group: ["./", "../"],
