@@ -1,5 +1,3 @@
-export * from "src/configs";
-
 import { name, version } from "package.json";
 import rules from "src/rules";
 
@@ -9,4 +7,5 @@ export const meta = {
   namespace: "alextheman",
 };
 
+export { default as eslintConfig } from "eslint.config";
 export default { rules };
