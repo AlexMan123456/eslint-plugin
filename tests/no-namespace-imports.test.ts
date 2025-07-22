@@ -1,5 +1,6 @@
 import { standardRuleTester } from "tests/rule-testers";
-import { rules } from "src";
+import plugin from "src";
+const { rules } = plugin;
 
 standardRuleTester.run("no-namespace-imports", rules["no-namespace-imports"], {
   valid: [
