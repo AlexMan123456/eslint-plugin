@@ -40,8 +40,8 @@ Object.assign(plugin.configs, {
         In practice, though, this is something that would be caught by my custom linting rule, so no-restricted-imports can be disabled here
         in favour of @alextheman/no-relative-imports. */
         "no-restricted-imports": "off",
-        "@alextheman/no-namespace-imports": "error",
-        "@alextheman/no-relative-imports": "error",
+        "@alextheman/no-namespace-imports": warnOnFixButErrorOnLint,
+        "@alextheman/no-relative-imports": warnOnFixButErrorOnLint,
       },
     },
   ],
