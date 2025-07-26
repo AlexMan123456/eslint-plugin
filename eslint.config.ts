@@ -1,4 +1,4 @@
-import js  from "@eslint/js";
+import js from "@eslint/js";
 import eslintPlugin from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
 import importPlugin from "eslint-plugin-import";
@@ -21,7 +21,7 @@ export default [
       },
       globals: {
         ...globals.node,
-        ...globals.browser
+        ...globals.browser,
       },
     },
     settings: {
@@ -33,12 +33,12 @@ export default [
     ignores: ["dist"],
     plugins: {
       "@typescript-eslint": eslintPlugin,
-      import: importPlugin
+      import: importPlugin,
     },
     rules: {
       "import/no-unresolved": warnOnFixButErrorOnLint,
       eqeqeq: warnOnFixButErrorOnLint,
-      "no-console": "warn",
+      "no-console": [warnOnFixButErrorOnLint, { allow: ["warn", "error"] }],
       "no-restricted-imports": [
         warnOnFixButErrorOnLint,
         {
@@ -60,12 +60,19 @@ export default [
       ],
       // Disable regular no-unused-vars rule since that will flag interface declarations. Only use the TypeScript specific rule for this.
       "no-unused-vars": "off",
-      "func-style": ["error", "declaration", { allowArrowFunctions: false }],
-      "prefer-arrow-callback": ["error", { allowNamedFunctions: false }],
-      "no-param-reassign": "error",
-      "no-useless-rename": "error",
-      "sort-vars": "error",
-      "no-cond-assign": "error",
+      "func-style": [
+        warnOnFixButErrorOnLint,
+        "declaration",
+        { allowArrowFunctions: false },
+      ],
+      "prefer-arrow-callback": [
+        warnOnFixButErrorOnLint,
+        { allowNamedFunctions: false },
+      ],
+      "no-param-reassign": warnOnFixButErrorOnLint,
+      "no-useless-rename": warnOnFixButErrorOnLint,
+      "sort-vars": warnOnFixButErrorOnLint,
+      "no-cond-assign": warnOnFixButErrorOnLint,
       "no-undef": warnOnFixButErrorOnLint,
     },
   },
