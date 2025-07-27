@@ -75,7 +75,7 @@ export default [
       "no-cond-assign": warnOnFixButErrorOnLint,
       "no-undef": warnOnFixButErrorOnLint,
       "@typescript-eslint/consistent-type-imports": warnOnFixButErrorOnLint,
-      "prettier/prettier": ["warn", { printWidth: 100 }],
+      "prettier/prettier": ["warn", prettierRules],
     },
   },
 ];
