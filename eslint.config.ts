@@ -3,17 +3,15 @@ import eslintPlugin from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
 import importPlugin from "eslint-plugin-import";
 import globals from "globals";
-import prettierConfig from "eslint-config-prettier"
-import prettierPlugin from "eslint-plugin-prettier"
-import {type Config} from "prettier"
+import prettierConfig from "eslint-config-prettier";
+import prettierPlugin from "eslint-plugin-prettier";
+import { type Config } from "prettier";
 
-export const warnOnFixButErrorOnLint =
-  // eslint-disable-next-line no-undef
-  process.env.ESLINT_MODE === "fix" ? "warn" : "error";
+export const warnOnFixButErrorOnLint = process.env.ESLINT_MODE === "fix" ? "warn" : "error";
 
 export const prettierRules: Config = {
-  printWidth: 100
-}
+  printWidth: 100,
+};
 
 export default [
   js.configs.recommended,
@@ -42,7 +40,7 @@ export default [
     plugins: {
       "@typescript-eslint": eslintPlugin,
       import: importPlugin,
-      prettier: prettierPlugin
+      prettier: prettierPlugin,
     },
     rules: {
       "import/no-unresolved": warnOnFixButErrorOnLint,
@@ -69,22 +67,15 @@ export default [
       ],
       // Disable regular no-unused-vars rule since that will flag interface declarations. Only use the TypeScript specific rule for this.
       "no-unused-vars": "off",
-      "func-style": [
-        warnOnFixButErrorOnLint,
-        "declaration",
-        { allowArrowFunctions: false },
-      ],
-      "prefer-arrow-callback": [
-        warnOnFixButErrorOnLint,
-        { allowNamedFunctions: false },
-      ],
+      "func-style": [warnOnFixButErrorOnLint, "declaration", { allowArrowFunctions: false }],
+      "prefer-arrow-callback": [warnOnFixButErrorOnLint, { allowNamedFunctions: false }],
       "no-param-reassign": warnOnFixButErrorOnLint,
       "no-useless-rename": warnOnFixButErrorOnLint,
       "sort-vars": warnOnFixButErrorOnLint,
       "no-cond-assign": warnOnFixButErrorOnLint,
       "no-undef": warnOnFixButErrorOnLint,
       "@typescript-eslint/consistent-type-imports": warnOnFixButErrorOnLint,
-      "prettier/prettier": ["warn", {printWidth: 100}]
+      "prettier/prettier": ["warn", { printWidth: 100 }],
     },
   },
 ];
