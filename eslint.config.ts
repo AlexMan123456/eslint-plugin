@@ -3,6 +3,8 @@ import eslintPlugin from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
 import importPlugin from "eslint-plugin-import";
 import globals from "globals";
+import prettierConfig from "eslint-config-prettier"
+import prettierPlugin from "eslint-plugin-prettier"
 
 export const warnOnFixButErrorOnLint =
   // eslint-disable-next-line no-undef
@@ -10,6 +12,7 @@ export const warnOnFixButErrorOnLint =
 
 export default [
   js.configs.recommended,
+  prettierConfig,
   {
     name: "@alextheman/eslint-config-typescript-base",
     files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
@@ -34,6 +37,7 @@ export default [
     plugins: {
       "@typescript-eslint": eslintPlugin,
       import: importPlugin,
+      prettier: prettierPlugin
     },
     rules: {
       "import/no-unresolved": warnOnFixButErrorOnLint,
@@ -74,7 +78,8 @@ export default [
       "sort-vars": warnOnFixButErrorOnLint,
       "no-cond-assign": warnOnFixButErrorOnLint,
       "no-undef": warnOnFixButErrorOnLint,
-      "@typescript-eslint/consistent-type-imports": warnOnFixButErrorOnLint
+      "@typescript-eslint/consistent-type-imports": warnOnFixButErrorOnLint,
+      "prettier/prettier": ["warn", {printWidth: 100}]
     },
   },
 ];

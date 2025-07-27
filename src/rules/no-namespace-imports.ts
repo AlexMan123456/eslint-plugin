@@ -7,8 +7,7 @@ const noNamespaceImports = createRule({
       description: "Forbid the use of import *",
     },
     messages: {
-      message:
-        'Import * from "{{source}}" is not allowed. Please use named imports instead.',
+      message: 'Import * from "{{source}}" is not allowed. Please use named imports instead.',
     },
     type: "suggestion",
     schema: [

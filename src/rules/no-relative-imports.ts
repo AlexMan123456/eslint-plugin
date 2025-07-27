@@ -18,14 +18,8 @@ const noRelativeImports = createRule({
   create(context) {
     return {
       ImportDeclaration(node) {
-        if (
-          node.source.value.includes("./") ||
-          node.source.value.includes("../")
-        ) {
-          if (
-            !node.source.value.startsWith("./") &&
-            !node.source.value.startsWith("../")
-          ) {
+        if (node.source.value.includes("./") || node.source.value.includes("../")) {
+          if (!node.source.value.startsWith("./") && !node.source.value.startsWith("../")) {
             /* If the import directory doesn't contain ./ or ../ at the start, but does in the middle,
             that's just beyond stupid and I'm not even giving them an easy fix! They can't get the best of me today. */
             context.report({
