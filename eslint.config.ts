@@ -5,10 +5,15 @@ import importPlugin from "eslint-plugin-import";
 import globals from "globals";
 import prettierConfig from "eslint-config-prettier"
 import prettierPlugin from "eslint-plugin-prettier"
+import {type Config} from "prettier"
 
 export const warnOnFixButErrorOnLint =
   // eslint-disable-next-line no-undef
   process.env.ESLINT_MODE === "fix" ? "warn" : "error";
+
+export const prettierRules: Config = {
+  printWidth: 100
+}
 
 export default [
   js.configs.recommended,

@@ -1,6 +1,6 @@
 import { name, version } from "package.json";
 import rules from "src/rules";
-import esLintConfigTypescriptBase, { warnOnFixButErrorOnLint } from "eslint.config";
+import esLintConfigTypescriptBase, { prettierRules, warnOnFixButErrorOnLint } from "eslint.config";
 import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
@@ -15,6 +15,8 @@ export interface AlexPlugin {
   configs: Record<string, any>;
   rules: Record<string, any>;
 }
+
+export { prettierRules };
 
 const plugin = {
   meta: {
