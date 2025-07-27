@@ -74,6 +74,7 @@ export default [
       "sort-vars": warnOnFixButErrorOnLint,
       "no-cond-assign": warnOnFixButErrorOnLint,
       "no-undef": warnOnFixButErrorOnLint,
+      "@typescript-eslint/consistent-type-imports": warnOnFixButErrorOnLint
     },
   },
 ];
