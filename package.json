@@ -51,6 +51,6 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "@alextheman/utility": "^1.7.0"
+    "@alextheman/utility": "^1.7.1"
   }
 }
