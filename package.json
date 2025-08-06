@@ -1,6 +1,6 @@
 {
   "name": "@alextheman/eslint-plugin",
-  "version": "1.2.9",
+  "version": "1.2.10",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -51,6 +51,6 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "@alextheman/utility": "^1.7.0"
+    "@alextheman/utility": "^1.7.1"
   }
 }
