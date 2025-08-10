@@ -38,10 +38,6 @@ Object.assign(plugin.configs, {
         "@alextheman": plugin,
       },
       rules: {
-        /* In this plugin's config, no-restricted-imports checks checks for relative imports and errors if they're found.
-        In practice, though, this is something that would be caught by my custom linting rule, so no-restricted-imports can be disabled here
-        in favour of @alextheman/no-relative-imports. */
-        "no-restricted-imports": "off",
         "@alextheman/no-namespace-imports": warnOnFixButErrorOnLint,
         "@alextheman/no-relative-imports": warnOnFixButErrorOnLint,
       },
