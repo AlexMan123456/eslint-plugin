@@ -1,10 +1,12 @@
-import { name, version } from "package.json";
-import rules from "src/rules";
-import esLintConfigTypescriptBase, { prettierRules, warnOnFixButErrorOnLint } from "eslint.config";
-import globals from "globals";
+import reactPlugin from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
-import reactPlugin from "eslint-plugin-react";
+import globals from "globals";
+
+import rules from "src/rules";
+
+import esLintConfigTypescriptBase, { prettierRules, warnOnFixButErrorOnLint } from "eslint.config";
+import { name, version } from "package.json";
 
 export interface AlexPlugin {
   meta: {

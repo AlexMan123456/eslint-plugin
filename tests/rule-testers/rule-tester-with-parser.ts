@@ -1,5 +1,6 @@
-import { RuleTester } from "@typescript-eslint/rule-tester";
 import path from "path";
+
+import { RuleTester } from "@typescript-eslint/rule-tester";
 
 export const basePath = path.resolve(__dirname, "../fixtures");
 

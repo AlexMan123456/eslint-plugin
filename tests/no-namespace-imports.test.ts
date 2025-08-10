@@ -1,5 +1,5 @@
-import { standardRuleTester } from "tests/rule-testers";
 import plugin from "src";
+import { standardRuleTester } from "tests/rule-testers";
 const { rules } = plugin;
 
 standardRuleTester.run("no-namespace-imports", rules["no-namespace-imports"], {
