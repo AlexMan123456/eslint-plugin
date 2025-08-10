@@ -53,8 +53,8 @@ export default [
         {
           patterns: [
             {
-              group: ["./", "../"],
-              message: "Relative imports are not allowed",
+              group: ["node:test"],
+              message: "Use test functions from vitest instead.",
             },
           ],
         },
