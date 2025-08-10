@@ -1,10 +1,11 @@
 import js from "@eslint/js";
 import eslintPlugin from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
-import importPlugin from "eslint-plugin-import";
-import globals from "globals";
 import prettierConfig from "eslint-config-prettier";
+import importPlugin from "eslint-plugin-import";
 import prettierPlugin from "eslint-plugin-prettier";
+import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
+import globals from "globals";
 import { type Config } from "prettier";
 
 export const warnOnFixButErrorOnLint = process.env.ESLINT_MODE === "fix" ? "warn" : "error";
@@ -41,6 +42,7 @@ export default [
       "@typescript-eslint": eslintPlugin,
       import: importPlugin,
       prettier: prettierPlugin,
+      "simple-import-sort": eslintPluginSimpleImportSort,
     },
     rules: {
       "import/no-unresolved": warnOnFixButErrorOnLint,
@@ -57,6 +59,27 @@ export default [
           ],
         },
       ],
+      "import/order": [
+        warnOnFixButErrorOnLint,
+        {
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true,
+          },
+          groups: ["builtin", "external", "internal"],
+          named: true,
+          pathGroups: [
+            {
+              pattern: "src/**",
+              group: "external",
+              position: "after",
+            },
+          ],
+          pathGroupsExcludedImportTypes: ["builtin"],
+          "newlines-between": "always",
+        },
+      ],
+      "simple-import-sort/exports": warnOnFixButErrorOnLint,
       "@typescript-eslint/no-unused-vars": [
         warnOnFixButErrorOnLint,
         {
