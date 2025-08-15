@@ -1,6 +1,6 @@
 {
   "name": "@alextheman/eslint-plugin",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -38,9 +38,9 @@
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
-    "@types/node": "^24.2.0",
-    "@typescript-eslint/rule-tester": "^8.39.0",
-    "@typescript-eslint/utils": "^8.39.0",
+    "@types/node": "^24.3.0",
+    "@typescript-eslint/rule-tester": "^8.39.1",
+    "@typescript-eslint/utils": "^8.39.1",
     "eslint-plugin-eslint-plugin": "^7.0.0",
     "globals": "^16.3.0",
     "husky": "^9.1.7",
@@ -52,6 +52,6 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "@alextheman/utility": "^1.7.1"
+    "@alextheman/utility": "^1.11.2"
   }
 }

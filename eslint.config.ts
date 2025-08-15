@@ -1,6 +1,7 @@
 import js from "@eslint/js";
 import eslintPlugin from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
+import type { Linter } from "eslint";
 import prettierConfig from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
 import prettierPlugin from "eslint-plugin-prettier";
@@ -101,4 +102,4 @@ export default [
       "prettier/prettier": ["warn", prettierRules],
     },
   },
-];
+] as Linter.Config[];
