@@ -4,8 +4,8 @@ import tsparser from "@typescript-eslint/parser";
 import type { Linter } from "eslint";
 import prettierConfig from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
+import perfectionist from "eslint-plugin-perfectionist";
 import prettierPlugin from "eslint-plugin-prettier";
-import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
 import globals from "globals";
 import { type Config } from "prettier";
 
@@ -43,7 +43,7 @@ const esLintConfigTypeScriptBase = [
       "@typescript-eslint": eslintPlugin,
       import: importPlugin,
       prettier: prettierPlugin,
-      "simple-import-sort": eslintPluginSimpleImportSort,
+      perfectionist,
     },
     rules: {
       "import/no-unresolved": warnOnFixButErrorOnLint,
@@ -80,7 +80,26 @@ const esLintConfigTypeScriptBase = [
           "newlines-between": "always",
         },
       ],
-      "simple-import-sort/exports": warnOnFixButErrorOnLint,
+      "perfectionist/sort-exports": [
+        warnOnFixButErrorOnLint,
+        {
+          type: "alphabetical",
+          order: "asc",
+          fallbackSort: { type: "natural" },
+          ignoreCase: true,
+          specialCharacters: "keep",
+          partitionByComment: false,
+          partitionByNewLine: false,
+          newlinesBetween: "ignore",
+          groups: [
+            { commentAbove: "Value exports" },
+            "value-export",
+            { newlinesBetween: 1, commentAbove: "Type exports" },
+            "type-export",
+          ],
+          customGroups: [],
+        },
+      ],
       "@typescript-eslint/no-unused-vars": [
         warnOnFixButErrorOnLint,
         {
