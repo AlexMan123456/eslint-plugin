@@ -24,7 +24,7 @@ ruleTesterWithParser.run(
       {
         code: stripIndent`
         function myConfig(plugin: AlexPlugin) {
-            return createBaseConfig(plugin);
+            return plugin.configs.alexTypeScriptBase;
         }
 
         export default myConfig;
