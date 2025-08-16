@@ -1,7 +1,8 @@
+import type { Linter } from "eslint";
+
 import js from "@eslint/js";
 import eslintPlugin from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
-import type { Linter } from "eslint";
 import prettierConfig from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
 import perfectionist from "eslint-plugin-perfectionist";
@@ -57,24 +58,18 @@ const esLintConfigTypeScriptBase = [
           ],
         },
       ],
-      "import/order": [
+      "perfectionist/sort-imports": [
         warnOnFixButErrorOnLint,
         {
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
-          groups: ["builtin", "external", "internal"],
-          named: true,
-          pathGroups: [
-            {
-              pattern: "src/**",
-              group: "external",
-              position: "after",
-            },
-          ],
-          pathGroupsExcludedImportTypes: ["builtin"],
-          "newlines-between": "always",
+          type: "alphabetical",
+          order: "asc",
+          ignoreCase: true,
+          partitionByComment: false,
+          partitionByNewLine: false,
+          specialCharacters: "keep",
+          groups: ["type", "builtin", "external", "internal", "object"],
+          newlinesBetween: 1,
+          internalPattern: ["^src/.*"],
         },
       ],
       "perfectionist/sort-exports": [
