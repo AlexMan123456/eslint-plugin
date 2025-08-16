@@ -1,4 +1,6 @@
 import type { Linter } from "eslint";
+import type { AlexPlugin } from "src/index";
+
 import reactPlugin from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
@@ -6,7 +8,6 @@ import globals from "globals";
 
 import createAlexTypeScriptBaseConfig from "src/configs/alex-typescript-base";
 import { warnOnFixButErrorOnLint } from "src/configs/eslint-config-typescript-base";
-import type { AlexPlugin } from "src/index";
 
 function createAlexTypeScriptReactBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   return [

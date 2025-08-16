@@ -1,19 +1,17 @@
+import type { Linter } from "eslint";
+
 import js from "@eslint/js";
 import eslintPlugin from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
-import type { Linter } from "eslint";
 import prettierConfig from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
+import perfectionist from "eslint-plugin-perfectionist";
 import prettierPlugin from "eslint-plugin-prettier";
-import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
 import globals from "globals";
-import { type Config } from "prettier";
+
+import prettierRules from "src/configs/prettier-rules";
 
 export const warnOnFixButErrorOnLint = process.env.ESLINT_MODE === "fix" ? "warn" : "error";
-
-export const prettierRules: Config = {
-  printWidth: 100,
-};
 
 const esLintConfigTypeScriptBase = [
   js.configs.recommended,
@@ -43,7 +41,7 @@ const esLintConfigTypeScriptBase = [
       "@typescript-eslint": eslintPlugin,
       import: importPlugin,
       prettier: prettierPlugin,
-      "simple-import-sort": eslintPluginSimpleImportSort,
+      perfectionist,
     },
     rules: {
       "import/no-unresolved": warnOnFixButErrorOnLint,
@@ -60,27 +58,40 @@ const esLintConfigTypeScriptBase = [
           ],
         },
       ],
-      "import/order": [
+      "perfectionist/sort-imports": [
         warnOnFixButErrorOnLint,
         {
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
-          groups: ["builtin", "external", "internal"],
-          named: true,
-          pathGroups: [
-            {
-              pattern: "src/**",
-              group: "external",
-              position: "after",
-            },
-          ],
-          pathGroupsExcludedImportTypes: ["builtin"],
-          "newlines-between": "always",
+          type: "alphabetical",
+          order: "asc",
+          ignoreCase: true,
+          partitionByComment: false,
+          partitionByNewLine: false,
+          specialCharacters: "keep",
+          groups: ["type", "builtin", "external", "internal", "object"],
+          newlinesBetween: 1,
+          internalPattern: ["^src/.*"],
         },
       ],
-      "simple-import-sort/exports": warnOnFixButErrorOnLint,
+      "perfectionist/sort-exports": [
+        warnOnFixButErrorOnLint,
+        {
+          type: "alphabetical",
+          order: "asc",
+          fallbackSort: { type: "natural" },
+          ignoreCase: true,
+          specialCharacters: "keep",
+          partitionByComment: false,
+          partitionByNewLine: false,
+          newlinesBetween: "ignore",
+          groups: [
+            { commentAbove: "Value exports" },
+            "value-export",
+            { newlinesBetween: 1, commentAbove: "Type exports" },
+            "type-export",
+          ],
+          customGroups: [],
+        },
+      ],
       "@typescript-eslint/no-unused-vars": [
         warnOnFixButErrorOnLint,
         {

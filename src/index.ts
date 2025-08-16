@@ -1,13 +1,13 @@
 import type { Linter } from "eslint";
 
+import { name, version } from "package.json";
+
 import {
   createAlexTypeScriptBaseConfig,
   createAlexTypeScriptReactBaseConfig,
   prettierRules,
 } from "src/configs";
 import rules from "src/rules";
-
-import { name, version } from "package.json";
 
 export interface AlexPlugin {
   meta: {
