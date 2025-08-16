@@ -1,8 +1,10 @@
 import type { Linter } from "eslint";
 
-import createAlexTypeScriptBaseConfig from "src/configs/alex-typescript-base";
-import createAlexTypeScriptReactBaseConfig from "src/configs/alex-typescript-react-base";
-import prettierRules from "src/configs/prettier-rules";
+import {
+  createAlexTypeScriptBaseConfig,
+  createAlexTypeScriptReactBaseConfig,
+  prettierRules,
+} from "src/configs";
 import rules from "src/rules";
 
 import { name, version } from "package.json";
