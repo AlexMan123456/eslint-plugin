@@ -7,13 +7,10 @@ import importPlugin from "eslint-plugin-import";
 import perfectionist from "eslint-plugin-perfectionist";
 import prettierPlugin from "eslint-plugin-prettier";
 import globals from "globals";
-import { type Config } from "prettier";
+
+import prettierRules from "src/configs/prettier-rules";
 
 export const warnOnFixButErrorOnLint = process.env.ESLINT_MODE === "fix" ? "warn" : "error";
-
-export const prettierRules: Config = {
-  printWidth: 100,
-};
 
 const esLintConfigTypeScriptBase = [
   js.configs.recommended,
