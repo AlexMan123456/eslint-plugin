@@ -1,8 +1,7 @@
 import { stripIndent } from "common-tags";
+import { ruleTesterWithParser } from "tests/rule-testers";
 
 import plugin from "src/index";
-
-import { ruleTesterWithParser } from "tests/rule-testers";
 
 const { rules } = plugin;
 
