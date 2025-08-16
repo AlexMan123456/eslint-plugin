@@ -83,12 +83,7 @@ const esLintConfigTypeScriptBase = [
           partitionByComment: false,
           partitionByNewLine: false,
           newlinesBetween: "ignore",
-          groups: [
-            { commentAbove: "Value exports" },
-            "value-export",
-            { newlinesBetween: 1, commentAbove: "Type exports" },
-            "type-export",
-          ],
+          groups: ["value-export", { newlinesBetween: 1 }, "type-export"],
           customGroups: [],
         },
       ],
