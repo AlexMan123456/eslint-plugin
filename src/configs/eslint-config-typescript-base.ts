@@ -93,6 +93,7 @@ const esLintConfigTypeScriptBase = [
       "no-unused-vars": "off",
       "func-style": [warnOnFixButErrorOnLint, "declaration", { allowArrowFunctions: false }],
       "prefer-arrow-callback": [warnOnFixButErrorOnLint, { allowNamedFunctions: false }],
+      "arrow-body-style": [warnOnFixButErrorOnLint, "always"],
       "no-param-reassign": warnOnFixButErrorOnLint,
       "no-useless-rename": warnOnFixButErrorOnLint,
       "sort-vars": warnOnFixButErrorOnLint,
