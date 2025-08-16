@@ -1,11 +1,10 @@
-import reactPlugin from "eslint-plugin-react";
-import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
-import globals from "globals";
+import type { Linter } from "eslint";
 
+import createAlexTypeScriptBaseConfig from "src/configs/alex-typescript-base";
+import createAlexTypeScriptReactBaseConfig from "src/configs/alex-typescript-react-base";
+import prettierRules from "src/configs/prettier-rules";
 import rules from "src/rules";
 
-import esLintConfigTypescriptBase, { prettierRules, warnOnFixButErrorOnLint } from "eslint.config";
 import { name, version } from "package.json";
 
 export interface AlexPlugin {
@@ -14,7 +13,10 @@ export interface AlexPlugin {
     version: typeof version;
     namespace: "alextheman";
   };
-  configs: Record<string, any>;
+  configs: {
+    alexTypeScriptBase: Linter.Config[];
+    alexTypeScriptReactBase: Linter.Config[];
+  };
   rules: Record<string, any>;
 }
 
@@ -30,52 +32,13 @@ const plugin = {
   rules,
 } satisfies AlexPlugin;
 
-Object.assign(plugin.configs, {
-  alexTypeScriptBase: [
-    ...esLintConfigTypescriptBase,
-    {
-      plugins: {
-        "@alextheman": plugin,
-      },
-      rules: {
-        "@alextheman/no-namespace-imports": warnOnFixButErrorOnLint,
-        "@alextheman/no-relative-imports": warnOnFixButErrorOnLint,
-      },
-    },
-  ],
-});
-
-plugin.configs.alexTypeScriptReactBase = [
-  ...plugin.configs.alexTypeScriptBase,
-  {
-    name: "@alextheman/eslint-config-typescript-react-base",
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-    },
-    plugins: {
-      "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
-      react: reactPlugin,
-    },
-    rules: {
-      ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
-      "react-hooks/exhaustive-deps": "off",
-      "no-restricted-imports": [
-        warnOnFixButErrorOnLint,
-        {
-          paths: [
-            {
-              name: "@mui/material",
-              message:
-                'Please use `import Component from "@mui/material/Component"` instead. See https://mui.com/material-ui/guides/minimizing-bundle-size/ for more information.',
-            },
-          ],
-        },
-      ],
-    },
-  },
-] as any;
+/* I don't love the any type here, but I also don't know why it keeps trying to type my configs as never when 
+I literally declare them as Linter.Config[] in the interface... But I also can't be bothered to fight TypeScript anymore
+when I can literally see with my own eyes that my code works as intended, so I won't. Please submit a pull request if you
+know how to get rid of the any types. But until someone does, I'm dropping the any bomb. */
+plugin.configs = {
+  alexTypeScriptBase: createAlexTypeScriptBaseConfig(plugin),
+  alexTypeScriptReactBase: createAlexTypeScriptReactBaseConfig(plugin),
+} as any;
 
 export default plugin;
