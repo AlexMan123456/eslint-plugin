@@ -1,6 +1,6 @@
 {
   "name": "@alextheman/eslint-plugin",
-  "version": "1.2.13",
+  "version": "1.3.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,8 +10,8 @@
   "scripts": {
     "test": "vitest run",
     "test-watch": "vitest",
-    "format": "npm run build && prettier --write --parser typescript 'src/**/*.ts' 'tests/**/*.ts' 'eslint.config.ts' && ESLINT_MODE=fix eslint --fix --config eslint.self.config.js 'src/**/*.ts' 'tests/**/*.ts' 'eslint.config.ts'",
-    "lint": "npm run build && ESLINT_MODE=lint eslint --config eslint.self.config.js 'src/**/*.ts' 'tests/**/*.ts' 'eslint.config.ts' && prettier --check --parser typescript 'src/**/*.ts' 'tests/**/*.ts' 'eslint.config.ts'",
+    "format": "npm run build && prettier --write --parser typescript 'src/**/*.ts' 'tests/**/*.ts' && ESLINT_MODE=fix eslint --fix 'src/**/*.ts' 'tests/**/*.ts'",
+    "lint": "npm run build && ESLINT_MODE=lint eslint 'src/**/*.ts' 'tests/**/*.ts' && prettier --check --parser typescript 'src/**/*.ts' 'tests/**/*.ts'",
     "update-dependencies": "npx npm-check-updates -u && npm install",
     "prepare": "husky",
     "build": "tsup",

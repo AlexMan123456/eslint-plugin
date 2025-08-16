@@ -15,7 +15,7 @@ export const prettierRules: Config = {
   printWidth: 100,
 };
 
-export default [
+const esLintConfigTypeScriptBase = [
   js.configs.recommended,
   prettierConfig,
   {
@@ -103,3 +103,5 @@ export default [
     },
   },
 ] as Linter.Config[];
+
+export default esLintConfigTypeScriptBase;
