@@ -6,6 +6,7 @@ import {
   createAlexTypeScriptBaseConfig,
   createAlexTypeScriptReactBaseConfig,
   prettierRules,
+  warnOnFixButErrorOnLint,
 } from "src/configs";
 import rules from "src/rules";
 
@@ -22,7 +23,7 @@ export interface AlexPlugin {
   rules: Record<string, any>;
 }
 
-export { prettierRules };
+export { prettierRules, warnOnFixButErrorOnLint };
 
 const plugin = {
   meta: {
