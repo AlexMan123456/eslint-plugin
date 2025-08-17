@@ -25,7 +25,7 @@ function createAlexTypeScriptReactBaseConfig(plugin: AlexPlugin): Linter.Config[
       },
       rules: {
         ...reactHooks.configs.recommended.rules,
-        "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+        "react-refresh/only-export-components": "off",
         "react-hooks/exhaustive-deps": "off",
         "no-restricted-imports": [
           warnOnFixButErrorOnLint,
