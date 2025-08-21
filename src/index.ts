@@ -25,7 +25,7 @@ export interface AlexPlugin {
 
 export { prettierRules, warnOnFixButErrorOnLint };
 
-const plugin = {
+const plugin: AlexPlugin = {
   meta: {
     name,
     version,
@@ -33,7 +33,7 @@ const plugin = {
   },
   configs: { alexTypeScriptBase: [], alexTypeScriptReactBase: [] },
   rules,
-} satisfies AlexPlugin;
+};
 
 /* I don't love the any type here, but I also don't know why it keeps trying to type my configs as never when 
 I literally declare them as Linter.Config[] in the interface... But I also can't be bothered to fight TypeScript anymore

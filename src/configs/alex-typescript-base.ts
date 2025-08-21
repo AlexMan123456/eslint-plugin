@@ -5,7 +5,7 @@ import esLintConfigTypeScriptBase, {
   warnOnFixButErrorOnLint,
 } from "src/configs/eslint-config-typescript-base";
 
-function createAlexTypeScriptBaseConfig(plugin: AlexPlugin) {
+function createAlexTypeScriptBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   return [
     ...esLintConfigTypeScriptBase,
     {
@@ -17,7 +17,7 @@ function createAlexTypeScriptBaseConfig(plugin: AlexPlugin) {
         "@alextheman/no-relative-imports": warnOnFixButErrorOnLint,
       },
     },
-  ] satisfies Linter.Config[];
+  ];
 }
 
 export default createAlexTypeScriptBaseConfig;

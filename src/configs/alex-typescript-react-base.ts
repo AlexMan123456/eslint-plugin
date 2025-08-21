@@ -41,7 +41,7 @@ function createAlexTypeScriptReactBaseConfig(plugin: AlexPlugin): Linter.Config[
         ],
       },
     },
-  ] satisfies Linter.Config[];
+  ];
 }
 
 export default createAlexTypeScriptReactBaseConfig;
