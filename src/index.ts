@@ -31,17 +31,16 @@ const plugin: AlexPlugin = {
     version,
     namespace: "alextheman",
   },
-  configs: { alexTypeScriptBase: [], alexTypeScriptReactBase: [] },
+  configs: {
+    alexTypeScriptBase: [] as Linter.Config[],
+    alexTypeScriptReactBase: [] as Linter.Config[],
+  },
   rules,
 };
 
-/* I don't love the any type here, but I also don't know why it keeps trying to type my configs as never when 
-I literally declare them as Linter.Config[] in the interface... But I also can't be bothered to fight TypeScript anymore
-when I can literally see with my own eyes that my code works as intended, so I won't. Please submit a pull request if you
-know how to get rid of the any types. But until someone does, I'm dropping the any bomb. */
 plugin.configs = {
   alexTypeScriptBase: createAlexTypeScriptBaseConfig(plugin),
   alexTypeScriptReactBase: createAlexTypeScriptReactBaseConfig(plugin),
-} as any;
+};
 
 export default plugin;
