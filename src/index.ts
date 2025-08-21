@@ -16,7 +16,10 @@ export interface AlexPlugin {
     version: typeof version;
     namespace: "alextheman";
   };
-  configs: Record<string, Linter.Config[]>;
+  configs: {
+    alexTypeScriptBase: Linter.Config[];
+    alexTypeScriptReactBase: Linter.Config[];
+  };
   rules: Record<string, any>;
 }
 
