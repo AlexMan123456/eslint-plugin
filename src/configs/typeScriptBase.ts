@@ -9,11 +9,10 @@ import perfectionist from "eslint-plugin-perfectionist";
 import prettierPlugin from "eslint-plugin-prettier";
 import globals from "globals";
 
-import prettierRules from "src/configs/prettier-rules";
+import prettierRules from "src/configs/prettierRules";
+import warnOnFixButErrorOnLint from "src/configs/warnOnFixButErrorOnLint";
 
-export const warnOnFixButErrorOnLint = process.env.ESLINT_MODE === "fix" ? "warn" : "error";
-
-const esLintConfigTypeScriptBase = [
+const typeScriptBase: Linter.Config[] = [
   js.configs.recommended,
   prettierConfig,
   {
@@ -111,4 +110,4 @@ const esLintConfigTypeScriptBase = [
   },
 ] as Linter.Config[];
 
-export default esLintConfigTypeScriptBase;
+export default typeScriptBase;

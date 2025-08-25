@@ -1,7 +1,7 @@
-export { default as createAlexTypeScriptBaseConfig } from "src/configs/alex-typescript-base";
-export { default as createAlexTypeScriptReactBaseConfig } from "src/configs/alex-typescript-react-base";
-export {
-  default as esLintConfigTypeScriptBase,
-  warnOnFixButErrorOnLint,
-} from "src/configs/eslint-config-typescript-base";
-export { default as prettierRules } from "src/configs/prettier-rules";
+export { default as createAlexPluginBaseConfig } from "src/configs/alexPluginBase";
+export { default as createAlexTypeScriptBaseConfig } from "src/configs/alexTypeScriptBase";
+export { default as createAlexTypeScriptReactBaseConfig } from "src/configs/alexTypeScriptReactBase";
+export { default as prettierRules } from "src/configs/prettierRules";
+export { default as typeScriptBase } from "src/configs/typeScriptBase";
+export { default as typeScriptReactBase } from "src/configs/typeScriptReactBase";
+export { default as warnOnFixButErrorOnLint } from "src/configs/warnOnFixButErrorOnLint";
