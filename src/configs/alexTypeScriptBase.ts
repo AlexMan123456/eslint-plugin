@@ -1,9 +1,8 @@
 import type { Linter } from "eslint";
 import type { AlexPlugin } from "src/index";
 
-import esLintConfigTypeScriptBase, {
-  warnOnFixButErrorOnLint,
-} from "src/configs/eslint-config-typescript-base";
+import esLintConfigTypeScriptBase from "src/configs/esLintConfigTypeScriptBase";
+import warnOnFixButErrorOnLint from "src/configs/warnOnFixButErrorOnLint";
 
 function createAlexTypeScriptBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   return [

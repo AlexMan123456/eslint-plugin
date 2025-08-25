@@ -9,9 +9,8 @@ import perfectionist from "eslint-plugin-perfectionist";
 import prettierPlugin from "eslint-plugin-prettier";
 import globals from "globals";
 
-import prettierRules from "src/configs/prettier-rules";
-
-export const warnOnFixButErrorOnLint = process.env.ESLINT_MODE === "fix" ? "warn" : "error";
+import prettierRules from "src/configs/prettierRules";
+import warnOnFixButErrorOnLint from "src/configs/warnOnFixButErrorOnLint";
 
 const esLintConfigTypeScriptBase = [
   js.configs.recommended,

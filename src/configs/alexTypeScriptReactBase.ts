@@ -6,8 +6,8 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 
-import createAlexTypeScriptBaseConfig from "src/configs/alex-typescript-base";
-import { warnOnFixButErrorOnLint } from "src/configs/eslint-config-typescript-base";
+import createAlexTypeScriptBaseConfig from "src/configs/alexTypeScriptBase";
+import warnOnFixButErrorOnLint from "src/configs/warnOnFixButErrorOnLint";
 
 function createAlexTypeScriptReactBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   return [
