@@ -12,7 +12,7 @@ import globals from "globals";
 import prettierRules from "src/configs/prettierRules";
 import warnOnFixButErrorOnLint from "src/configs/warnOnFixButErrorOnLint";
 
-const esLintConfigTypeScriptBase = [
+const typeScriptBase: Linter.Config[] = [
   js.configs.recommended,
   prettierConfig,
   {
@@ -110,4 +110,4 @@ const esLintConfigTypeScriptBase = [
   },
 ] as Linter.Config[];
 
-export default esLintConfigTypeScriptBase;
+export default typeScriptBase;
