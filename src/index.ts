@@ -9,9 +9,14 @@ import {
   prettierRules,
   typeScriptBase,
   typeScriptReactBase,
-  warnOnFixButErrorOnLint,
 } from "src/configs";
 import rules from "src/rules";
+
+if (process.env.ESLINT_MODE) {
+  console.warn(
+    "ESLINT_MODE is now deprecated. Please use eslint --fix --quiet when running the fixer instead.",
+  );
+}
 
 export interface AlexPlugin {
   meta: {
@@ -29,7 +34,7 @@ export interface AlexPlugin {
   rules: Record<string, any>;
 }
 
-export { prettierRules, warnOnFixButErrorOnLint };
+export { prettierRules };
 
 const plugin: AlexPlugin = {
   meta: {
