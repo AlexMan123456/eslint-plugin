@@ -10,8 +10,8 @@
   "scripts": {
     "test": "vitest run",
     "test-watch": "vitest",
-    "format": "npm run build && prettier --write --parser typescript \"src/**/*.ts\" \"tests/**/*.ts\" && ESLINT_MODE=fix eslint --fix --quiet \"src/**/*.ts\" \"tests/**/*.ts\"",
-    "lint": "npm run build && ESLINT_MODE=lint eslint \"src/**/*.ts\" \"tests/**/*.ts\" && prettier --check --parser typescript \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "format": "npm run build && prettier --write --parser typescript \"src/**/*.ts\" \"tests/**/*.ts\" && eslint --fix --quiet \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "lint": "npm run build && eslint \"src/**/*.ts\" \"tests/**/*.ts\" && prettier --check --parser typescript \"src/**/*.ts\" \"tests/**/*.ts\"",
     "update-dependencies": "npx npm-check-updates -u && npm install",
     "prepare": "husky",
     "build": "tsup",
