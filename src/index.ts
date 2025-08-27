@@ -9,7 +9,6 @@ import {
   prettierRules,
   typeScriptBase,
   typeScriptReactBase,
-  warnOnFixButErrorOnLint,
 } from "src/configs";
 import rules from "src/rules";
 
@@ -29,7 +28,7 @@ export interface AlexPlugin {
   rules: Record<string, any>;
 }
 
-export { prettierRules, warnOnFixButErrorOnLint };
+export { prettierRules };
 
 const plugin: AlexPlugin = {
   meta: {

@@ -10,7 +10,6 @@ import prettierPlugin from "eslint-plugin-prettier";
 import globals from "globals";
 
 import prettierRules from "src/configs/prettierRules";
-import warnOnFixButErrorOnLint from "src/configs/warnOnFixButErrorOnLint";
 
 const typeScriptBase: Linter.Config[] = [
   js.configs.recommended,
@@ -43,11 +42,11 @@ const typeScriptBase: Linter.Config[] = [
       perfectionist,
     },
     rules: {
-      "import/no-unresolved": warnOnFixButErrorOnLint,
-      eqeqeq: warnOnFixButErrorOnLint,
-      "no-console": [warnOnFixButErrorOnLint, { allow: ["warn", "error"] }],
+      "import/no-unresolved": "error",
+      eqeqeq: "error",
+      "no-console": ["error", { allow: ["warn", "error"] }],
       "no-restricted-imports": [
-        warnOnFixButErrorOnLint,
+        "error",
         {
           patterns: [
             {
@@ -58,7 +57,7 @@ const typeScriptBase: Linter.Config[] = [
         },
       ],
       "perfectionist/sort-imports": [
-        warnOnFixButErrorOnLint,
+        "error",
         {
           type: "alphabetical",
           order: "asc",
@@ -72,7 +71,7 @@ const typeScriptBase: Linter.Config[] = [
         },
       ],
       "perfectionist/sort-exports": [
-        warnOnFixButErrorOnLint,
+        "error",
         {
           type: "alphabetical",
           order: "asc",
@@ -87,7 +86,7 @@ const typeScriptBase: Linter.Config[] = [
         },
       ],
       "@typescript-eslint/no-unused-vars": [
-        warnOnFixButErrorOnLint,
+        "error",
         {
           argsIgnorePattern: "^_",
           varsIgnorePattern: "^_",
@@ -96,15 +95,15 @@ const typeScriptBase: Linter.Config[] = [
       ],
       // Disable regular no-unused-vars rule since that will flag interface declarations. Only use the TypeScript specific rule for this.
       "no-unused-vars": "off",
-      "func-style": [warnOnFixButErrorOnLint, "declaration", { allowArrowFunctions: false }],
-      "prefer-arrow-callback": [warnOnFixButErrorOnLint, { allowNamedFunctions: false }],
-      "arrow-body-style": [warnOnFixButErrorOnLint, "always"],
-      "no-param-reassign": warnOnFixButErrorOnLint,
-      "no-useless-rename": warnOnFixButErrorOnLint,
-      "sort-vars": warnOnFixButErrorOnLint,
-      "no-cond-assign": warnOnFixButErrorOnLint,
-      "no-undef": warnOnFixButErrorOnLint,
-      "@typescript-eslint/consistent-type-imports": warnOnFixButErrorOnLint,
+      "func-style": ["error", "declaration", { allowArrowFunctions: false }],
+      "prefer-arrow-callback": ["error", { allowNamedFunctions: false }],
+      "arrow-body-style": ["error", "always"],
+      "no-param-reassign": "error",
+      "no-useless-rename": "error",
+      "sort-vars": "error",
+      "no-cond-assign": "error",
+      "no-undef": "error",
+      "@typescript-eslint/consistent-type-imports": "error",
       "prettier/prettier": ["warn", prettierRules],
     },
   },

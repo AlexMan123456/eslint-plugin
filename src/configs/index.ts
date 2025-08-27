@@ -4,4 +4,3 @@ export { default as createAlexTypeScriptReactBaseConfig } from "src/configs/alex
 export { default as prettierRules } from "src/configs/prettierRules";
 export { default as typeScriptBase } from "src/configs/typeScriptBase";
 export { default as typeScriptReactBase } from "src/configs/typeScriptReactBase";
-export { default as warnOnFixButErrorOnLint } from "src/configs/warnOnFixButErrorOnLint";

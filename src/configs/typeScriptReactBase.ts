@@ -6,7 +6,6 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 
 import typeScriptBase from "src/configs/typeScriptBase";
-import warnOnFixButErrorOnLint from "src/configs/warnOnFixButErrorOnLint";
 
 const typeScriptReactBase: Linter.Config[] = [
   ...typeScriptBase,
@@ -26,7 +25,7 @@ const typeScriptReactBase: Linter.Config[] = [
       "react-refresh/only-export-components": "off",
       "react-hooks/exhaustive-deps": "off",
       "no-restricted-imports": [
-        warnOnFixButErrorOnLint,
+        "error",
         {
           paths: [
             {
