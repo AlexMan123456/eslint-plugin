@@ -14,7 +14,7 @@ import rules from "src/rules";
 
 if (process.env.ESLINT_MODE) {
   console.warn(
-    "ESLINT_MODE is now deprecated. Please use eslint --fix --quiet when running the fixer instead.",
+    "ESLINT_MODE is now deprecated. Please use eslint --fix --suppress-all when running the fixer instead.",
   );
 }
 
