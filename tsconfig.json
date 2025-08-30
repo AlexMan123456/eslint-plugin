@@ -23,5 +23,6 @@
     "noFallthroughCasesInSwitch": true,
     "declaration": true
   },
-  "include": ["src", "tests", "create-rule.ts"]
+  "include": ["src", "tests", "create-rule.ts"],
+  "exclude": ["tests/fixtures"]
 }
