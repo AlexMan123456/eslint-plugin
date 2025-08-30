@@ -12,7 +12,7 @@
     "test-watch": "vitest",
     "format": "npm run build && prettier --write --parser typescript \"src/**/*.ts\" \"tests/**/*.ts\" && eslint --fix --suppress-all \"src/**/*.ts\" \"tests/**/*.ts\" && rm -f eslint-suppressions.json",
     "lint": "npm run build && tsc --noEmit && eslint \"src/**/*.ts\" \"tests/**/*.ts\" && prettier --check --parser typescript \"src/**/*.ts\" \"tests/**/*.ts\"",
-    "update-dependencies": "npx npm-check-updates -u && npm install",
+    "update-dependencies": "bash -c 'npx npm-check-updates -u \"$@\" && npm install' --",
     "prepare": "husky",
     "build": "tsup",
     "change-major": "npm version major -m \"Change version number to v%s\"",
