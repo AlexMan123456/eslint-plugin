@@ -1,6 +1,6 @@
 {
   "name": "@alextheman/eslint-plugin",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,17 +24,17 @@
   "license": "ISC",
   "type": "module",
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": ">=8.37.0",
-    "@typescript-eslint/parser": ">=8.37.0",
-    "eslint": ">=9.31.0",
-    "eslint-config-prettier": ">=10.1.8",
-    "eslint-import-resolver-typescript": ">=4.4.4",
-    "eslint-plugin-import": ">=2.32.0",
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "@typescript-eslint/parser": "^8.37.0",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-perfectionist": "^4.15.0",
-    "eslint-plugin-prettier": ">=5.5.3",
-    "eslint-plugin-react": ">=7.37.5",
-    "eslint-plugin-react-hooks": ">=5.2.0",
-    "eslint-plugin-react-refresh": ">=0.4.20"
+    "eslint-plugin-prettier": "^5.5.3",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20"
   },
   "devDependencies": {
     "@types/common-tags": "^1.8.4",
