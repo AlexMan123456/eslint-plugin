@@ -13,6 +13,13 @@ function createAlexPluginBaseConfig(plugin: AlexPlugin): Linter.Config[] {
         "@alextheman/use-object-shorthand": "error",
       },
     },
+    {
+      files: ["**/*.test.ts"],
+      rules: {
+        "@alextheman/no-isolated-tests": "error",
+        "@alextheman/no-skipped-tests": "warn",
+      },
+    },
   ];
 }
 
