@@ -1,5 +1,3 @@
-import path from "path";
-
 import createRule from "src/create-rule";
 
 const noRelativeImports = createRule({
@@ -9,61 +7,96 @@ const noRelativeImports = createRule({
     messages: {
       message: 'Relative import from "{{source}}" is not allowed.',
       stupidPath:
-        'Who the hell imports from "{{source}}"?! Know your own project directory, Goddamnit!',
+        "For the love of God, please do not mix relative path parts in your import statements like that! How can you possibly be ok with {{source}}?!",
     },
     type: "suggestion",
-    fixable: "code",
-    schema: [],
+    schema: [
+      {
+        type: "object",
+        properties: {
+          depth: {
+            type: "number",
+          },
+        },
+        additionalProperties: false,
+      },
+    ],
   },
-  defaultOptions: [],
+  defaultOptions: [{ depth: undefined }],
   create(context) {
+    const depth = context.options[0]?.depth;
+
+    if (depth !== undefined) {
+      if (depth % 1 !== 0) {
+        throw new Error("NON_INTEGER_DEPTH_NOT_ALLOWED");
+      }
+      if (depth < 0) {
+        throw new Error("NEGATIVE_DEPTH_NOT_ALLOWED");
+      }
+    }
+
     return {
       ImportDeclaration(node) {
         if (node.source.value.includes("./") || node.source.value.includes("../")) {
-          if (!node.source.value.startsWith("./") && !node.source.value.startsWith("../")) {
-            /* If the import directory doesn't contain ./ or ../ at the start, but does in the middle,
-            that's just beyond stupid and I'm not even giving them an easy fix! They can't get the best of me today. */
-            context.report({
+          if (depth === undefined) {
+            return context.report({
+              node,
+              messageId: "message",
+              data: {
+                source: node.source.value,
+              },
+            });
+          }
+
+          const importPathParts = node.source.value.split("/");
+          // If the path includes both ./ and ../, it's a stupid path and the user deserves to be mocked for trying to do this
+          if (importPathParts.includes(".") && importPathParts.includes("..")) {
+            return context.report({
               node,
               messageId: "stupidPath",
               data: {
                 source: node.source.value,
               },
             });
-            return null;
           }
-          context.report({
-            node,
-            messageId: "message",
-            data: {
-              source: node.source.value,
-            },
-            fix(fixer) {
-              if (!context.parserOptions.tsconfigRootDir) {
-                // If no root directory set in parserOptions, rule is not fixable
-                return null;
-              }
 
-              const fullImportPath = path.resolve(
-                path.dirname(context.physicalFilename),
-                node.source.value,
-              );
-              const projectRelativePath = path.relative(
-                context.parserOptions.tsconfigRootDir,
-                fullImportPath,
-              );
+          // If the path includes ./ but doesn't start with ./ (and likewise for ../), it's also a stupid path that the user deserves to be mocked for
+          if (
+            (importPathParts.includes(".") && importPathParts[0] !== ".") ||
+            (importPathParts.includes("..") && importPathParts[0] !== "..")
+          ) {
+            return context.report({
+              node,
+              messageId: "stupidPath",
+              data: {
+                source: node.source.value,
+              },
+            });
+          }
 
-              if (projectRelativePath.startsWith("..")) {
-                // Do not allow this - this takes you outside the project
-                return null;
-              }
+          // Depth checks
 
-              return fixer.replaceText(
-                node.source,
-                `${node.source.raw[0]}${path.posix.normalize(projectRelativePath)}${node.source.raw[0]}`,
-              );
-            },
-          });
+          if (depth === 0 && importPathParts[0] === ".") {
+            return;
+          }
+
+          let endOfRelativePathFound = false;
+          for (const part of importPathParts.slice(0, depth + 1)) {
+            if (part !== "..") {
+              endOfRelativePathFound = true;
+              break;
+            }
+          }
+
+          if (!endOfRelativePathFound) {
+            return context.report({
+              node,
+              messageId: "message",
+              data: {
+                source: node.source.value,
+              },
+            });
+          }
         }
       },
     };
