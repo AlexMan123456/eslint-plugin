@@ -16,7 +16,7 @@ const typeScriptBase: Linter.Config[] = [
   prettierConfig,
   {
     name: "@alextheman/eslint-config-typescript-base",
-    files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+    files: ["**/*.ts", "**/*.tsx"],
     languageOptions: {
       parser: tsparser,
       parserOptions: {
