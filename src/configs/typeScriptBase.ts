@@ -11,12 +11,12 @@ import globals from "globals";
 
 import prettierRules from "src/configs/prettierRules";
 
-const typeScriptBase: Linter.Config[] = [
+const typeScriptBase = [
   js.configs.recommended,
   prettierConfig,
   {
     name: "@alextheman/eslint-config-typescript-base",
-    files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+    files: ["**/*.ts", "**/*.tsx"],
     languageOptions: {
       parser: tsparser,
       parserOptions: {
@@ -45,17 +45,6 @@ const typeScriptBase: Linter.Config[] = [
       "import/no-unresolved": "error",
       eqeqeq: "error",
       "no-console": ["error", { allow: ["warn", "error"] }],
-      "no-restricted-imports": [
-        "error",
-        {
-          patterns: [
-            {
-              group: ["node:test"],
-              message: "Use test functions from vitest instead.",
-            },
-          ],
-        },
-      ],
       "perfectionist/sort-imports": [
         "error",
         {
@@ -105,6 +94,22 @@ const typeScriptBase: Linter.Config[] = [
       "no-undef": "error",
       "@typescript-eslint/consistent-type-imports": "error",
       "prettier/prettier": ["warn", prettierRules],
+    },
+  },
+  {
+    files: ["**/*.test.ts"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["node:test"],
+              message: "Use test functions from vitest instead.",
+            },
+          ],
+        },
+      ],
     },
   },
 ] as Linter.Config[];
