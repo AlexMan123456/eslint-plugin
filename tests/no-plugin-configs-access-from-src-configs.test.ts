@@ -1,9 +1,9 @@
 import { stripIndent } from "common-tags";
 import { ruleTesterWithParser } from "tests/rule-testers";
 
-import plugin from "src/index";
+import alexPlugin from "src/index";
 
-const { rules } = plugin;
+const { rules } = alexPlugin;
 
 ruleTesterWithParser.run(
   "no-plugin-configs-access-from-src-configs",

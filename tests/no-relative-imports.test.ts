@@ -1,6 +1,6 @@
-import plugin from "src";
+import alexPlugin from "src";
 import { standardRuleTester } from "tests/rule-testers";
-const { rules } = plugin;
+const { rules } = alexPlugin;
 
 standardRuleTester.run("no-relative-imports", rules["no-relative-imports"], {
   valid: [
