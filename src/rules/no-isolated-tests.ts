@@ -21,7 +21,8 @@ const noIsolatedTests = createRule({
       CallExpression(node) {
         if (
           checkCallExpression(node, "describe", "only") ||
-          checkCallExpression(node, "test", "only")
+          checkCallExpression(node, "test", "only") ||
+          checkCallExpression(node, "it", "only")
         ) {
           return context.report({
             node,

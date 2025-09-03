@@ -21,7 +21,8 @@ const noSkippedTests = createRule({
       CallExpression(node) {
         if (
           checkCallExpression(node, "describe", "skip") ||
-          checkCallExpression(node, "test", "skip")
+          checkCallExpression(node, "test", "skip") ||
+          checkCallExpression(node, "it", "skip")
         ) {
           return context.report({
             node,
