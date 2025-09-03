@@ -1,8 +1,8 @@
 import { stripIndent } from "common-tags";
 import { standardRuleTester } from "tests/rule-testers";
 
-import plugin from "src/index";
-const { rules } = plugin;
+import alexPlugin from "src/index";
+const { rules } = alexPlugin;
 
 standardRuleTester.run("consistent-test-function", rules["consistent-test-function"], {
   valid: [

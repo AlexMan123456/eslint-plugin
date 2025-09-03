@@ -3,7 +3,7 @@ import type { TSESTree } from "@typescript-eslint/utils";
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 import z from "zod";
 
-import createRule from "src/create-rule";
+import createRule from "src/createRule";
 import getImportSpecifiersAfterRemoving from "src/utility/getImportSpecifiersAfterRemoving";
 
 const validTestFunctionsSchema = z.enum(["test", "it"]);
