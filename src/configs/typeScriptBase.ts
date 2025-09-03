@@ -5,6 +5,7 @@ import eslintPlugin from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
 import prettierConfig from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
+import packageJson from "eslint-plugin-package-json";
 import perfectionist from "eslint-plugin-perfectionist";
 import prettierPlugin from "eslint-plugin-prettier";
 import globals from "globals";
@@ -14,6 +15,7 @@ import prettierRules from "src/configs/prettierRules";
 const typeScriptBase = [
   js.configs.recommended,
   prettierConfig,
+  packageJson.configs.recommended,
   {
     name: "@alextheman/eslint-config-typescript-base",
     files: ["**/*.ts", "**/*.tsx"],
