@@ -6,7 +6,6 @@ import {
   createAlexPluginBaseConfig,
   createAlexTypeScriptBaseConfig,
   createAlexTypeScriptReactBaseConfig,
-  prettierRules,
   typeScriptBase,
   typeScriptReactBase,
 } from "src/configs";
@@ -34,7 +33,9 @@ export interface AlexPlugin {
   rules: Record<string, any>;
 }
 
-export { prettierRules };
+export { prettierRules } from "src/configs";
+
+export type { ValidTestFunctions } from "src/rules/consistent-test-function";
 
 const plugin: AlexPlugin = {
   meta: {
