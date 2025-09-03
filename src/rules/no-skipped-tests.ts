@@ -1,6 +1,6 @@
 import type { TSESTree } from "@typescript-eslint/utils";
 
-import createRule from "src/create-rule";
+import createRule from "src/createRule";
 import checkCallExpression from "src/utility/checkCallExpression";
 
 const noSkippedTests = createRule({

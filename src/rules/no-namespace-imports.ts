@@ -1,4 +1,4 @@
-import createRule from "src/create-rule";
+import createRule from "src/createRule";
 
 const noNamespaceImports = createRule({
   name: "no-namespace-imports",

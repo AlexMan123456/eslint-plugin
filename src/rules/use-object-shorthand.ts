@@ -2,7 +2,7 @@ import type { TSESTree } from "@typescript-eslint/utils";
 
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 
-import createRule from "src/create-rule";
+import createRule from "src/createRule";
 
 const useObjectShorthand = createRule({
   name: "use-object-shorthand",
