@@ -45,7 +45,7 @@ standardRuleTester.run("no-relative-imports", rules["no-relative-imports"], {
       code: 'import myFunction from "./utils/myFunction";',
       errors: [
         {
-          messageId: "message",
+          messageId: "strictNoRelative",
           data: {
             source: "./utils/myFunction",
           },
@@ -61,7 +61,7 @@ standardRuleTester.run("no-relative-imports", rules["no-relative-imports"], {
       ],
       errors: [
         {
-          messageId: "message",
+          messageId: "rootOnly",
           data: {
             source: "../utils/myFunction",
           },
@@ -77,9 +77,29 @@ standardRuleTester.run("no-relative-imports", rules["no-relative-imports"], {
       ],
       errors: [
         {
-          messageId: "message",
+          messageId: "exceededAllowedDepth",
           data: {
             source: "../../utils/myFunction",
+            depth: 1,
+            s: "",
+          },
+        },
+      ],
+    },
+    {
+      code: 'import myFunction from "../../../utils/myFunction";',
+      options: [
+        {
+          depth: 2,
+        },
+      ],
+      errors: [
+        {
+          messageId: "exceededAllowedDepth",
+          data: {
+            source: "../../../utils/myFunction",
+            depth: 2,
+            s: "s",
           },
         },
       ],
