@@ -12,7 +12,7 @@ import globals from "globals";
 
 import prettierRules from "src/configs/prettierRules";
 
-const typeScriptBase = [
+const typeScriptBase: Linter.Config[] = [
   js.configs.recommended,
   prettierConfig,
   packageJson.configs.recommended,
