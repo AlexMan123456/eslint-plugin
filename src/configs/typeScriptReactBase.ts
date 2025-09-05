@@ -29,9 +29,9 @@ const typeScriptReactBase: Linter.Config[] = [
         {
           paths: [
             {
-              name: "@mui/material",
+              regex: "^@mui/[^/]+$",
               message:
-                'Please use `import Component from "@mui/material/Component"` instead. See https://mui.com/material-ui/guides/minimizing-bundle-size/ for more information.',
+                'Please use `import Component from "@mui/[package]/Component"` instead. See https://mui.com/material-ui/guides/minimizing-bundle-size/ for more information.',
             },
           ],
         },
