@@ -12,7 +12,7 @@ import globals from "globals";
 
 import prettierRules from "src/configs/prettierRules";
 
-const typeScriptBase = [
+const typeScriptBase: Linter.Config[] = [
   js.configs.recommended,
   prettierConfig,
   packageJson.configs.recommended,
@@ -96,6 +96,17 @@ const typeScriptBase = [
       "no-undef": "error",
       "@typescript-eslint/consistent-type-imports": "error",
       "prettier/prettier": ["warn", prettierRules],
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["node_modules"],
+              message: "What on Earth are you doing? Leave poor node_modules alone!",
+            },
+          ],
+        },
+      ],
     },
   },
   {
@@ -104,9 +115,9 @@ const typeScriptBase = [
       "no-restricted-imports": [
         "error",
         {
-          patterns: [
+          paths: [
             {
-              group: ["node:test"],
+              name: "node:test",
               message: "Use test functions from vitest instead.",
             },
           ],
