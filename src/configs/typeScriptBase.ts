@@ -89,6 +89,7 @@ const typeScriptBase: Linter.Config[] = [
       "func-style": ["error", "declaration", { allowArrowFunctions: false }],
       "prefer-arrow-callback": ["error", { allowNamedFunctions: false }],
       "arrow-body-style": ["error", "always"],
+      curly: ["error", "all"],
       "no-param-reassign": "error",
       "no-useless-rename": "error",
       "sort-vars": "error",
