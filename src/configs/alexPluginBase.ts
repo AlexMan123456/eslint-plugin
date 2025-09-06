@@ -16,9 +16,9 @@ function createAlexPluginBaseConfig(plugin: AlexPlugin): Linter.Config[] {
     {
       files: ["**/*.test.ts"],
       rules: {
+        "@alextheman/consistent-test-function": ["error", { preference: "test" }],
         "@alextheman/no-isolated-tests": "error",
         "@alextheman/no-skipped-tests": "warn",
-        "@alextheman/consistent-test-function": ["error", { preference: "test" }],
       },
     },
   ];

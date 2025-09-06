@@ -10,32 +10,32 @@ import typeScriptBase from "src/configs/typeScriptBase";
 const typeScriptReactBase: Linter.Config[] = [
   ...typeScriptBase,
   {
-    name: "@alextheman/eslint-config-typescript-react-base",
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    name: "@alextheman/eslint-config-typescript-react-base",
     plugins: {
+      react: reactPlugin,
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
-      react: reactPlugin,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": "off",
-      "react-hooks/exhaustive-deps": "off",
       "no-restricted-imports": [
         "error",
         {
           paths: [
             {
-              regex: "^@mui/[^/]+$",
               message:
                 'Please use `import Component from "@mui/[package]/Component"` instead. See https://mui.com/material-ui/guides/minimizing-bundle-size/ for more information.',
+              regex: "^@mui/[^/]+$",
             },
           ],
         },
       ],
+      "react-hooks/exhaustive-deps": "off",
+      "react-refresh/only-export-components": "off",
     },
   },
 ];
