@@ -5,7 +5,10 @@ const noRelativeImports = createRule({
   meta: {
     docs: { description: "Forbid the use of relative imports" },
     messages: {
-      message: 'Relative import from "{{source}}" is not allowed.',
+      strictNoRelative: 'Relative import from "{{source}}" is not allowed.',
+      rootOnly: 'Relative import from "{{source}}" is not allowed to leave the current folder.',
+      exceededAllowedDepth:
+        'Relative import from "{{source}}" is not allowed. Relative imports must be no more than {{depth}} level{{s}} deep.',
       stupidPath:
         "For the love of God, please do not mix relative path parts in your import statements like that! How can you possibly be ok with {{source}}?!",
     },
@@ -24,13 +27,13 @@ const noRelativeImports = createRule({
   },
   defaultOptions: [{ depth: undefined }],
   create(context) {
-    const depth = context.options[0]?.depth;
+    const allowedDepth = context.options[0]?.depth;
 
-    if (depth !== undefined) {
-      if (depth % 1 !== 0) {
+    if (allowedDepth !== undefined) {
+      if (allowedDepth % 1 !== 0) {
         throw new Error("NON_INTEGER_DEPTH_NOT_ALLOWED");
       }
-      if (depth < 0) {
+      if (allowedDepth < 0) {
         throw new Error("NEGATIVE_DEPTH_NOT_ALLOWED");
       }
     }
@@ -38,10 +41,10 @@ const noRelativeImports = createRule({
     return {
       ImportDeclaration(node) {
         if (node.source.value.includes("./") || node.source.value.includes("../")) {
-          if (depth === undefined) {
+          if (allowedDepth === undefined) {
             return context.report({
               node,
-              messageId: "message",
+              messageId: "strictNoRelative",
               data: {
                 source: node.source.value,
               },
@@ -76,12 +79,12 @@ const noRelativeImports = createRule({
 
           // Depth checks
 
-          if (depth === 0 && importPathParts[0] === ".") {
+          if (allowedDepth === 0 && importPathParts[0] === ".") {
             return;
           }
 
           let endOfRelativePathFound = false;
-          for (const part of importPathParts.slice(0, depth + 1)) {
+          for (const part of importPathParts.slice(0, allowedDepth + 1)) {
             if (part !== "..") {
               endOfRelativePathFound = true;
               break;
@@ -89,11 +92,22 @@ const noRelativeImports = createRule({
           }
 
           if (!endOfRelativePathFound) {
+            if (allowedDepth === 0) {
+              return context.report({
+                node,
+                messageId: "rootOnly",
+                data: {
+                  source: node.source.value,
+                },
+              });
+            }
             return context.report({
               node,
-              messageId: "message",
+              messageId: "exceededAllowedDepth",
               data: {
                 source: node.source.value,
+                depth: allowedDepth,
+                s: allowedDepth !== 1 ? "s" : "",
               },
             });
           }
