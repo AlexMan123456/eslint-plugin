@@ -13,7 +13,7 @@ export default [
   {
     // Since the object exported in the rules index serves the same function as the exports in other projects, it's best to sort them in alphabetical order
     // as well to make it easier to compare against the file directory.
-    files: ["src/rules/index.ts"],
+    files: ["src/rules/index.ts", "src/configs/**"],
     rules: {
       "perfectionist/sort-objects": [
         "error",

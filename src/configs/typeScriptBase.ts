@@ -17,86 +17,44 @@ const typeScriptBase: Linter.Config[] = [
   prettierConfig,
   packageJson.configs.recommended,
   {
-    name: "@alextheman/eslint-config-typescript-base",
     files: ["**/*.ts", "**/*.tsx"],
+    ignores: ["dist"],
     languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+      },
       parser: tsparser,
       parserOptions: {
         ecmaVersion: "latest",
         sourceType: "module",
       },
-      globals: {
-        ...globals.node,
-        ...globals.browser,
-      },
     },
-    settings: {
-      "import/resolver": {
-        typescript: true,
-        node: true,
-      },
-    },
-    ignores: ["dist"],
+    name: "@alextheman/eslint-config-typescript-base",
     plugins: {
       "@typescript-eslint": eslintPlugin,
       import: importPlugin,
-      prettier: prettierPlugin,
       perfectionist,
+      prettier: prettierPlugin,
     },
     rules: {
-      "import/no-unresolved": "error",
-      eqeqeq: "error",
-      "no-console": ["error", { allow: ["warn", "error"] }],
-      "perfectionist/sort-imports": [
-        "error",
-        {
-          type: "alphabetical",
-          order: "asc",
-          ignoreCase: true,
-          partitionByComment: false,
-          partitionByNewLine: false,
-          specialCharacters: "keep",
-          groups: ["type", "builtin", "external", "internal", "object"],
-          newlinesBetween: 1,
-          internalPattern: ["^src/.*"],
-        },
-      ],
-      "perfectionist/sort-exports": [
-        "error",
-        {
-          type: "alphabetical",
-          order: "asc",
-          fallbackSort: { type: "natural" },
-          ignoreCase: true,
-          specialCharacters: "keep",
-          partitionByComment: false,
-          partitionByNewLine: false,
-          newlinesBetween: 1,
-          groups: ["value-export", "type-export"],
-          customGroups: [],
-        },
-      ],
+      "@typescript-eslint/consistent-type-imports": "error",
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
           argsIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
           caughtErrorsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
         },
       ],
-      // Disable regular no-unused-vars rule since that will flag interface declarations. Only use the TypeScript specific rule for this.
-      "no-unused-vars": "off",
-      "func-style": ["error", "declaration", { allowArrowFunctions: false }],
-      "prefer-arrow-callback": ["error", { allowNamedFunctions: false }],
       "arrow-body-style": ["error", "always"],
       curly: ["error", "all"],
-      "no-param-reassign": "error",
-      "no-useless-rename": "error",
-      "sort-vars": "error",
+      eqeqeq: "error",
+      "func-style": ["error", "declaration", { allowArrowFunctions: false }],
+      "import/no-unresolved": "error",
       "no-cond-assign": "error",
-      "no-undef": "error",
-      "@typescript-eslint/consistent-type-imports": "error",
-      "prettier/prettier": ["warn", prettierRules],
+      "no-console": ["error", { allow: ["warn", "error"] }],
+      "no-param-reassign": "error",
       "no-restricted-imports": [
         "error",
         {
@@ -108,6 +66,48 @@ const typeScriptBase: Linter.Config[] = [
           ],
         },
       ],
+      "no-undef": "error",
+      // Disable regular no-unused-vars rule since that will flag interface declarations. Only use the TypeScript specific rule for this.
+      "no-unused-vars": "off",
+      "no-useless-rename": "error",
+      "perfectionist/sort-exports": [
+        "error",
+        {
+          customGroups: [],
+          fallbackSort: { type: "natural" },
+          groups: ["value-export", "type-export"],
+          ignoreCase: true,
+          newlinesBetween: 1,
+          order: "asc",
+          partitionByComment: false,
+          partitionByNewLine: false,
+          specialCharacters: "keep",
+          type: "alphabetical",
+        },
+      ],
+      "perfectionist/sort-imports": [
+        "error",
+        {
+          groups: ["type", "builtin", "external", "internal", "object"],
+          ignoreCase: true,
+          internalPattern: ["^src/.*"],
+          newlinesBetween: 1,
+          order: "asc",
+          partitionByComment: false,
+          partitionByNewLine: false,
+          specialCharacters: "keep",
+          type: "alphabetical",
+        },
+      ],
+      "prefer-arrow-callback": ["error", { allowNamedFunctions: false }],
+      "prettier/prettier": ["warn", prettierRules],
+      "sort-vars": "error",
+    },
+    settings: {
+      "import/resolver": {
+        node: true,
+        typescript: true,
+      },
     },
   },
   {
@@ -118,8 +118,8 @@ const typeScriptBase: Linter.Config[] = [
         {
           paths: [
             {
-              name: "node:test",
               message: "Use test functions from vitest instead.",
+              name: "node:test",
             },
           ],
         },
