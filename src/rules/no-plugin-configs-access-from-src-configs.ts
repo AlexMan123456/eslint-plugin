@@ -31,7 +31,6 @@ const noPluginConfigAccessFromSrcConfigs = createRule({
                 source: node.object,
               },
             });
-            return;
           }
         }
       },
