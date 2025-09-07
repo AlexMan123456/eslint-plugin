@@ -49,11 +49,17 @@ const typeScriptBase: Linter.Config[] = [
       ],
       "arrow-body-style": ["error", "always"],
       curly: ["error", "all"],
+      "dot-notation": "error",
       eqeqeq: "error",
       "func-style": ["error", "declaration", { allowArrowFunctions: false }],
       "import/no-unresolved": "error",
       "no-cond-assign": "error",
       "no-console": ["error", { allow: ["warn", "error"] }],
+      "no-else-return": "error",
+      "no-eval": "error",
+      "no-implicit-coercion": ["error", { allow: ["!!"] }],
+      "no-lonely-if": "error",
+      "no-new-wrappers": "error",
       "no-param-reassign": "error",
       "no-restricted-imports": [
         "error",
@@ -70,6 +76,8 @@ const typeScriptBase: Linter.Config[] = [
       // Disable regular no-unused-vars rule since that will flag interface declarations. Only use the TypeScript specific rule for this.
       "no-unused-vars": "off",
       "no-useless-rename": "error",
+      "no-useless-return": "error",
+      "operator-assignment": ["error", "always"],
       "perfectionist/sort-exports": [
         "error",
         {
@@ -100,6 +108,9 @@ const typeScriptBase: Linter.Config[] = [
         },
       ],
       "prefer-arrow-callback": ["error", { allowNamedFunctions: false }],
+      "prefer-const": "error",
+      "prefer-destructuring": "error",
+      "prefer-template": "error",
       "prettier/prettier": ["warn", prettierRules],
       "sort-vars": "error",
     },
@@ -113,6 +124,22 @@ const typeScriptBase: Linter.Config[] = [
   {
     files: ["**/*.test.ts"],
     rules: {
+      "no-restricted-globals": [
+        "error",
+        {
+          message:
+            "Do not use global describe function. Import test functions from vitest instead.",
+          name: "describe",
+        },
+        {
+          message: "Do not use global test function. Import test functions from vitest instead.",
+          name: "test",
+        },
+        {
+          message: "Do not use global expect function. Import test functions from vitest instead.",
+          name: "expect",
+        },
+      ],
       "no-restricted-imports": [
         "error",
         {
