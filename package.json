@@ -15,6 +15,7 @@
     "change-major": "npm version major -m \"Change version number to v%s\"",
     "change-minor": "npm version minor -m \"Change version number to v%s\"",
     "change-patch": "npm version patch -m \"Change version number to v%s\"",
+    "create-local-package": "npm run build && rm -f alextheman-eslint-plugin-*.tgz && npm pack",
     "format": "npm run build && prettier --write --parser typescript \"src/**/*.ts\" \"tests/**/*.ts\" && eslint --fix --suppress-all \"src/**/*.ts\" \"tests/**/*.ts\" \"package.json\" && rm -f eslint-suppressions.json",
     "lint": "npm run build && tsc --noEmit && eslint \"src/**/*.ts\" \"tests/**/*.ts\" \"package.json\" && prettier --check --parser typescript \"src/**/*.ts\" \"tests/**/*.ts\"",
     "prepare": "husky",
