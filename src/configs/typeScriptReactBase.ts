@@ -25,7 +25,7 @@ const typeScriptReactBase: Linter.Config[] = [
       "no-restricted-imports": [
         "error",
         {
-          paths: [
+          patterns: [
             {
               message:
                 'Please use `import Component from "@mui/[package]/Component"` instead. See https://mui.com/material-ui/guides/minimizing-bundle-size/ for more information.',
