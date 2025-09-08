@@ -39,6 +39,7 @@ const typeScriptBase: Linter.Config[] = [
     },
     rules: {
       "@typescript-eslint/consistent-type-imports": "error",
+      "@typescript-eslint/no-redeclare": ["error", { ignoreDeclarationMerge: true }],
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
@@ -61,6 +62,8 @@ const typeScriptBase: Linter.Config[] = [
       "no-lonely-if": "error",
       "no-new-wrappers": "error",
       "no-param-reassign": "error",
+      // Disable regular no-redeclare in favour of TypeScript-specific version since that will flag type redeclarations when we do const MyType = {}; export type MyType = ...
+      "no-redeclare": "off",
       "no-restricted-imports": [
         "error",
         {
