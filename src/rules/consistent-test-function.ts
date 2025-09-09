@@ -8,7 +8,10 @@ import getImportSpecifiersAfterRemoving from "src/utility/getImportSpecifiersAft
 
 const validTestFunctionsSchema = z.enum(["test", "it"]);
 
-export type ValidTestFunctions = z.infer<typeof validTestFunctionsSchema>;
+export type TestFunction = z.infer<typeof validTestFunctionsSchema>;
+export function parseTestFunction(data: unknown): TestFunction {
+  return validTestFunctionsSchema.parse(data);
+}
 
 const consistentTestFunction = createRule({
   name: "consistent-test-function",
