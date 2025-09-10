@@ -11,6 +11,7 @@ export function getProjectRelativePath(pathname: string): string {
 const ruleTesterWithParser = new RuleTester({
   languageOptions: {
     ecmaVersion: "latest",
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     parser: require("@typescript-eslint/parser"),
     parserOptions: {
       tsconfigRootDir: basePath,
