@@ -1,7 +1,6 @@
 import type { Linter } from "eslint";
 
 import js from "@eslint/js";
-import eslintPlugin from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
 import prettierConfig from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
@@ -9,10 +8,12 @@ import packageJson from "eslint-plugin-package-json";
 import perfectionist from "eslint-plugin-perfectionist";
 import prettierPlugin from "eslint-plugin-prettier";
 import globals from "globals";
+import tseslint from "typescript-eslint";
 
 import prettierRules from "src/configs/prettierRules";
 
 const typeScriptBase: Linter.Config[] = [
+  ...tseslint.configs.recommended,
   js.configs.recommended,
   prettierConfig,
   packageJson.configs.recommended,
@@ -27,18 +28,29 @@ const typeScriptBase: Linter.Config[] = [
       parser: tsparser,
       parserOptions: {
         ecmaVersion: "latest",
+        projectService: true,
         sourceType: "module",
+        tsconfigRootDir: process.cwd(),
       },
     },
     name: "@alextheman/eslint-config-typescript-base",
     plugins: {
-      "@typescript-eslint": eslintPlugin,
       import: importPlugin,
       perfectionist,
       prettier: prettierPlugin,
     },
     rules: {
+      "@typescript-eslint/array-type": ["error", { default: "array" }],
+      "@typescript-eslint/consistent-type-assertions": ["error", { assertionStyle: "as" }],
+      "@typescript-eslint/consistent-type-definitions": "error",
+      "@typescript-eslint/consistent-type-exports": "error",
       "@typescript-eslint/consistent-type-imports": "error",
+      "@typescript-eslint/dot-notation": "error",
+      "@typescript-eslint/explicit-member-accessibility": "error",
+      "@typescript-eslint/method-signature-style": ["error", "property"],
+      "@typescript-eslint/no-deprecated": "error",
+      // Explicit any can be helpful sometimes, so it's not worth erroring on every single one.
+      "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-redeclare": ["error", { ignoreDeclarationMerge: true }],
       "@typescript-eslint/no-unused-vars": [
         "error",
@@ -50,7 +62,6 @@ const typeScriptBase: Linter.Config[] = [
       ],
       "arrow-body-style": ["error", "always"],
       curly: ["error", "all"],
-      "dot-notation": "error",
       eqeqeq: "error",
       "func-style": ["error", "declaration", { allowArrowFunctions: false }],
       "import/no-unresolved": "error",
