@@ -1,6 +1,6 @@
 {
   "name": "@alextheman/eslint-plugin",
-  "version": "1.14.1",
+  "version": "1.14.2",
   "description": "A package to provide custom ESLint rules and configs",
   "license": "ISC",
   "author": "alextheman",
