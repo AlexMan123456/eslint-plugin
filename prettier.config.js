@@ -1,3 +1,3 @@
 import { prettierRules } from "./dist/index.js";
 
-export default prettierRules
+export default prettierRules;
