@@ -19,6 +19,7 @@ const reactBase: Linter.Config[] = [
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      ...reactPlugin.configs.recommended.rules,
       "no-restricted-imports": [
         "error",
         {
