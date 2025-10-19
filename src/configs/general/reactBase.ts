@@ -6,10 +6,17 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 
 const reactBase: Linter.Config[] = [
+  reactPlugin.configs.flat.recommended,
+  reactPlugin.configs.flat["jsx-runtime"],
   {
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
     },
     name: "@alextheman/eslint-config-react-base",
     plugins: {
@@ -19,7 +26,6 @@ const reactBase: Linter.Config[] = [
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      ...reactPlugin.configs.recommended.rules,
       "no-restricted-imports": [
         "error",
         {
@@ -34,6 +40,11 @@ const reactBase: Linter.Config[] = [
       ],
       "react-hooks/exhaustive-deps": "off",
       "react-refresh/only-export-components": "off",
+    },
+    settings: {
+      react: {
+        version: "detect",
+      },
     },
   },
 ];
