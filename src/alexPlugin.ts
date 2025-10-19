@@ -3,9 +3,11 @@ import type { Linter } from "eslint";
 import { name, version } from "package.json";
 
 import {
+  createAlexJavaScriptBaseConfig,
   createAlexPluginBaseConfig,
   createAlexTypeScriptBaseConfig,
   createAlexTypeScriptReactBaseConfig,
+  javaScriptBase,
   typeScriptBase,
   typeScriptReactBase,
 } from "src/configs";
@@ -19,8 +21,10 @@ export interface AlexPlugin {
   };
   configs: {
     alexPluginBase: Linter.Config[];
+    alexJavaScriptBase: Linter.Config[];
     alexTypeScriptBase: Linter.Config[];
     alexTypeScriptReactBase: Linter.Config[];
+    javaScriptBase: Linter.Config[];
     typeScriptBase: Linter.Config[];
     typeScriptReactBase: Linter.Config[];
   };
@@ -35,8 +39,10 @@ const alexPlugin: AlexPlugin = {
   },
   configs: {
     alexPluginBase: [] as Linter.Config[],
+    alexJavaScriptBase: [] as Linter.Config[],
     alexTypeScriptBase: [] as Linter.Config[],
     alexTypeScriptReactBase: [] as Linter.Config[],
+    javaScriptBase: [] as Linter.Config[],
     typeScriptBase: [] as Linter.Config[],
     typeScriptReactBase: [] as Linter.Config[],
   },
@@ -45,8 +51,10 @@ const alexPlugin: AlexPlugin = {
 
 alexPlugin.configs = {
   alexPluginBase: createAlexPluginBaseConfig(alexPlugin),
+  alexJavaScriptBase: createAlexJavaScriptBaseConfig(alexPlugin),
   alexTypeScriptBase: createAlexTypeScriptBaseConfig(alexPlugin),
   alexTypeScriptReactBase: createAlexTypeScriptReactBaseConfig(alexPlugin),
+  javaScriptBase,
   typeScriptBase,
   typeScriptReactBase,
 };
