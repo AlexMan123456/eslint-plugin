@@ -1,16 +1,18 @@
 import { name, version } from "package.json";
 
 import {
+  createCombinedJavaScriptBaseConfig,
+  createCombinedReactBaseConfig,
+  createCombinedTestsBaseConfig,
+  createCombinedTypeScriptBaseConfig,
+  createCombinedTypeScriptReactBaseConfig,
   createPluginBaseConfig,
   createPluginTestsBaseConfig,
   javaScriptBase,
   reactBase,
   typeScriptBase,
 } from "src/configs";
-import createCombinedJavaScriptBaseConfig from "src/configs/combined/javaScriptBase";
-import createCombinedReactBaseConfig from "src/configs/combined/reactBase";
-import createCombinedTestsBaseConfig from "src/configs/combined/testsBase";
-import createCombinedTypeScriptBaseConfig from "src/configs/combined/typeScriptBase";
+import createCombinedJavaScriptReactBaseConfig from "src/configs/combined/javaScriptReactBase";
 import testsBase from "src/configs/general/testsBase";
 import rules from "src/rules";
 import createPluginConfigs from "src/utility/createPluginConfigs";
@@ -51,6 +53,8 @@ alexPlugin.configs = createPluginConfigs({
     typeScript: createCombinedTypeScriptBaseConfig(alexPlugin),
     react: createCombinedReactBaseConfig(alexPlugin),
     tests: createCombinedTestsBaseConfig(alexPlugin),
+    typeScriptReact: createCombinedTypeScriptReactBaseConfig(alexPlugin),
+    javaScriptReact: createCombinedJavaScriptReactBaseConfig(alexPlugin),
   },
 });
 

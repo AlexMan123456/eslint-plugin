@@ -18,6 +18,8 @@ export interface AlexPluginConfigs {
     typeScript: Linter.Config[];
     react: Linter.Config[];
     tests: Linter.Config[];
+    typeScriptReact: Linter.Config[];
+    javaScriptReact: Linter.Config[];
   };
 }
 
