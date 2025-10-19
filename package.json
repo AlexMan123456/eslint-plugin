@@ -33,6 +33,7 @@
     "update-dependencies": "bash -c 'npx npm-check-updates -u \"$@\" && npm install' --"
   },
   "dependencies": {
+    "@alextheman/utility": "^2.2.0",
     "common-tags": "^1.8.2",
     "eslint-plugin-package-json": "^0.57.0",
     "zod": "^4.1.12"
