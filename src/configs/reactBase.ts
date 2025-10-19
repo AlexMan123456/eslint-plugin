@@ -5,13 +5,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 
-import typeScriptBase from "src/configs/typeScriptBase";
-
-/**
- * @deprecated Please use [...plugin.configs.typeScriptBase, ...plugin.configs.reactBase] instead.
- */
-const typeScriptReactBase: Linter.Config[] = [
-  ...typeScriptBase,
+const reactBase: Linter.Config[] = [
   {
     languageOptions: {
       ecmaVersion: 2020,
@@ -43,4 +37,4 @@ const typeScriptReactBase: Linter.Config[] = [
   },
 ];
 
-export default typeScriptReactBase;
+export default reactBase;
