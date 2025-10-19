@@ -3,7 +3,7 @@ import type { Linter } from "eslint";
 import tsparser from "@typescript-eslint/parser";
 import tseslint from "typescript-eslint";
 
-import javaScriptBase from "src/configs/javaScriptBase";
+import javaScriptBase from "src/configs/general/javaScriptBase";
 
 const typeScriptBase: Linter.Config[] = [
   ...tseslint.configs.recommended,

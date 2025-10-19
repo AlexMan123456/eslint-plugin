@@ -8,7 +8,7 @@ import perfectionist from "eslint-plugin-perfectionist";
 import prettierPlugin from "eslint-plugin-prettier";
 import globals from "globals";
 
-import prettierRules from "src/configs/prettierRules";
+import prettierRules from "src/configs/general/prettierRules";
 
 const javaScriptBase: Linter.Config[] = [
   js.configs.recommended,
