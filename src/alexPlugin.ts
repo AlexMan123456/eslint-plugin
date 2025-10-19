@@ -21,17 +21,7 @@ export interface AlexPlugin {
     version: typeof version;
     namespace: "alextheman";
   };
-  configs: {
-    alexPluginBase: Linter.Config[];
-    alexJavaScriptBase: Linter.Config[];
-    alexTypeScriptBase: Linter.Config[];
-    alexTypeScriptReactBase: Linter.Config[];
-    alexReactBase: Linter.Config[];
-    javaScriptBase: Linter.Config[];
-    typeScriptBase: Linter.Config[];
-    typeScriptReactBase: Linter.Config[];
-    reactBase: Linter.Config[];
-  };
+  configs: Record<string, Linter.Config[]>;
   rules: Record<string, any>;
 }
 

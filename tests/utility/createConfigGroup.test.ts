@@ -10,16 +10,17 @@ describe("createConfigGroup", () => {
     });
   });
   test("Converts TypeScript and JavaScript to typescript and javascript", () => {
-    expect(createConfigGroup("general", { typeScriptBase })).toEqual({
+    expect(createConfigGroup("general", { typeScriptBase, javaScriptBase })).toEqual({
       "general/typescript-base": typeScriptBase,
-    });
-    expect(createConfigGroup("general", { javaScriptBase })).toEqual({
       "general/javascript-base": javaScriptBase,
     });
-    expect(createConfigGroup("general", { TypeScriptBase: typeScriptBase })).toEqual({
+    expect(
+      createConfigGroup("general", {
+        TypeScriptBase: typeScriptBase,
+        JavaScriptBase: javaScriptBase,
+      }),
+    ).toEqual({
       "general/typescript-base": typeScriptBase,
-    });
-    expect(createConfigGroup("general", { JavaScriptBase: javaScriptBase })).toEqual({
       "general/javascript-base": javaScriptBase,
     });
   });
