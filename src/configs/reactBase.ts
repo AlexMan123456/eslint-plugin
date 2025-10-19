@@ -11,7 +11,7 @@ const reactBase: Linter.Config[] = [
       ecmaVersion: 2020,
       globals: globals.browser,
     },
-    name: "@alextheman/eslint-config-typescript-react-base",
+    name: "@alextheman/eslint-config-react-base",
     plugins: {
       react: reactPlugin,
       "react-hooks": reactHooks,
