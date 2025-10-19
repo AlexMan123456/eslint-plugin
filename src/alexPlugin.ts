@@ -1,19 +1,19 @@
-import type { Linter } from "eslint";
-
 import { name, version } from "package.json";
 
 import {
-  createAlexJavaScriptBaseConfig,
-  createAlexPluginBaseConfig,
-  createAlexReactBaseConfig,
-  createAlexTypeScriptBaseConfig,
-  createAlexTypeScriptReactBaseConfig,
+  createPluginBaseConfig,
+  createPluginTestsBaseConfig,
   javaScriptBase,
   reactBase,
   typeScriptBase,
-  typeScriptReactBase,
 } from "src/configs";
+import createCombinedJavaScriptBaseConfig from "src/configs/combined/javaScriptBase";
+import createCombinedReactBaseConfig from "src/configs/combined/reactBase";
+import createCombinedTestsBaseConfig from "src/configs/combined/testsBase";
+import createCombinedTypeScriptBaseConfig from "src/configs/combined/typeScriptBase";
+import testsBase from "src/configs/general/testsBase";
 import rules from "src/rules";
+import createPluginConfigs from "src/utility/createPluginConfigs";
 
 export interface AlexPlugin {
   meta: {
@@ -21,7 +21,7 @@ export interface AlexPlugin {
     version: typeof version;
     namespace: "alextheman";
   };
-  configs: Record<string, Linter.Config[]>;
+  configs: ReturnType<typeof createPluginConfigs>;
   rules: Record<string, any>;
 }
 
@@ -31,31 +31,27 @@ const alexPlugin: AlexPlugin = {
     version,
     namespace: "alextheman",
   },
-  configs: {
-    alexPluginBase: [] as Linter.Config[],
-    alexJavaScriptBase: [] as Linter.Config[],
-    alexTypeScriptBase: [] as Linter.Config[],
-    alexTypeScriptReactBase: [] as Linter.Config[],
-    alexReactBase: [] as Linter.Config[],
-    javaScriptBase: [] as Linter.Config[],
-    typeScriptBase: [] as Linter.Config[],
-    typeScriptReactBase: [] as Linter.Config[],
-    reactBase: [] as Linter.Config[],
-  },
+  configs: {},
   rules,
 };
 
-alexPlugin.configs = {
-  alexPluginBase: createAlexPluginBaseConfig(alexPlugin),
-  alexJavaScriptBase: createAlexJavaScriptBaseConfig(alexPlugin),
-  alexTypeScriptBase: createAlexTypeScriptBaseConfig(alexPlugin),
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  alexTypeScriptReactBase: createAlexTypeScriptReactBaseConfig(alexPlugin),
-  alexReactBase: createAlexReactBaseConfig(alexPlugin),
-  javaScriptBase,
-  typeScriptBase,
-  typeScriptReactBase,
-  reactBase,
-};
+alexPlugin.configs = createPluginConfigs({
+  general: {
+    javaScript: javaScriptBase,
+    typeScript: typeScriptBase,
+    react: reactBase,
+    tests: testsBase,
+  },
+  plugin: {
+    base: createPluginBaseConfig(alexPlugin),
+    tests: createPluginTestsBaseConfig(alexPlugin),
+  },
+  combined: {
+    javaScript: createCombinedJavaScriptBaseConfig(alexPlugin),
+    typeScript: createCombinedTypeScriptBaseConfig(alexPlugin),
+    react: createCombinedReactBaseConfig(alexPlugin),
+    tests: createCombinedTestsBaseConfig(alexPlugin),
+  },
+});
 
 export default alexPlugin;

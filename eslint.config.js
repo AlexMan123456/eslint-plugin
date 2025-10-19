@@ -1,7 +1,7 @@
 import alexPlugin from "./dist/index.js";
 
 export default [
-  ...alexPlugin.configs.alexTypeScriptBase,
+  ...alexPlugin.configs["combined/typescript"],
   {
     rules: {
       // When we pass the plugin into the config creator functions from the index, there's no guarantee that the configs will already be
