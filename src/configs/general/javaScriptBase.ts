@@ -8,7 +8,8 @@ import perfectionist from "eslint-plugin-perfectionist";
 import prettierPlugin from "eslint-plugin-prettier";
 import globals from "globals";
 
-import prettierRules from "src/configs/prettierRules";
+import prettierRules from "src/configs/general/prettierRules";
+import testsBase from "src/configs/general/testsBase";
 
 const javaScriptBase: Linter.Config[] = [
   js.configs.recommended,
@@ -108,38 +109,7 @@ const javaScriptBase: Linter.Config[] = [
       },
     },
   },
-  {
-    files: ["**/*.test.{js,ts}"],
-    rules: {
-      "no-restricted-globals": [
-        "error",
-        {
-          message:
-            "Do not use global describe function. Import test functions from vitest instead.",
-          name: "describe",
-        },
-        {
-          message: "Do not use global test function. Import test functions from vitest instead.",
-          name: "test",
-        },
-        {
-          message: "Do not use global expect function. Import test functions from vitest instead.",
-          name: "expect",
-        },
-      ],
-      "no-restricted-imports": [
-        "error",
-        {
-          paths: [
-            {
-              message: "Use test functions from vitest instead.",
-              name: "node:test",
-            },
-          ],
-        },
-      ],
-    },
-  },
-] as Linter.Config[];
+  ...testsBase,
+];
 
 export default javaScriptBase;

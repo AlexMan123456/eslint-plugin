@@ -1,6 +1,6 @@
 {
   "name": "@alextheman/eslint-plugin",
-  "version": "1.16.0",
+  "version": "2.0.0",
   "description": "A package to provide custom ESLint rules and configs",
   "license": "ISC",
   "author": "alextheman",
@@ -33,6 +33,7 @@
     "update-dependencies": "bash -c 'npx npm-check-updates -u \"$@\" && npm install' --"
   },
   "dependencies": {
+    "@alextheman/utility": "^2.2.0",
     "common-tags": "^1.8.2",
     "eslint-plugin-package-json": "^0.57.0",
     "zod": "^4.1.12"

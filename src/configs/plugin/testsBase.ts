@@ -1,20 +1,13 @@
 import type { Linter } from "eslint";
 import type { AlexPlugin } from "src/index";
 
-function createAlexPluginBaseConfig(plugin: AlexPlugin): Linter.Config[] {
+function createPluginTestsBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   return [
     {
+      files: ["**/*.test.ts"],
       plugins: {
         "@alextheman": plugin,
       },
-      rules: {
-        "@alextheman/no-namespace-imports": "error",
-        "@alextheman/no-relative-imports": "error",
-        "@alextheman/use-object-shorthand": "error",
-      },
-    },
-    {
-      files: ["**/*.test.ts"],
       rules: {
         "@alextheman/consistent-test-function": ["error", { preference: "test" }],
         "@alextheman/no-isolated-tests": "error",
@@ -24,4 +17,4 @@ function createAlexPluginBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   ];
 }
 
-export default createAlexPluginBaseConfig;
+export default createPluginTestsBaseConfig;
