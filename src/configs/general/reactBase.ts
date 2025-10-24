@@ -40,6 +40,7 @@ const reactBase: Linter.Config[] = [
       ],
       "react-hooks/exhaustive-deps": "off",
       "react-refresh/only-export-components": "off",
+      "react/no-unescaped-entities": "off",
     },
     settings: {
       react: {
