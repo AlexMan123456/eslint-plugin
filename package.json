@@ -41,6 +41,7 @@
   "devDependencies": {
     "@types/common-tags": "^1.8.4",
     "@types/eslint": "^9.6.1",
+    "@types/eslint-plugin-jsx-a11y": "^6.10.1",
     "@types/node": "^24.9.1",
     "@typescript-eslint/rule-tester": "^8.46.2",
     "@typescript-eslint/utils": "^8.46.2",
@@ -61,6 +62,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-perfectionist": "^4.15.0",
     "eslint-plugin-prettier": "^5.5.3",
     "eslint-plugin-react": "^7.37.5",
