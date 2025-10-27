@@ -5,7 +5,15 @@ import { typeScriptBase } from "src/configs/general";
 import { createPluginBaseConfig } from "src/configs/plugin";
 
 function createCombinedTypeScriptBaseConfig(plugin: AlexPlugin): Linter.Config[] {
-  return [...createPluginBaseConfig(plugin), ...typeScriptBase];
+  return [
+    ...createPluginBaseConfig(plugin),
+    ...typeScriptBase,
+    {
+      rules: {
+        "@alextheman/standardise-error-messages": "error",
+      },
+    },
+  ];
 }
 
 export default createCombinedTypeScriptBaseConfig;
