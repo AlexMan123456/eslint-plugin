@@ -8,9 +8,6 @@ import perfectionist from "eslint-plugin-perfectionist";
 import prettierPlugin from "eslint-plugin-prettier";
 import globals from "globals";
 
-import prettierRules from "src/configs/general/prettierRules";
-import testsBase from "src/configs/general/testsBase";
-
 const javaScriptBase: Linter.Config[] = [
   js.configs.recommended,
   prettierConfig,
@@ -31,16 +28,11 @@ const javaScriptBase: Linter.Config[] = [
       prettier: prettierPlugin,
     },
     rules: {
-      "arrow-body-style": ["error", "always"],
-      curly: ["error", "all"],
       eqeqeq: "error",
-      "func-style": ["error", "declaration", { allowArrowFunctions: false }],
       "import/no-unresolved": "error",
       "no-cond-assign": "error",
-      "no-console": ["error", { allow: ["warn", "error"] }],
-      "no-else-return": "error",
+      "no-console": ["error", { allow: ["warn", "error", "info"] }],
       "no-eval": "error",
-      "no-implicit-coercion": ["error", { allow: ["!!"] }],
       "no-lonely-if": "error",
       "no-new-wrappers": "error",
       "no-param-reassign": "error",
@@ -66,7 +58,6 @@ const javaScriptBase: Linter.Config[] = [
       ],
       "no-useless-rename": "error",
       "no-useless-return": "error",
-      "operator-assignment": ["error", "always"],
       "perfectionist/sort-exports": [
         "error",
         {
@@ -96,11 +87,7 @@ const javaScriptBase: Linter.Config[] = [
           type: "alphabetical",
         },
       ],
-      "prefer-arrow-callback": ["error", { allowNamedFunctions: false }],
       "prefer-const": "error",
-      "prefer-destructuring": "error",
-      "prefer-template": "error",
-      "prettier/prettier": ["warn", prettierRules],
       "sort-vars": "error",
     },
     settings: {
@@ -109,7 +96,6 @@ const javaScriptBase: Linter.Config[] = [
       },
     },
   },
-  ...testsBase,
 ];
 
 export default javaScriptBase;

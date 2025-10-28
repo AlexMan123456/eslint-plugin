@@ -9,7 +9,6 @@ function createPluginBaseConfig(plugin: AlexPlugin): Linter.Config[] {
       },
       rules: {
         "@alextheman/no-namespace-imports": "error",
-        "@alextheman/no-relative-imports": "error",
         "@alextheman/use-normalized-imports": "error",
         "@alextheman/use-object-shorthand": "error",
       },
