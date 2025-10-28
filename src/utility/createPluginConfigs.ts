@@ -7,7 +7,6 @@ export interface AlexPluginConfigs {
     javaScript: Linter.Config[];
     typeScript: Linter.Config[];
     react: Linter.Config[];
-    tests: Linter.Config[];
   };
   plugin: {
     base: Linter.Config[];

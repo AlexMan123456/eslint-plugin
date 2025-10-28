@@ -13,7 +13,6 @@ import {
   typeScriptBase,
 } from "src/configs";
 import createCombinedJavaScriptReactBaseConfig from "src/configs/combined/javaScriptReactBase";
-import testsBase from "src/configs/general/testsBase";
 import rules from "src/rules";
 import createPluginConfigs from "src/utility/createPluginConfigs";
 
@@ -42,7 +41,6 @@ alexPlugin.configs = createPluginConfigs({
     javaScript: javaScriptBase,
     typeScript: typeScriptBase,
     react: reactBase,
-    tests: testsBase,
   },
   plugin: {
     base: createPluginBaseConfig(alexPlugin),

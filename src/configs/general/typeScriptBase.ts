@@ -21,14 +21,9 @@ const typeScriptBase: Linter.Config[] = [
     },
     name: "@alextheman/eslint-config-typescript-base",
     rules: {
-      "@typescript-eslint/array-type": ["error", { default: "array" }],
-      "@typescript-eslint/consistent-type-assertions": ["error", { assertionStyle: "as" }],
-      "@typescript-eslint/consistent-type-definitions": "error",
       "@typescript-eslint/consistent-type-exports": "error",
       "@typescript-eslint/consistent-type-imports": "error",
-      "@typescript-eslint/dot-notation": "error",
       "@typescript-eslint/explicit-member-accessibility": "error",
-      "@typescript-eslint/method-signature-style": ["error", "property"],
       "@typescript-eslint/no-deprecated": "warn",
       // Explicit any can be helpful sometimes, so it's not worth erroring on every single one.
       "@typescript-eslint/no-explicit-any": "off",

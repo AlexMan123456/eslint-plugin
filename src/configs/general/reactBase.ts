@@ -28,23 +28,8 @@ const reactBase: Linter.Config[] = [
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      "no-restricted-imports": [
-        "error",
-        {
-          patterns: [
-            {
-              message:
-                'Please use `import Component from "@mui/[package]/Component"` instead. See https://mui.com/material-ui/guides/minimizing-bundle-size/ for more information.',
-              regex: "^@mui/[^/]+$",
-            },
-          ],
-        },
-      ],
-      "react-hooks/exhaustive-deps": "off",
-      "react-refresh/only-export-components": "off",
       "react/destructuring-assignment": ["error", "always", { destructureInSignature: "always" }],
       "react/hook-use-state": "error",
-      "react/jsx-boolean-value": "error",
       "react/jsx-curly-brace-presence": [
         "error",
         { children: "never", propElementValues: "always", props: "never" },
