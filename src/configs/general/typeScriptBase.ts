@@ -50,6 +50,6 @@ const typeScriptBase: Linter.Config[] = [
       },
     },
   },
-] as Linter.Config[];
+];
 
 export default typeScriptBase;
