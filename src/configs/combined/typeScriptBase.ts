@@ -1,12 +1,14 @@
 import type { Linter } from "eslint";
 import type { AlexPlugin } from "src/index";
 
+import createCombinedJavaScriptBaseConfig from "src/configs/combined/javaScriptBase";
 import { typeScriptBase } from "src/configs/general";
 import { createPluginBaseConfig } from "src/configs/plugin";
 
 function createCombinedTypeScriptBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   return [
     ...createPluginBaseConfig(plugin),
+    ...createCombinedJavaScriptBaseConfig(plugin),
     ...typeScriptBase,
     {
       files: ["**/*.ts", "**/*.tsx", "!package.json"],
