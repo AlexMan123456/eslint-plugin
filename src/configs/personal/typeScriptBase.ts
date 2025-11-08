@@ -1,0 +1,38 @@
+import type { Linter } from "eslint";
+import type { AlexPlugin } from "src/index";
+
+import tsparser from "@typescript-eslint/parser";
+import tseslint from "typescript-eslint";
+
+function createPersonalTypeScriptBaseConfig(plugin: AlexPlugin): Linter.Config[] {
+  return [
+    ...tseslint.configs.recommended,
+    {
+      files: ["**/*.ts", "**/*.tsx"],
+      languageOptions: {
+        parser: tsparser,
+        parserOptions: {
+          ecmaVersion: "latest",
+          projectService: true,
+          sourceType: "module",
+          tsconfigRootDir: process.cwd(),
+        },
+      },
+      plugins: {
+        "@alextheman": plugin,
+      },
+      rules: {
+        "@alextheman/standardise-error-messages": "error",
+        "@typescript-eslint/array-type": ["error", { default: "array" }],
+        "@typescript-eslint/consistent-type-assertions": ["error", { assertionStyle: "as" }],
+        "@typescript-eslint/consistent-type-definitions": "error",
+        "@typescript-eslint/dot-notation": "error",
+        "@typescript-eslint/method-signature-style": ["error", "property"],
+        // Explicit any can be helpful sometimes, so it's not worth erroring on every single one.
+        "@typescript-eslint/no-explicit-any": "off",
+      },
+    },
+  ];
+}
+
+export default createPersonalTypeScriptBaseConfig;
