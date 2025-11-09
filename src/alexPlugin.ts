@@ -17,9 +17,12 @@ import combinedReactBaseConfig from "src/configs/combined/reactBase";
 import {
   createPersonalJavaScriptBaseConfig,
   createPersonalTypeScriptBaseConfig,
+  neurosongsBackEndConfig,
+  neurosongsFrontEndConfig,
   personalReactBaseConfig,
   personalTestsBaseConfig,
 } from "src/configs/personal";
+import createPersonalEslintPluginConfig from "src/configs/personal/eslintPlugin";
 import rules from "src/rules";
 import createPluginConfigs from "src/utility/createPluginConfigs";
 
@@ -58,6 +61,9 @@ alexPlugin.configs = createPluginConfigs({
     typeScript: createPersonalTypeScriptBaseConfig(alexPlugin),
     react: personalReactBaseConfig,
     tests: personalTestsBaseConfig,
+    eslintPlugin: createPersonalEslintPluginConfig(alexPlugin),
+    neurosongsBackEnd: neurosongsBackEndConfig,
+    neursongsFrontEnd: neurosongsFrontEndConfig,
   },
   combined: {
     javaScript: [

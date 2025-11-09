@@ -12,6 +12,15 @@ export interface AlexPluginConfigs {
     base: Linter.Config[];
     tests: Linter.Config[];
   };
+  personal: {
+    javaScript: Linter.Config[];
+    typeScript: Linter.Config[];
+    react: Linter.Config[];
+    tests: Linter.Config[];
+    eslintPlugin: Linter.Config[];
+    neurosongsBackEnd: Linter.Config[];
+    neursongsFrontEnd: Linter.Config[];
+  };
   combined: {
     javaScript: Linter.Config[];
     typeScript: Linter.Config[];
@@ -19,12 +28,6 @@ export interface AlexPluginConfigs {
     tests: Linter.Config[];
     typeScriptReact: Linter.Config[];
     javaScriptReact: Linter.Config[];
-  };
-  personal: {
-    javaScript: Linter.Config[];
-    typeScript: Linter.Config[];
-    react: Linter.Config[];
-    tests: Linter.Config[];
   };
 }
 
