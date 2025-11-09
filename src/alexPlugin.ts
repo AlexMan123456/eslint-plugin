@@ -1,3 +1,6 @@
+import type { Linter } from "eslint";
+import type { ConfigKey } from "src/utility/createPluginConfigs";
+
 import packageJson from "eslint-plugin-package-json";
 import { name, version } from "package.json";
 
@@ -42,7 +45,7 @@ const alexPlugin: AlexPlugin = {
     version,
     namespace: "alextheman",
   },
-  configs: {},
+  configs: {} as Record<ConfigKey, Linter.Config[]>,
   rules,
 };
 
@@ -63,7 +66,7 @@ alexPlugin.configs = createPluginConfigs({
     tests: personalTestsBaseConfig,
     eslintPlugin: createPersonalEslintPluginConfig(alexPlugin),
     neurosongsBackEnd: neurosongsBackEndConfig,
-    neursongsFrontEnd: neurosongsFrontEndConfig,
+    neurosongsFrontEnd: neurosongsFrontEndConfig,
   },
   combined: {
     javaScript: [
