@@ -2,18 +2,18 @@ import type { IgnoreCase } from "@alextheman/utility";
 
 import { camelToKebab as alexCamelToKebab } from "@alextheman/utility";
 
-export type ToKebabCase<S extends string> = S extends `${IgnoreCase<"J">}avaScript${infer Rest}`
+export type CamelToKebab<S extends string> = S extends `${IgnoreCase<"J">}avaScript${infer Rest}`
   ? Rest extends ""
     ? "javascript"
-    : `javascript${ToKebabCase<Rest>}`
+    : `javascript${CamelToKebab<Rest>}`
   : S extends `${IgnoreCase<"T">}ypeScript${infer Rest}`
     ? Rest extends ""
       ? "typescript"
-      : `typescript${ToKebabCase<Rest>}`
+      : `typescript${CamelToKebab<Rest>}`
     : S extends `${infer Head}${infer Tail}`
       ? Head extends Lowercase<Head>
-        ? `${Head}${ToKebabCase<Tail>}`
-        : `-${Lowercase<Head>}${ToKebabCase<Tail>}`
+        ? `${Head}${CamelToKebab<Tail>}`
+        : `-${Lowercase<Head>}${CamelToKebab<Tail>}`
       : S;
 
 function camelToKebab(string: string): string {
