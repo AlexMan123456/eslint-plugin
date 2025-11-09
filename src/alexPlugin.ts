@@ -24,6 +24,7 @@ import {
   neurosongsFrontEndConfig,
   personalReactBaseConfig,
   personalTestsBaseConfig,
+  utilityConfig,
 } from "src/configs/personal";
 import createPersonalEslintPluginConfig from "src/configs/personal/eslintPlugin";
 import rules from "src/rules";
@@ -67,6 +68,7 @@ alexPlugin.configs = createPluginConfigs({
     eslintPlugin: createPersonalEslintPluginConfig(alexPlugin),
     neurosongsBackEnd: neurosongsBackEndConfig,
     neurosongsFrontEnd: neurosongsFrontEndConfig,
+    utility: utilityConfig,
   },
   combined: {
     javaScript: [
