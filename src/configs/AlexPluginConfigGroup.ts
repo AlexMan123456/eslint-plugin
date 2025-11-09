@@ -27,7 +27,8 @@ export interface AlexPluginConfigGroup {
   combined: Record<CombinedConfig, Linter.Config[]>;
 }
 
+export type ConfigGroupName = keyof AlexPluginConfigGroup;
 export type ConfigKey = {
-  [G in keyof AlexPluginConfigGroup &
-    string]: `${CamelToKebab<G>}/${CamelToKebab<keyof AlexPluginConfigGroup[G] & string>}`;
-}[keyof AlexPluginConfigGroup & string];
+  [Group in ConfigGroupName &
+    string]: `${CamelToKebab<Group>}/${CamelToKebab<keyof AlexPluginConfigGroup[Group] & string>}`;
+}[ConfigGroupName & string];

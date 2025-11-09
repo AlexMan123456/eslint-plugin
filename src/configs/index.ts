@@ -1,6 +1,6 @@
 import type { Linter } from "eslint";
 import type { AlexPlugin } from "src/alexPlugin";
-import type { ConfigKey } from "src/alexPlugin/AlexPluginConfigGroup";
+import type { ConfigKey } from "src/configs/AlexPluginConfigGroup";
 
 import packageJson from "eslint-plugin-package-json";
 
