@@ -5,3 +5,4 @@ export { default as neurosongsFrontEndConfig } from "src/configs/personal/neuros
 export { default as personalReactBaseConfig } from "src/configs/personal/reactBase";
 export { default as personalTestsBaseConfig } from "src/configs/personal/testsBase";
 export { default as createPersonalTypeScriptBaseConfig } from "src/configs/personal/typeScriptBase";
+export { default as utilityConfig } from "src/configs/personal/utility";
