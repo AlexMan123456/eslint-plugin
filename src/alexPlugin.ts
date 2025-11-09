@@ -1,8 +1,8 @@
+import packageJson from "eslint-plugin-package-json";
 import { name, version } from "package.json";
 
 import {
   createCombinedJavaScriptBaseConfig,
-  createCombinedReactBaseConfig,
   createCombinedTestsBaseConfig,
   createCombinedTypeScriptBaseConfig,
   createCombinedTypeScriptReactBaseConfig,
@@ -13,6 +13,16 @@ import {
   typeScriptBase,
 } from "src/configs";
 import createCombinedJavaScriptReactBaseConfig from "src/configs/combined/javaScriptReactBase";
+import combinedReactBaseConfig from "src/configs/combined/reactBase";
+import {
+  createPersonalJavaScriptBaseConfig,
+  createPersonalTypeScriptBaseConfig,
+  neurosongsBackEndConfig,
+  neurosongsFrontEndConfig,
+  personalReactBaseConfig,
+  personalTestsBaseConfig,
+} from "src/configs/personal";
+import createPersonalEslintPluginConfig from "src/configs/personal/eslintPlugin";
 import rules from "src/rules";
 import createPluginConfigs from "src/utility/createPluginConfigs";
 
@@ -46,13 +56,34 @@ alexPlugin.configs = createPluginConfigs({
     base: createPluginBaseConfig(alexPlugin),
     tests: createPluginTestsBaseConfig(alexPlugin),
   },
+  personal: {
+    javaScript: createPersonalJavaScriptBaseConfig(alexPlugin),
+    typeScript: createPersonalTypeScriptBaseConfig(alexPlugin),
+    react: personalReactBaseConfig,
+    tests: personalTestsBaseConfig,
+    eslintPlugin: createPersonalEslintPluginConfig(alexPlugin),
+    neurosongsBackEnd: neurosongsBackEndConfig,
+    neursongsFrontEnd: neurosongsFrontEndConfig,
+  },
   combined: {
-    javaScript: createCombinedJavaScriptBaseConfig(alexPlugin),
-    typeScript: createCombinedTypeScriptBaseConfig(alexPlugin),
-    react: createCombinedReactBaseConfig(alexPlugin),
-    tests: createCombinedTestsBaseConfig(alexPlugin),
-    typeScriptReact: createCombinedTypeScriptReactBaseConfig(alexPlugin),
-    javaScriptReact: createCombinedJavaScriptReactBaseConfig(alexPlugin),
+    javaScript: [
+      ...createCombinedJavaScriptBaseConfig(alexPlugin),
+      packageJson.configs.recommended,
+    ],
+    typeScript: [
+      ...createCombinedTypeScriptBaseConfig(alexPlugin),
+      packageJson.configs.recommended,
+    ],
+    react: [...combinedReactBaseConfig, packageJson.configs.recommended],
+    tests: [...createCombinedTestsBaseConfig(alexPlugin), packageJson.configs.recommended],
+    typeScriptReact: [
+      ...createCombinedTypeScriptReactBaseConfig(alexPlugin),
+      packageJson.configs.recommended,
+    ],
+    javaScriptReact: [
+      ...createCombinedJavaScriptReactBaseConfig(alexPlugin),
+      packageJson.configs.recommended,
+    ],
   },
 });
 

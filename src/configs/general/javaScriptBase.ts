@@ -3,15 +3,13 @@ import type { Linter } from "eslint";
 import js from "@eslint/js";
 import prettierConfig from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
-import packageJson from "eslint-plugin-package-json";
 import globals from "globals";
 
 const javaScriptBase: Linter.Config[] = [
   js.configs.recommended,
   prettierConfig,
-  packageJson.configs.recommended,
   {
-    files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "!package.json"],
+    files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
     ignores: ["dist"],
     languageOptions: {
       globals: {

@@ -25,8 +25,6 @@ const typeScriptBase: Linter.Config[] = [
       "@typescript-eslint/consistent-type-imports": "error",
       "@typescript-eslint/explicit-member-accessibility": "error",
       "@typescript-eslint/no-deprecated": "warn",
-      // Explicit any can be helpful sometimes, so it's not worth erroring on every single one.
-      "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-redeclare": ["error", { ignoreDeclarationMerge: true }],
       "@typescript-eslint/no-unused-vars": [
         "error",
