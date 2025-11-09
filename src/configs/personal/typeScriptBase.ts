@@ -6,7 +6,6 @@ import tseslint from "typescript-eslint";
 
 function createPersonalTypeScriptBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   return [
-    ...tseslint.configs.recommended,
     {
       files: ["**/*.ts", "**/*.tsx"],
       languageOptions: {
@@ -20,6 +19,7 @@ function createPersonalTypeScriptBaseConfig(plugin: AlexPlugin): Linter.Config[]
       },
       plugins: {
         "@alextheman": plugin,
+        "@typescript-eslint": tseslint.plugin,
       },
       rules: {
         "@alextheman/standardise-error-messages": "error",
