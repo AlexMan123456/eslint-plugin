@@ -1,9 +1,9 @@
 import fs from "fs";
 import path from "path";
 
-import hashConfigFiles from "src/utility/hashConfigChanges";
+import hashFiles, { getFiles } from "src/utility/hashFiles";
 
-const currentHash = hashConfigFiles();
+const currentHash = hashFiles(getFiles(path.resolve("src/configs")));
 
 const hashFile = path.resolve(".config-hash");
 const previousHash = fs.existsSync(hashFile) ? fs.readFileSync(hashFile, "utf-8") : null;
