@@ -4,8 +4,6 @@ import type { AlexPlugin } from "src/index";
 import perfectionist from "eslint-plugin-perfectionist";
 
 function createPersonalEslintPluginConfig(plugin: AlexPlugin): Linter.Config[] {
-  const noPluginImportMessage =
-    "Do not import the plugin directly from the config files. Please create a function that takes in the plugin and returns the config instead.";
   return [
     {
       plugins: {
@@ -22,23 +20,14 @@ function createPersonalEslintPluginConfig(plugin: AlexPlugin): Linter.Config[] {
         "no-restricted-imports": [
           "error",
           {
-            paths: [
-              {
+            paths: ["src/alexPlugin", "src/index", "src"].map((name) => {
+              return {
                 importNames: ["default"],
-                message: noPluginImportMessage,
-                name: "src/alexPlugin",
-              },
-              {
-                importNames: ["default"],
-                message: noPluginImportMessage,
-                name: "src/index",
-              },
-              {
-                importNames: ["default"],
-                message: noPluginImportMessage,
-                name: "src",
-              },
-            ],
+                message:
+                  "Do not import the plugin directly from the config files. Please create a function that takes in the plugin and returns the config instead.",
+                name,
+              };
+            }),
           },
         ],
       },
