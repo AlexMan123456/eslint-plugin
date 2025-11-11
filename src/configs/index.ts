@@ -23,6 +23,7 @@ import {
   personalTestsBaseConfig,
   utilityConfig,
 } from "src/configs/personal";
+import alexCLineConfig from "src/configs/personal/alexCLine";
 import { createPluginBaseConfig, createPluginTestsBaseConfig } from "src/configs/plugin";
 import createPluginConfigs from "src/utility/createPluginConfigs";
 
@@ -48,6 +49,7 @@ function createAlexPluginConfigs(plugin: AlexPlugin): Record<ConfigKey, Linter.C
       typeScript: typeScriptBase,
     },
     personal: {
+      alexCLine: alexCLineConfig,
       eslintPlugin: createPersonalEslintPluginConfig(plugin),
       javaScript: createPersonalJavaScriptBaseConfig(plugin),
       neurosongsBackEnd: neurosongsBackEndConfig,

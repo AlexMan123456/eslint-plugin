@@ -11,7 +11,8 @@ export type PersonalConfig =
   | "eslintPlugin"
   | "neurosongsBackEnd"
   | "neurosongsFrontEnd"
-  | "utility";
+  | "utility"
+  | "alexCLine";
 export type CombinedConfig =
   | "javaScript"
   | "typeScript"
