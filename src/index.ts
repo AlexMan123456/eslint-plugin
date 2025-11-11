@@ -1,6 +1,7 @@
 import alexPlugin from "src/alexPlugin";
 
-export { prettierRules } from "src/configs/general";
+export { default as prettierRules } from "src/configs/miscellaneous/prettierRules";
+export { default as sortObjects } from "src/configs/miscellaneous/sortObjects";
 export { parseTestFunction } from "src/rules/consistent-test-function";
 
 export type { AlexPlugin } from "src/alexPlugin";

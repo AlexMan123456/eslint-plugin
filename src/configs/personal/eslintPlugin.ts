@@ -3,6 +3,8 @@ import type { AlexPlugin } from "src/index";
 
 import perfectionist from "eslint-plugin-perfectionist";
 
+import sortObjects from "src/configs/miscellaneous/sortObjects";
+
 function createPersonalEslintPluginConfig(plugin: AlexPlugin): Linter.Config[] {
   return [
     {
@@ -37,26 +39,7 @@ function createPersonalEslintPluginConfig(plugin: AlexPlugin): Linter.Config[] {
       // as well to make it easier to compare against the file directory.
       files: ["src/rules/index.ts", "src/configs/**"],
       rules: {
-        "perfectionist/sort-objects": [
-          "error",
-          {
-            customGroups: [],
-            destructuredObjects: true,
-            fallbackSort: { type: "unsorted" },
-            groups: [],
-            ignoreCase: true,
-            ignorePattern: [],
-            newlinesBetween: "ignore",
-            objectDeclarations: true,
-            order: "asc",
-            partitionByComment: false,
-            partitionByNewLine: false,
-            specialCharacters: "keep",
-            styledComponents: true,
-            type: "alphabetical",
-            useConfigurationIf: {},
-          },
-        ],
+        "perfectionist/sort-objects": ["error", sortObjects],
       },
     },
   ];
