@@ -1,7 +1,11 @@
 {
   "name": "@alextheman/eslint-plugin",
-  "version": "2.7.5",
+  "version": "2.7.6",
   "description": "A package to provide custom ESLint rules and configs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexMan123456/eslint-plugin.git"
+  },
   "license": "ISC",
   "author": "alextheman",
   "type": "module",
