@@ -3,7 +3,8 @@ import type { Linter } from "eslint";
 import js from "@eslint/js";
 import prettierConfig from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
-import globals from "globals";
+
+import javaScriptLanguageOptions from "src/configs/miscellaneous/javaScriptLanguageOptions";
 
 const javaScriptBase: Linter.Config[] = [
   js.configs.recommended,
@@ -11,12 +12,7 @@ const javaScriptBase: Linter.Config[] = [
   {
     files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
     ignores: ["dist"],
-    languageOptions: {
-      globals: {
-        ...globals.node,
-        ...globals.browser,
-      },
-    },
+    languageOptions: javaScriptLanguageOptions,
     name: "@alextheman/eslint-config-javascript-base",
     plugins: {
       import: importPlugin,

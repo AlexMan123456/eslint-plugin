@@ -4,12 +4,14 @@ import type { AlexPlugin } from "src/index";
 import perfectionist from "eslint-plugin-perfectionist";
 import prettierPlugin from "eslint-plugin-prettier";
 
+import javaScriptLanguageOptions from "src/configs/miscellaneous/javaScriptLanguageOptions";
 import prettierRules from "src/configs/miscellaneous/prettierRules";
 
 function createPersonalJavaScriptBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   return [
     {
       files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+      languageOptions: javaScriptLanguageOptions,
       plugins: {
         "@alextheman": plugin,
         perfectionist,
