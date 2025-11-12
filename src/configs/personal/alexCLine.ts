@@ -7,6 +7,7 @@ import sortObjects from "src/configs/miscellaneous/sortObjects";
 const alexCLineConfig: Linter.Config[] = [
   {
     files: ["src/commands/index.ts"],
+    name: "@alextheman/personal/alex-c-line",
     plugins: {
       perfectionist,
     },

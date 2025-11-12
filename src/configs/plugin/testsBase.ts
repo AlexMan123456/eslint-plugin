@@ -5,6 +5,7 @@ function createPluginTestsBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   return [
     {
       files: ["**/*.test.ts"],
+      name: "@alextheman/plugin/tests",
       plugins: {
         "@alextheman": plugin,
       },

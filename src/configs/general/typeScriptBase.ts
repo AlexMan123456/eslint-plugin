@@ -1,25 +1,17 @@
 import type { Linter } from "eslint";
 
-import tsparser from "@typescript-eslint/parser";
 import tseslint from "typescript-eslint";
 
 import javaScriptBase from "src/configs/general/javaScriptBase";
+import typeScriptLanguageOptions from "src/configs/miscellaneous/typeScriptLanguageOptions";
 
 const typeScriptBase: Linter.Config[] = [
   ...tseslint.configs.recommended,
   ...javaScriptBase,
   {
     files: ["**/*.ts", "**/*.tsx"],
-    languageOptions: {
-      parser: tsparser,
-      parserOptions: {
-        ecmaVersion: "latest",
-        projectService: true,
-        sourceType: "module",
-        tsconfigRootDir: process.cwd(),
-      },
-    },
-    name: "@alextheman/eslint-config-typescript-base",
+    languageOptions: typeScriptLanguageOptions,
+    name: "@alextheman/general/typescript",
     rules: {
       "@typescript-eslint/consistent-type-exports": "error",
       "@typescript-eslint/consistent-type-imports": "error",

@@ -5,7 +5,11 @@ import createCombinedJavaScriptBaseConfig from "src/configs/combined/javaScriptB
 import combinedReactBaseConfig from "src/configs/combined/reactBase";
 
 function createCombinedJavaScriptReactBaseConfig(plugin: AlexPlugin): Linter.Config[] {
-  return [...createCombinedJavaScriptBaseConfig(plugin), ...combinedReactBaseConfig];
+  return [
+    { name: "@alextheman/combined/javascript-react" },
+    ...createCombinedJavaScriptBaseConfig(plugin),
+    ...combinedReactBaseConfig,
+  ];
 }
 
 export default createCombinedJavaScriptReactBaseConfig;

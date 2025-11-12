@@ -1,22 +1,16 @@
 import type { Linter } from "eslint";
 import type { AlexPlugin } from "src/index";
 
-import tsparser from "@typescript-eslint/parser";
 import tseslint from "typescript-eslint";
+
+import typeScriptLanguageOptions from "src/configs/miscellaneous/typeScriptLanguageOptions";
 
 function createPersonalTypeScriptBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   return [
     {
       files: ["**/*.ts", "**/*.tsx"],
-      languageOptions: {
-        parser: tsparser,
-        parserOptions: {
-          ecmaVersion: "latest",
-          projectService: true,
-          sourceType: "module",
-          tsconfigRootDir: process.cwd(),
-        },
-      },
+      languageOptions: typeScriptLanguageOptions,
+      name: "@alextheman/personal/typescript",
       plugins: {
         "@alextheman": plugin,
         "@typescript-eslint": tseslint.plugin,

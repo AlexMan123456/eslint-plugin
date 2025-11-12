@@ -4,6 +4,7 @@ import tseslint from "typescript-eslint";
 
 const utilityConfig: Linter.Config[] = [
   {
+    name: "@alextheman/personal/utility",
     plugins: {
       "@typescript-eslint": tseslint.plugin,
     },

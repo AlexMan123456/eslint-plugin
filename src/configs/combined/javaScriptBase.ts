@@ -8,6 +8,9 @@ import { createPluginBaseConfig } from "src/configs/plugin";
 
 function createCombinedJavaScriptBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   return [
+    {
+      name: "@alextheman/combined/javascript",
+    },
     ...createPluginBaseConfig(plugin),
     ...javaScriptBase,
     ...createPersonalJavaScriptBaseConfig(plugin),
