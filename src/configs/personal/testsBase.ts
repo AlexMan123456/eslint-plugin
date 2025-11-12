@@ -12,6 +12,7 @@ const personalTestsBaseConfig: Linter.Config[] = [
         ...globals.vitest,
       },
     },
+    name: "@alextheman/personal/tests",
     rules: {
       "no-restricted-globals": [
         "error",

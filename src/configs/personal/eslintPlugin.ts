@@ -8,6 +8,7 @@ import sortObjects from "src/configs/miscellaneous/sortObjects";
 function createPersonalEslintPluginConfig(plugin: AlexPlugin): Linter.Config[] {
   return [
     {
+      name: "@alextheman/personal/eslint-plugin",
       plugins: {
         "@alextheman": plugin,
         perfectionist,

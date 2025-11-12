@@ -4,6 +4,7 @@ import type { AlexPlugin } from "src/index";
 function createPluginBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   return [
     {
+      name: "@alextheman/plugin/base",
       plugins: {
         "@alextheman": plugin,
       },

@@ -9,7 +9,7 @@ import reactLanguageOptions from "src/configs/miscellaneous/reactLanguageOptions
 const personalReactBaseConfig: Linter.Config[] = [
   {
     languageOptions: reactLanguageOptions,
-    name: "@alextheman/eslint-config-react-base",
+    name: "@alextheman/personal/react",
     plugins: {
       react: reactPlugin,
       "react-hooks": reactHooks,

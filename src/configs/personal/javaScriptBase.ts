@@ -12,6 +12,7 @@ function createPersonalJavaScriptBaseConfig(plugin: AlexPlugin): Linter.Config[]
     {
       files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
       languageOptions: javaScriptLanguageOptions,
+      name: "@alextheman/personal/javascript",
       plugins: {
         "@alextheman": plugin,
         perfectionist,

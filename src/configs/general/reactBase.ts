@@ -13,7 +13,7 @@ const reactBase: Linter.Config[] = [
   jsxA11y.flatConfigs.recommended,
   {
     languageOptions: reactLanguageOptions,
-    name: "@alextheman/eslint-config-react-base",
+    name: "@alextheman/general/react",
     plugins: {
       react: reactPlugin,
       "react-hooks": reactHooks,

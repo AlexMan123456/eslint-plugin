@@ -2,6 +2,7 @@ import type { Linter } from "eslint";
 
 const neurosongsFrontEndConfig: Linter.Config[] = [
   {
+    name: "@alextheman/personal/neurosongs-front-end",
     rules: {
       "no-restricted-imports": [
         "error",

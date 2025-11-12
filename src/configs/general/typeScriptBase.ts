@@ -11,7 +11,7 @@ const typeScriptBase: Linter.Config[] = [
   {
     files: ["**/*.ts", "**/*.tsx"],
     languageOptions: typeScriptLanguageOptions,
-    name: "@alextheman/eslint-config-typescript-base",
+    name: "@alextheman/general/typescript",
     rules: {
       "@typescript-eslint/consistent-type-exports": "error",
       "@typescript-eslint/consistent-type-imports": "error",

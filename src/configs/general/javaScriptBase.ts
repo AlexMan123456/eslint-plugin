@@ -13,7 +13,7 @@ const javaScriptBase: Linter.Config[] = [
     files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
     ignores: ["dist"],
     languageOptions: javaScriptLanguageOptions,
-    name: "@alextheman/eslint-config-javascript-base",
+    name: "@alextheman/general/javascript",
     plugins: {
       import: importPlugin,
     },

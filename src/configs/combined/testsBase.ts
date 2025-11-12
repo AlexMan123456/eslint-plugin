@@ -5,7 +5,11 @@ import personalTestsBaseConfig from "src/configs/personal/testsBase";
 import { createPluginTestsBaseConfig } from "src/configs/plugin";
 
 function createCombinedTestsBaseConfig(plugin: AlexPlugin): Linter.Config[] {
-  return [...createPluginTestsBaseConfig(plugin), ...personalTestsBaseConfig];
+  return [
+    { name: "@alextheman/combined/tests" },
+    ...createPluginTestsBaseConfig(plugin),
+    ...personalTestsBaseConfig,
+  ];
 }
 
 export default createCombinedTestsBaseConfig;

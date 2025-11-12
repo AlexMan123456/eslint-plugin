@@ -10,6 +10,7 @@ function createPersonalTypeScriptBaseConfig(plugin: AlexPlugin): Linter.Config[]
     {
       files: ["**/*.ts", "**/*.tsx"],
       languageOptions: typeScriptLanguageOptions,
+      name: "@alextheman/personal/typescript",
       plugins: {
         "@alextheman": plugin,
         "@typescript-eslint": tseslint.plugin,
