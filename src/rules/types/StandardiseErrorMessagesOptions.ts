@@ -6,5 +6,4 @@
 
 export interface StandardiseErrorMessagesOptions {
   regex?: string;
-  [k: string]: unknown;
 }

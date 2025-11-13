@@ -53,6 +53,7 @@ const standardiseErrorMessages = createRule({
             type: "string",
           },
         },
+        additionalProperties: false,
       },
     ],
   },

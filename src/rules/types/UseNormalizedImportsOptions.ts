@@ -6,5 +6,4 @@
 
 export interface UseNormalizedImportsOptions {
   fixable?: boolean;
-  [k: string]: unknown;
 }
