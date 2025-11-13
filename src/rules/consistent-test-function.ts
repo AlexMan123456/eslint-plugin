@@ -40,7 +40,7 @@ const consistentTestFunction = createRule({
   defaultOptions: [{ preference: "test" }],
   create(context) {
     const preference = context.options[0]?.preference;
-    const validatedPreference = validTestFunctionsSchema.parse(preference ?? "test");
+    const validatedPreference = parseTestFunction(preference ?? "test");
     return {
       CallExpression(node) {
         if (
