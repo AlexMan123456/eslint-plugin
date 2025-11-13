@@ -1,4 +1,4 @@
-import { mkdir, rm, writeFile } from "fs/promises";
+import { appendFile, mkdir, rm, writeFile } from "fs/promises";
 import path from "path";
 
 import { kebabToCamel } from "@alextheman/utility";
@@ -16,6 +16,10 @@ const rulesTypesDir = "src/rules/types";
     if (rule.meta.schema[0]) {
       const typeFileContents = await compile(rule.meta.schema[0], typeName);
       await writeFile(path.join(process.cwd(), rulesTypesDir, `${typeName}.ts`), typeFileContents);
+      await appendFile(
+        path.join(process.cwd(), rulesTypesDir, "index.ts"),
+        `export type { ${typeName} } from "${path.join(rulesTypesDir, typeName)}";\n`,
+      );
     }
   }
 })();
