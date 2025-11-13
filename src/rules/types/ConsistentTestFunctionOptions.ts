@@ -5,5 +5,5 @@
  */
 
 export interface ConsistentTestFunctionOptions {
-  preference?: string;
+  preference?: "it" | "test";
 }

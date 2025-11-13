@@ -30,6 +30,7 @@ const consistentTestFunction = createRule({
         properties: {
           preference: {
             type: "string",
+            enum: ["it", "test"],
           },
         },
         additionalProperties: false,
