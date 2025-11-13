@@ -5,6 +5,7 @@ import prettierConfig from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
 
 import javaScriptLanguageOptions from "src/configs/miscellaneous/javaScriptLanguageOptions";
+import unusedVarsIgnorePatterns from "src/configs/miscellaneous/unusedVarsIgnorePatterns";
 
 const javaScriptBase: Linter.Config[] = [
   js.configs.recommended,
@@ -38,14 +39,7 @@ const javaScriptBase: Linter.Config[] = [
         },
       ],
       "no-undef": "error",
-      "no-unused-vars": [
-        "error",
-        {
-          argsIgnorePattern: "^_",
-          caughtErrorsIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
-        },
-      ],
+      "no-unused-vars": ["error", unusedVarsIgnorePatterns],
       "no-useless-rename": "error",
       "no-useless-return": "error",
       "prefer-const": "error",
