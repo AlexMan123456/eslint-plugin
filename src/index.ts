@@ -15,5 +15,6 @@ export type {
   ConfigGroupName,
 } from "src/configs/AlexPluginConfigGroup";
 export type { TestFunction } from "src/rules/consistent-test-function";
+export type * from "src/rules/types";
 
 export default alexPlugin;

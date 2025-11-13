@@ -22,6 +22,7 @@ const useNormalizedImports = createRule({
             type: "boolean",
           },
         },
+        additionalProperties: false,
       },
     ],
     fixable: "code",

@@ -1,6 +1,6 @@
 {
   "name": "@alextheman/eslint-plugin",
-  "version": "2.7.8",
+  "version": "2.8.0",
   "description": "A package to provide custom ESLint rules and configs",
   "repository": {
     "type": "git",
@@ -15,17 +15,18 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup && npx tsx src/utility/hashConfigChanges.ts",
+    "build": "tsup && tsx src/utility/hashConfigChanges.ts",
     "change-major": "npm version major -m \"Change version number to v%s\"",
     "change-minor": "npm version minor -m \"Change version number to v%s\"",
     "change-patch": "npm version patch -m \"Change version number to v%s\"",
     "create-local-package": "npm run build && rm -f alextheman-eslint-plugin-*.tgz && npm pack",
-    "format": "npx tsx src/utility/checkConfigChanges.ts || npm run build && npm run format-prettier && npm run format-eslint",
+    "format": "tsx src/utility/checkConfigChanges.ts || npm run build && npm run format-prettier && npm run format-eslint",
     "format-eslint": "eslint --fix --suppress-all \"src/**/*.ts\" \"tests/**/*.ts\" \"package.json\" && rm -f eslint-suppressions.json",
     "format-prettier": "npm run format-prettier-typescript && npm run format-prettier-javascript",
     "format-prettier-javascript": "prettier --write \"./**/*.js\"",
     "format-prettier-typescript": "prettier --write --parser typescript \"./**/*.ts\"",
-    "lint": "npx tsx src/utility/checkConfigChanges.ts || npm run build && npm run lint-tsc && npm run lint-eslint && npm run lint-prettier",
+    "generate-rule-options-types": "tsx src/utility/generateRuleOptionsTypes.ts",
+    "lint": "tsx src/utility/checkConfigChanges.ts || npm run build && npm run lint-tsc && npm run lint-eslint && npm run lint-prettier",
     "lint-eslint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\" \"package.json\"",
     "lint-prettier": "npm run lint-prettier-typescript && npm run lint-prettier-javascript",
     "lint-prettier-javascript": "prettier --check \"./**/*.js\"",
@@ -37,9 +38,10 @@
     "update-dependencies": "bash -c 'npx npm-check-updates -u \"$@\" && npm install' --"
   },
   "dependencies": {
-    "@alextheman/utility": "^2.14.0",
+    "@alextheman/utility": "^2.15.1",
     "common-tags": "^1.8.2",
     "eslint-plugin-package-json": "^0.64.0",
+    "json-schema-to-typescript": "^15.0.4",
     "zod": "^4.1.12"
   },
   "devDependencies": {
@@ -55,6 +57,7 @@
     "jiti": "^2.6.1",
     "prettier": "^3.6.2",
     "tsup": "^8.5.0",
+    "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^4.0.8"
