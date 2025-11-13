@@ -1,5 +1,5 @@
 import type { Linter } from "eslint";
-import type { AlexPlugin } from "src/index";
+import type { AlexPlugin, ConsistentTestFunctionOptions } from "src/index";
 
 function createPluginTestsBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   return [
@@ -10,7 +10,10 @@ function createPluginTestsBaseConfig(plugin: AlexPlugin): Linter.Config[] {
         "@alextheman": plugin,
       },
       rules: {
-        "@alextheman/consistent-test-function": ["error", { preference: "test" }],
+        "@alextheman/consistent-test-function": [
+          "error",
+          { preference: "test" } as ConsistentTestFunctionOptions,
+        ],
         "@alextheman/no-isolated-tests": "error",
         "@alextheman/no-skipped-tests": "warn",
       },
