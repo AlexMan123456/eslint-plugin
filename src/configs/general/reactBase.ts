@@ -4,8 +4,8 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 import reactPlugin from "eslint-plugin-react";
 import reactRefresh from "eslint-plugin-react-refresh";
 
-import reactHooks from "src/configs/miscellaneous/reactHooks";
-import reactLanguageOptions from "src/configs/miscellaneous/reactLanguageOptions";
+import reactHooks from "src/configs/helpers/reactHooks";
+import reactLanguageOptions from "src/configs/helpers/reactLanguageOptions";
 
 const reactBase: Linter.Config[] = [
   reactPlugin.configs.flat.recommended,

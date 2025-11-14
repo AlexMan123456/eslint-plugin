@@ -3,7 +3,7 @@ import type { AlexPlugin } from "src/index";
 
 import perfectionist from "eslint-plugin-perfectionist";
 
-import sortObjects from "src/configs/miscellaneous/sortObjects";
+import sortObjects from "src/configs/helpers/sortObjects";
 
 function createPersonalEslintPluginConfig(plugin: AlexPlugin): Linter.Config[] {
   return [
@@ -34,7 +34,7 @@ function createPersonalEslintPluginConfig(plugin: AlexPlugin): Linter.Config[] {
               }),
               {
                 importNames: ["default"],
-                message: 'Please import from "src/configs/miscellaneous/reactHooks" instead.',
+                message: 'Please import from "src/configs/helpers/reactHooks" instead.',
                 name: "eslint-plugin-react-hooks",
               },
             ],

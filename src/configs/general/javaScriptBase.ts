@@ -4,8 +4,8 @@ import js from "@eslint/js";
 import prettierConfig from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
 
-import javaScriptLanguageOptions from "src/configs/miscellaneous/javaScriptLanguageOptions";
-import unusedVarsIgnorePatterns from "src/configs/miscellaneous/unusedVarsIgnorePatterns";
+import javaScriptLanguageOptions from "src/configs/helpers/javaScriptLanguageOptions";
+import unusedVarsIgnorePatterns from "src/configs/helpers/unusedVarsIgnorePatterns";
 
 const javaScriptBase: Linter.Config[] = [
   js.configs.recommended,
