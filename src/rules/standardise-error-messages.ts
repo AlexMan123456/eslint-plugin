@@ -1,10 +1,33 @@
 import type { TSESTree } from "@typescript-eslint/utils";
+import type { JSONSchema4 } from "@typescript-eslint/utils/json-schema";
 import type { RuleContext } from "@typescript-eslint/utils/ts-eslint";
 
+import { omitProperties } from "@alextheman/utility";
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
+import z from "zod";
 
 import createRule from "src/createRule";
 
+const standardiseErrorMessagesOptionsSchema = z
+  .object({
+    regex: z.string(),
+  })
+  .partial();
+export type StandardiseErrorMessagesOptions = z.infer<typeof standardiseErrorMessagesOptionsSchema>;
+export function parseStandardiseErrorMessagesOptions(
+  data: unknown,
+): StandardiseErrorMessagesOptions {
+  return standardiseErrorMessagesOptionsSchema.parse(data);
+}
+
+const schema = [
+  omitProperties(
+    z.toJSONSchema(standardiseErrorMessagesOptionsSchema),
+    "$schema",
+  ) as unknown as JSONSchema4,
+];
+
+const defaultErrorRegex = "^[A-Z]+(?:_[A-Z]+)*$";
 function checkCurrentNode(
   context: Readonly<
     RuleContext<
@@ -18,7 +41,9 @@ function checkCurrentNode(
   >,
   node: TSESTree.CallExpression | TSESTree.NewExpression,
 ) {
-  const errorRegex = context.options[0]?.regex ?? "^[A-Z]+(?:_[A-Z]+)*$";
+  const { regex: errorRegex = defaultErrorRegex } = parseStandardiseErrorMessagesOptions(
+    context.options[0] ?? { regex: defaultErrorRegex },
+  );
   if (node.callee.type === AST_NODE_TYPES.Identifier && node.callee.name === "Error") {
     const [errorArgument] = node.arguments;
     const errorMessage = errorArgument.type === AST_NODE_TYPES.Literal ? errorArgument.value : "";
@@ -45,19 +70,9 @@ const standardiseErrorMessages = createRule({
       message: "Expected error message {{error}} to match {{regex}}.",
     },
     type: "suggestion",
-    schema: [
-      {
-        type: "object",
-        properties: {
-          regex: {
-            type: "string",
-          },
-        },
-        additionalProperties: false,
-      },
-    ],
+    schema,
   },
-  defaultOptions: [{ regex: "^[A-Z]+(?:_[A-Z]+)*$" }],
+  defaultOptions: [{ regex: defaultErrorRegex }],
   create(context) {
     return {
       CallExpression(node) {

@@ -2,5 +2,5 @@
  * You may execute the above file to re-generate this type using `npm run generate-rule-options-types` */
 
 export interface ConsistentTestFunctionOptions {
-  preference?: "it" | "test";
+  preference?: "test" | "it";
 }

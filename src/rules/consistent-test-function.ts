@@ -1,5 +1,7 @@
 import type { TSESTree } from "@typescript-eslint/utils";
+import type { JSONSchema4 } from "@typescript-eslint/utils/json-schema";
 
+import { omitProperties } from "@alextheman/utility";
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 import z from "zod";
 
@@ -7,11 +9,27 @@ import createRule from "src/createRule";
 import getImportSpecifiersAfterRemoving from "src/utility/getImportSpecifiersAfterRemoving";
 
 const validTestFunctionsSchema = z.enum(["test", "it"]);
-
 export type TestFunction = z.infer<typeof validTestFunctionsSchema>;
 export function parseTestFunction(data: unknown): TestFunction {
   return validTestFunctionsSchema.parse(data);
 }
+
+const consistentTestFunctionOptionsSchema = z
+  .object({
+    preference: validTestFunctionsSchema,
+  })
+  .partial();
+export type ConsistentTestFunctionOptions = z.infer<typeof consistentTestFunctionOptionsSchema>;
+export function parseConsistentTestFunctionOptions(data: unknown): ConsistentTestFunctionOptions {
+  return consistentTestFunctionOptionsSchema.parse(data);
+}
+
+const schema = [
+  omitProperties(
+    z.toJSONSchema(consistentTestFunctionOptionsSchema),
+    "$schema",
+  ) as unknown as JSONSchema4,
+];
 
 const consistentTestFunction = createRule({
   name: "consistent-test-function",
@@ -24,36 +42,27 @@ const consistentTestFunction = createRule({
     },
     type: "suggestion",
     fixable: "code",
-    schema: [
-      {
-        type: "object",
-        properties: {
-          preference: {
-            type: "string",
-            enum: ["it", "test"],
-          },
-        },
-        additionalProperties: false,
-      },
-    ],
+    schema,
   },
   defaultOptions: [{ preference: "test" }],
   create(context) {
-    const preference = context.options[0]?.preference;
-    const validatedPreference = parseTestFunction(preference ?? "test");
+    const { preference } = parseConsistentTestFunctionOptions(
+      context.options[0] ?? { preference: "test" },
+    );
+
     return {
       CallExpression(node) {
         if (
           node.callee.type === AST_NODE_TYPES.Identifier &&
           node.callee.name === "it" &&
-          validatedPreference === "test"
+          preference === "test"
         ) {
           return context.report({
             node,
             messageId: "message",
             data: {
               source: (node.callee as TSESTree.Identifier).name,
-              preference: validatedPreference,
+              preference,
             },
             fix(fixer) {
               return fixer.replaceText(node.callee, "test");
@@ -64,14 +73,14 @@ const consistentTestFunction = createRule({
         if (
           node.callee.type === AST_NODE_TYPES.Identifier &&
           node.callee.name === "test" &&
-          validatedPreference === "it"
+          preference === "it"
         ) {
           return context.report({
             node,
             messageId: "message",
             data: {
               source: (node.callee as TSESTree.Identifier).name,
-              preference: validatedPreference,
+              preference,
             },
             fix(fixer) {
               return fixer.replaceText(node.callee, "it");
@@ -86,14 +95,14 @@ const consistentTestFunction = createRule({
             specifier.type === AST_NODE_TYPES.ImportSpecifier &&
             specifier.imported.type === AST_NODE_TYPES.Identifier &&
             specifier.imported.name === "it" &&
-            validatedPreference === "test"
+            preference === "test"
           ) {
             return context.report({
               node,
               messageId: "message",
               data: {
                 source: specifier.imported.name,
-                preference: validatedPreference,
+                preference,
               },
               fix(fixer) {
                 const importedNames = node.specifiers.map((specifier) => {
@@ -119,7 +128,7 @@ const consistentTestFunction = createRule({
                 }
                 return fixer.replaceTextRange(
                   [specifier.imported.range[0], specifier.imported.range[1]],
-                  validatedPreference,
+                  preference,
                 );
               },
             });
@@ -129,14 +138,14 @@ const consistentTestFunction = createRule({
             specifier.type === AST_NODE_TYPES.ImportSpecifier &&
             specifier.imported.type === AST_NODE_TYPES.Identifier &&
             specifier.imported.name === "test" &&
-            validatedPreference === "it"
+            preference === "it"
           ) {
             return context.report({
               node,
               messageId: "message",
               data: {
                 source: specifier.imported.name,
-                preference: validatedPreference,
+                preference,
               },
               fix(fixer) {
                 const importedNames = node.specifiers.map((specifier) => {
@@ -162,7 +171,7 @@ const consistentTestFunction = createRule({
                 }
                 return fixer.replaceTextRange(
                   [specifier.imported.range[0], specifier.imported.range[1]],
-                  validatedPreference,
+                  preference,
                 );
               },
             });
