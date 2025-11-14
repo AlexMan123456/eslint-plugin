@@ -11,7 +11,7 @@ const useNormalizedImportsOptionsSchema = z
   })
   .partial();
 export type UseNormalizedImportsOptions = z.infer<typeof useNormalizedImportsOptionsSchema>;
-export function parseUseNormalizedImportsOptionsSchema(data: unknown) {
+export function parseUseNormalizedImportsOptions(data: unknown) {
   return useNormalizedImportsOptionsSchema.parse(data);
 }
 
@@ -34,7 +34,7 @@ const useNormalizedImports = createRule({
   },
   defaultOptions: [{ fixable: true }],
   create(context) {
-    const { fixable: isFixable } = parseUseNormalizedImportsOptionsSchema(
+    const { fixable: isFixable } = parseUseNormalizedImportsOptions(
       context.options[0] ?? { fixable: true },
     );
     return {

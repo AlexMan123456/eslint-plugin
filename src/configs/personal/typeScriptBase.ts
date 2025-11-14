@@ -3,7 +3,7 @@ import type { AlexPlugin } from "src/index";
 
 import tseslint from "typescript-eslint";
 
-import typeScriptLanguageOptions from "src/configs/miscellaneous/typeScriptLanguageOptions";
+import typeScriptLanguageOptions from "src/configs/helpers/typeScriptLanguageOptions";
 
 function createPersonalTypeScriptBaseConfig(plugin: AlexPlugin): Linter.Config[] {
   return [

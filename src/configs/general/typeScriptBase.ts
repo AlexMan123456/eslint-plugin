@@ -3,8 +3,8 @@ import type { Linter } from "eslint";
 import tseslint from "typescript-eslint";
 
 import javaScriptBase from "src/configs/general/javaScriptBase";
-import typeScriptLanguageOptions from "src/configs/miscellaneous/typeScriptLanguageOptions";
-import unusedVarsIgnorePatterns from "src/configs/miscellaneous/unusedVarsIgnorePatterns";
+import typeScriptLanguageOptions from "src/configs/helpers/typeScriptLanguageOptions";
+import unusedVarsIgnorePatterns from "src/configs/helpers/unusedVarsIgnorePatterns";
 
 const typeScriptBase: Linter.Config[] = [
   ...tseslint.configs.recommended,

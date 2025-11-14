@@ -1,8 +1,15 @@
 import alexPlugin from "src/alexPlugin";
 
-export { default as prettierRules } from "src/configs/miscellaneous/prettierRules";
-export { default as sortObjects } from "src/configs/miscellaneous/sortObjects";
-export { parseTestFunction } from "src/rules/consistent-test-function";
+export { default as prettierRules } from "src/configs/helpers/prettierRules";
+export { default as sortObjects } from "src/configs/helpers/sortObjects";
+export {
+  parseTestFunction,
+  parseConsistentTestFunctionOptions,
+} from "src/rules/consistent-test-function";
+export { parseNoNamespaceImportsOptions } from "src/rules/no-namespace-imports";
+export { parseNoRelativeImportsOptions } from "src/rules/no-relative-imports";
+export { parseStandardiseErrorMessagesOptions } from "src/rules/standardise-error-messages";
+export { parseUseNormalizedImportsOptions } from "src/rules/use-normalized-imports";
 
 export type { AlexPlugin } from "src/alexPlugin";
 export type {
