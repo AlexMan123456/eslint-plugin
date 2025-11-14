@@ -14,7 +14,13 @@ export type {
   ConfigKey,
   ConfigGroupName,
 } from "src/configs/AlexPluginConfigGroup";
-export type { TestFunction } from "src/rules/consistent-test-function";
-export type * from "src/rules/types";
+export type {
+  TestFunction,
+  ConsistentTestFunctionOptions,
+} from "src/rules/consistent-test-function";
+export type { NoNamespaceImportsOptions } from "src/rules/no-namespace-imports";
+export type { NoRelativeImportsOptions } from "src/rules/no-relative-imports";
+export type { StandardiseErrorMessagesOptions } from "src/rules/standardise-error-messages";
+export type { UseNormalizedImportsOptions } from "src/rules/use-normalized-imports";
 
 export default alexPlugin;

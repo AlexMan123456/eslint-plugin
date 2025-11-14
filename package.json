@@ -25,7 +25,6 @@
     "format-prettier": "npm run format-prettier-typescript && npm run format-prettier-javascript",
     "format-prettier-javascript": "prettier --write \"./**/*.js\"",
     "format-prettier-typescript": "prettier --write --parser typescript \"./**/*.ts\"",
-    "generate-rule-options-types": "tsx src/utility/generateRuleOptionsTypes.ts",
     "lint": "tsx src/utility/checkConfigChanges.ts || npm run build && npm run lint-tsc && npm run lint-eslint && npm run lint-prettier",
     "lint-eslint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\" \"package.json\"",
     "lint-prettier": "npm run lint-prettier-typescript && npm run lint-prettier-javascript",
@@ -41,7 +40,6 @@
     "@alextheman/utility": "^2.15.1",
     "common-tags": "^1.8.2",
     "eslint-plugin-package-json": "^0.64.0",
-    "json-schema-to-typescript": "^15.0.4",
     "zod": "^4.1.12"
   },
   "devDependencies": {
