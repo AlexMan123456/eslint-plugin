@@ -1,11 +1,9 @@
-import type { JSONSchema4 } from "@typescript-eslint/utils/json-schema";
-
 import path from "path";
 
-import { omitProperties } from "@alextheman/utility";
 import z from "zod";
 
 import createRule from "src/createRule";
+import createRuleSchema from "src/utility/createRuleSchema";
 
 const useNormalizedImportsOptionsSchema = z
   .object({
@@ -17,12 +15,7 @@ export function parseUseNormalizedImportsOptionsSchema(data: unknown) {
   return useNormalizedImportsOptionsSchema.parse(data);
 }
 
-const schema = [
-  omitProperties(
-    z.toJSONSchema(useNormalizedImportsOptionsSchema),
-    "$schema",
-  ) as unknown as JSONSchema4,
-];
+const schema = createRuleSchema(useNormalizedImportsOptionsSchema);
 
 const useNormalizedImports = createRule({
   name: "use-normalized-imports",

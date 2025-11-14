@@ -1,9 +1,7 @@
-import type { JSONSchema4 } from "@typescript-eslint/utils/json-schema";
-
-import { omitProperties } from "@alextheman/utility";
 import z from "zod";
 
 import createRule from "src/createRule";
+import createRuleSchema from "src/utility/createRuleSchema";
 
 const noRelativeImportsOptionsSchema = z
   .object({
@@ -15,12 +13,7 @@ export function parseNoRelativeImportsOptions(data: unknown): NoRelativeImportsO
   return noRelativeImportsOptionsSchema.parse(data);
 }
 
-const schema = [
-  omitProperties(
-    z.toJSONSchema(noRelativeImportsOptionsSchema),
-    "$schema",
-  ) as unknown as JSONSchema4,
-];
+const schema = createRuleSchema(noRelativeImportsOptionsSchema);
 
 const noRelativeImports = createRule({
   name: "no-relative-imports",

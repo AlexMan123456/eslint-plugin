@@ -1,12 +1,11 @@
 import type { TSESTree } from "@typescript-eslint/utils";
-import type { JSONSchema4 } from "@typescript-eslint/utils/json-schema";
 import type { RuleContext } from "@typescript-eslint/utils/ts-eslint";
 
-import { omitProperties } from "@alextheman/utility";
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 import z from "zod";
 
 import createRule from "src/createRule";
+import createRuleSchema from "src/utility/createRuleSchema";
 
 const standardiseErrorMessagesOptionsSchema = z
   .object({
@@ -20,12 +19,7 @@ export function parseStandardiseErrorMessagesOptions(
   return standardiseErrorMessagesOptionsSchema.parse(data);
 }
 
-const schema = [
-  omitProperties(
-    z.toJSONSchema(standardiseErrorMessagesOptionsSchema),
-    "$schema",
-  ) as unknown as JSONSchema4,
-];
+const schema = createRuleSchema(standardiseErrorMessagesOptionsSchema);
 
 const defaultErrorRegex = "^[A-Z]+(?:_[A-Z]+)*$";
 function checkCurrentNode(

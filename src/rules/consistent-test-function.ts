@@ -1,11 +1,10 @@
 import type { TSESTree } from "@typescript-eslint/utils";
-import type { JSONSchema4 } from "@typescript-eslint/utils/json-schema";
 
-import { omitProperties } from "@alextheman/utility";
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 import z from "zod";
 
 import createRule from "src/createRule";
+import createRuleSchema from "src/utility/createRuleSchema";
 import getImportSpecifiersAfterRemoving from "src/utility/getImportSpecifiersAfterRemoving";
 
 const validTestFunctionsSchema = z.enum(["test", "it"]);
@@ -24,12 +23,7 @@ export function parseConsistentTestFunctionOptions(data: unknown): ConsistentTes
   return consistentTestFunctionOptionsSchema.parse(data);
 }
 
-const schema = [
-  omitProperties(
-    z.toJSONSchema(consistentTestFunctionOptionsSchema),
-    "$schema",
-  ) as unknown as JSONSchema4,
-];
+const schema = createRuleSchema(consistentTestFunctionOptionsSchema);
 
 const consistentTestFunction = createRule({
   name: "consistent-test-function",
