@@ -2,9 +2,9 @@ import type { Linter } from "eslint";
 
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import reactPlugin from "eslint-plugin-react";
-import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 
+import reactHooks from "src/configs/miscellaneous/reactHooks";
 import reactLanguageOptions from "src/configs/miscellaneous/reactLanguageOptions";
 
 const reactBase: Linter.Config[] = [
@@ -20,7 +20,7 @@ const reactBase: Linter.Config[] = [
       "react-refresh": reactRefresh,
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
+      ...reactHooks.configs["flat/recommended"].rules,
       "react/destructuring-assignment": ["error", "always", { destructureInSignature: "always" }],
       "react/hook-use-state": "error",
       "react/jsx-curly-brace-presence": [

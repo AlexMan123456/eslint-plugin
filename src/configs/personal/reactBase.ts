@@ -1,9 +1,9 @@
 import type { Linter } from "eslint";
 
 import reactPlugin from "eslint-plugin-react";
-import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 
+import reactHooks from "src/configs/miscellaneous/reactHooks";
 import reactLanguageOptions from "src/configs/miscellaneous/reactLanguageOptions";
 
 const personalReactBaseConfig: Linter.Config[] = [

@@ -1,9 +1,9 @@
 import type { Linter } from "eslint";
 
-import tsparser from "@typescript-eslint/parser";
+import tseslint from "typescript-eslint";
 
 const typeScriptLanguageOptions: Linter.LanguageOptions = {
-  parser: tsparser,
+  parser: tseslint.parser,
   parserOptions: {
     ecmaVersion: "latest",
     projectService: true,
