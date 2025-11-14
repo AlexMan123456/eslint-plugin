@@ -1,4 +1,19 @@
+import z from "zod";
+
 import createRule from "src/createRule";
+import createRuleSchema from "src/utility/createRuleSchema";
+
+const noRelativeImportsOptionsSchema = z
+  .object({
+    depth: z.int().nonnegative(),
+  })
+  .partial();
+export type NoRelativeImportsOptions = z.infer<typeof noRelativeImportsOptionsSchema>;
+export function parseNoRelativeImportsOptions(data: unknown): NoRelativeImportsOptions {
+  return noRelativeImportsOptionsSchema.parse(data);
+}
+
+const schema = createRuleSchema(noRelativeImportsOptionsSchema);
 
 const noRelativeImports = createRule({
   name: "no-relative-imports",
@@ -13,35 +28,16 @@ const noRelativeImports = createRule({
         "For the love of God, please do not mix relative path parts in your import statements like that! How can you possibly be ok with {{source}}?!",
     },
     type: "suggestion",
-    schema: [
-      {
-        type: "object",
-        properties: {
-          depth: {
-            type: "number",
-          },
-        },
-        additionalProperties: false,
-      },
-    ],
+    schema,
   },
   defaultOptions: [{ depth: undefined }],
   create(context) {
-    const allowedDepth = context.options[0]?.depth;
-
-    if (allowedDepth !== undefined) {
-      if (allowedDepth % 1 !== 0) {
-        throw new Error("NON_INTEGER_DEPTH_NOT_ALLOWED");
-      }
-      if (allowedDepth < 0) {
-        throw new Error("NEGATIVE_DEPTH_NOT_ALLOWED");
-      }
-    }
+    const { depth } = parseNoRelativeImportsOptions(context.options[0] ?? { depth: undefined });
 
     return {
       ImportDeclaration(node) {
         if (node.source.value.includes("./") || node.source.value.includes("../")) {
-          if (allowedDepth === undefined) {
+          if (depth === undefined) {
             return context.report({
               node,
               messageId: "strictNoRelative",
@@ -79,12 +75,12 @@ const noRelativeImports = createRule({
 
           // Depth checks
 
-          if (allowedDepth === 0 && importPathParts[0] === ".") {
+          if (depth === 0 && importPathParts[0] === ".") {
             return;
           }
 
           let endOfRelativePathFound = false;
-          for (const part of importPathParts.slice(0, allowedDepth + 1)) {
+          for (const part of importPathParts.slice(0, depth + 1)) {
             if (part !== "..") {
               endOfRelativePathFound = true;
               break;
@@ -92,7 +88,7 @@ const noRelativeImports = createRule({
           }
 
           if (!endOfRelativePathFound) {
-            if (allowedDepth === 0) {
+            if (depth === 0) {
               return context.report({
                 node,
                 messageId: "rootOnly",
@@ -106,8 +102,8 @@ const noRelativeImports = createRule({
               messageId: "exceededAllowedDepth",
               data: {
                 source: node.source.value,
-                depth: allowedDepth,
-                s: allowedDepth !== 1 ? "s" : "",
+                depth,
+                s: depth !== 1 ? "s" : "",
               },
             });
           }

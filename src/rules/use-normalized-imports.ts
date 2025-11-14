@@ -1,6 +1,21 @@
 import path from "path";
 
+import z from "zod";
+
 import createRule from "src/createRule";
+import createRuleSchema from "src/utility/createRuleSchema";
+
+const useNormalizedImportsOptionsSchema = z
+  .object({
+    fixable: z.boolean(),
+  })
+  .partial();
+export type UseNormalizedImportsOptions = z.infer<typeof useNormalizedImportsOptionsSchema>;
+export function parseUseNormalizedImportsOptionsSchema(data: unknown) {
+  return useNormalizedImportsOptionsSchema.parse(data);
+}
+
+const schema = createRuleSchema(useNormalizedImportsOptionsSchema);
 
 const useNormalizedImports = createRule({
   name: "use-normalized-imports",
@@ -14,22 +29,14 @@ const useNormalizedImports = createRule({
         "Import path {{nonNormalized}} is not normalised. Please use {{normalized}} instead.",
     },
     type: "suggestion",
-    schema: [
-      {
-        type: "object",
-        properties: {
-          fixable: {
-            type: "boolean",
-          },
-        },
-        additionalProperties: false,
-      },
-    ],
+    schema,
     fixable: "code",
   },
   defaultOptions: [{ fixable: true }],
   create(context) {
-    const isFixable = context.options[0]?.fixable ?? true;
+    const { fixable: isFixable } = parseUseNormalizedImportsOptionsSchema(
+      context.options[0] ?? { fixable: true },
+    );
     return {
       ImportDeclaration(node) {
         const normalizedPath = path.posix.normalize(node.source.value);

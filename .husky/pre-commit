@@ -8,7 +8,6 @@ fi
 
 npx alex-c-line check-lockfile-version-discrepancy
 
-npm run generate-rule-options-types
 npm run format
 npm run lint
 npm test
