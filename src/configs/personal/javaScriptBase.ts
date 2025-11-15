@@ -62,6 +62,14 @@ function createPersonalJavaScriptBaseConfig(plugin: AlexPlugin): Linter.Config[]
         "sort-vars": "error",
       },
     },
+    {
+      files: ["src/**/index.{js,jsx,ts,tsx}"],
+      rules: {
+        // Since index files generally tend to export files from the same folder, they tend to be more coupled with their location in the folder,
+        // so it feels more natural to allow only root-level relative imports from an index file.
+        "@alextheman/no-relative-imports": ["error", { depth: 0 }],
+      },
+    },
   ];
 }
 
