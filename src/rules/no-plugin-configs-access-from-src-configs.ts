@@ -10,7 +10,7 @@ const noPluginConfigAccessFromSrcConfigs = createRule({
       message:
         "Do not access `plugin.configs` from a file in `src/configs`. Please import the corresponding config creator from `src/configs` instead and pass the plugin to that instead.",
     },
-    type: "suggestion",
+    type: "problem",
     schema: [],
   },
   defaultOptions: [],
