@@ -239,5 +239,64 @@ standardRuleTester.run("consistent-test-function", rules["consistent-test-functi
         },
       ],
     },
+    {
+      code: stripIndent`
+            import { it } from "vitest";
+            it("Does a thing", () => {
+                expect(1).toBe(1);
+            });
+            `,
+      options: [
+        {
+          fixable: false,
+        },
+      ],
+      errors: [
+        {
+          messageId: "message",
+          data: {
+            source: "it",
+            preference: "test",
+          },
+        },
+        {
+          messageId: "message",
+          data: {
+            source: "it",
+            preference: "test",
+          },
+        },
+      ],
+    },
+    {
+      code: stripIndent`
+            import { test } from "vitest";
+            test("Does a thing", () => {
+                expect(1).toBe(1);
+            });
+            `,
+      options: [
+        {
+          preference: "it",
+          fixable: false,
+        },
+      ],
+      errors: [
+        {
+          messageId: "message",
+          data: {
+            source: "test",
+            preference: "it",
+          },
+        },
+        {
+          messageId: "message",
+          data: {
+            source: "test",
+            preference: "it",
+          },
+        },
+      ],
+    },
   ],
 });
