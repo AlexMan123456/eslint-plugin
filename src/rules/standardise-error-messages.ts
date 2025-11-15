@@ -4,7 +4,7 @@ import type { RuleContext } from "@typescript-eslint/utils/ts-eslint";
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 import z from "zod";
 
-import createRule from "src/createRule";
+import createRule from "src/rules/helpers/createRule";
 import createRuleSchema from "src/utility/createRuleSchema";
 
 const standardiseErrorMessagesOptionsSchema = z
