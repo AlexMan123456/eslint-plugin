@@ -1,4 +1,4 @@
-name: Update Dependencies
+name: Update Peer Dependencies
 on:
   workflow_dispatch:
   schedule:
