@@ -3,7 +3,8 @@ import type { TSESTree } from "@typescript-eslint/utils";
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 import z from "zod";
 
-import createRule from "src/createRule";
+import createRule from "src/rules/helpers/createRule";
+import fixOnCondition from "src/rules/helpers/fixOnCondition";
 import createRuleSchema from "src/utility/createRuleSchema";
 import getImportSpecifiersAfterRemoving from "src/utility/getImportSpecifiersAfterRemoving";
 
@@ -58,12 +59,9 @@ const consistentTestFunction = createRule({
               source: (node.callee as TSESTree.Identifier).name,
               preference,
             },
-            fix(fixer) {
-              if (!fixable) {
-                return null;
-              }
+            fix: fixOnCondition(fixable, (fixer) => {
               return fixer.replaceText(node.callee, "test");
-            },
+            }),
           });
         }
 
@@ -79,12 +77,9 @@ const consistentTestFunction = createRule({
               source: (node.callee as TSESTree.Identifier).name,
               preference,
             },
-            fix(fixer) {
-              if (!fixable) {
-                return null;
-              }
+            fix: fixOnCondition(fixable, (fixer) => {
               return fixer.replaceText(node.callee, "it");
-            },
+            }),
           });
         }
       },
@@ -104,10 +99,7 @@ const consistentTestFunction = createRule({
                 source: specifier.imported.name,
                 preference,
               },
-              fix(fixer) {
-                if (!fixable) {
-                  return null;
-                }
+              fix: fixOnCondition(fixable, (fixer) => {
                 const importedNames = node.specifiers.map((specifier) => {
                   return specifier.type === AST_NODE_TYPES.ImportSpecifier &&
                     specifier.imported.type === AST_NODE_TYPES.Identifier
@@ -133,7 +125,7 @@ const consistentTestFunction = createRule({
                   [specifier.imported.range[0], specifier.imported.range[1]],
                   preference,
                 );
-              },
+              }),
             });
           }
 
@@ -150,10 +142,7 @@ const consistentTestFunction = createRule({
                 source: specifier.imported.name,
                 preference,
               },
-              fix(fixer) {
-                if (!fixable) {
-                  return null;
-                }
+              fix: fixOnCondition(fixable, (fixer) => {
                 const importedNames = node.specifiers.map((specifier) => {
                   return specifier.type === AST_NODE_TYPES.ImportSpecifier &&
                     specifier.imported.type === AST_NODE_TYPES.Identifier
@@ -179,7 +168,7 @@ const consistentTestFunction = createRule({
                   [specifier.imported.range[0], specifier.imported.range[1]],
                   preference,
                 );
-              },
+              }),
             });
           }
         }

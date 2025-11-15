@@ -1,4 +1,4 @@
-import createRule from "src/createRule";
+import createRule from "src/rules/helpers/createRule";
 
 const noPluginConfigAccessFromSrcConfigs = createRule({
   name: "no-plugin-configs-access-from-src-configs",

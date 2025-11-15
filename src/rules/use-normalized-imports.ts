@@ -2,7 +2,8 @@ import path from "path";
 
 import z from "zod";
 
-import createRule from "src/createRule";
+import createRule from "src/rules/helpers/createRule";
+import fixOnCondition from "src/rules/helpers/fixOnCondition";
 import createRuleSchema from "src/utility/createRuleSchema";
 
 const useNormalizedImportsOptionsSchema = z
@@ -34,7 +35,9 @@ const useNormalizedImports = createRule({
   },
   defaultOptions: [{ fixable: true }],
   create(context) {
-    const { fixable } = parseUseNormalizedImportsOptions(context.options[0] ?? { fixable: true });
+    const { fixable = true } = parseUseNormalizedImportsOptions(
+      context.options[0] ?? { fixable: true },
+    );
     return {
       ImportDeclaration(node) {
         const normalizedPath = path.posix.normalize(node.source.value);
@@ -46,13 +49,10 @@ const useNormalizedImports = createRule({
               nonNormalized: node.source.value,
               normalized: normalizedPath,
             },
-            fix(fixer) {
-              if (!fixable) {
-                return null;
-              }
+            fix: fixOnCondition(fixable, (fixer) => {
               const [quote] = node.source.raw;
               return fixer.replaceText(node.source, `${quote}${normalizedPath}${quote}`);
-            },
+            }),
           });
         }
       },
