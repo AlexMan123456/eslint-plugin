@@ -34,9 +34,7 @@ const useNormalizedImports = createRule({
   },
   defaultOptions: [{ fixable: true }],
   create(context) {
-    const { fixable: isFixable } = parseUseNormalizedImportsOptions(
-      context.options[0] ?? { fixable: true },
-    );
+    const { fixable } = parseUseNormalizedImportsOptions(context.options[0] ?? { fixable: true });
     return {
       ImportDeclaration(node) {
         const normalizedPath = path.posix.normalize(node.source.value);
@@ -48,12 +46,13 @@ const useNormalizedImports = createRule({
               nonNormalized: node.source.value,
               normalized: normalizedPath,
             },
-            fix: isFixable
-              ? (fixer) => {
-                  const [quote] = node.source.raw;
-                  return fixer.replaceText(node.source, `${quote}${normalizedPath}${quote}`);
-                }
-              : undefined,
+            fix(fixer) {
+              if (!fixable) {
+                return null;
+              }
+              const [quote] = node.source.raw;
+              return fixer.replaceText(node.source, `${quote}${normalizedPath}${quote}`);
+            },
           });
         }
       },
