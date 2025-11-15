@@ -29,6 +29,7 @@ const personalReactBaseConfig: Linter.Config[] = [
         },
       ],
       "react-hooks/exhaustive-deps": "off",
+      "react-hooks/refs": "off",
       "react-refresh/only-export-components": "off",
       "react/jsx-boolean-value": "error",
     },
