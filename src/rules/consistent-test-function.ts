@@ -16,6 +16,7 @@ export function parseTestFunction(data: unknown): TestFunction {
 const consistentTestFunctionOptionsSchema = z
   .object({
     preference: validTestFunctionsSchema,
+    fixable: z.boolean(),
   })
   .partial();
 export type ConsistentTestFunctionOptions = z.infer<typeof consistentTestFunctionOptionsSchema>;
@@ -23,7 +24,7 @@ export function parseConsistentTestFunctionOptions(data: unknown): ConsistentTes
   return consistentTestFunctionOptionsSchema.parse(data);
 }
 
-const schema = createRuleSchema(consistentTestFunctionOptionsSchema);
+const defaultOptions = { preference: "test", fixable: true };
 
 const consistentTestFunction = createRule({
   name: "consistent-test-function",
@@ -36,13 +37,12 @@ const consistentTestFunction = createRule({
     },
     type: "suggestion",
     fixable: "code",
-    schema,
+    schema: createRuleSchema(consistentTestFunctionOptionsSchema),
   },
-  defaultOptions: [{ preference: "test" }],
+  defaultOptions: [defaultOptions],
   create(context) {
-    const { preference } = parseConsistentTestFunctionOptions(
-      context.options[0] ?? { preference: "test" },
-    );
+    const { preference = defaultOptions.preference, fixable = defaultOptions.fixable } =
+      parseConsistentTestFunctionOptions(context.options[0] ?? defaultOptions);
 
     return {
       CallExpression(node) {
@@ -59,6 +59,9 @@ const consistentTestFunction = createRule({
               preference,
             },
             fix(fixer) {
+              if (!fixable) {
+                return null;
+              }
               return fixer.replaceText(node.callee, "test");
             },
           });
@@ -77,6 +80,9 @@ const consistentTestFunction = createRule({
               preference,
             },
             fix(fixer) {
+              if (!fixable) {
+                return null;
+              }
               return fixer.replaceText(node.callee, "it");
             },
           });
@@ -99,6 +105,9 @@ const consistentTestFunction = createRule({
                 preference,
               },
               fix(fixer) {
+                if (!fixable) {
+                  return null;
+                }
                 const importedNames = node.specifiers.map((specifier) => {
                   return specifier.type === AST_NODE_TYPES.ImportSpecifier &&
                     specifier.imported.type === AST_NODE_TYPES.Identifier
@@ -142,6 +151,9 @@ const consistentTestFunction = createRule({
                 preference,
               },
               fix(fixer) {
+                if (!fixable) {
+                  return null;
+                }
                 const importedNames = node.specifiers.map((specifier) => {
                   return specifier.type === AST_NODE_TYPES.ImportSpecifier &&
                     specifier.imported.type === AST_NODE_TYPES.Identifier

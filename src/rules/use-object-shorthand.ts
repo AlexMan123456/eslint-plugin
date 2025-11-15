@@ -1,8 +1,20 @@
 import type { TSESTree } from "@typescript-eslint/utils";
 
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
+import z from "zod";
 
 import createRule from "src/createRule";
+import createRuleSchema from "src/utility/createRuleSchema";
+
+const useObjectShorthandOptionsSchema = z
+  .object({
+    fixable: z.boolean(),
+  })
+  .partial();
+export type UseObjectShorthandOptions = z.infer<typeof useObjectShorthandOptionsSchema>;
+export function parseUseObjectShorthandOptions(data: unknown): UseObjectShorthandOptions {
+  return useObjectShorthandOptionsSchema.parse(data);
+}
 
 const useObjectShorthand = createRule({
   name: "use-object-shorthand",
@@ -16,10 +28,11 @@ const useObjectShorthand = createRule({
     },
     type: "suggestion",
     fixable: "code",
-    schema: [],
+    schema: createRuleSchema(useObjectShorthandOptionsSchema),
   },
-  defaultOptions: [],
+  defaultOptions: [{ fixable: true }],
   create(context) {
+    const { fixable } = parseUseObjectShorthandOptions(context.options[0] ?? { fixable: true });
     return {
       Property(node) {
         if (
@@ -35,6 +48,9 @@ const useObjectShorthand = createRule({
               source: context.sourceCode.getText(node),
             },
             fix(fixer) {
+              if (!fixable) {
+                return null;
+              }
               const key = node.key as TSESTree.Identifier;
               return fixer.replaceTextRange([node.range[0], node.range[1]], key.name);
             },
