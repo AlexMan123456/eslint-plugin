@@ -34,7 +34,8 @@
     "prepare": "husky",
     "test": "vitest run",
     "test-watch": "vitest",
-    "update-dependencies": "bash -c 'npx npm-check-updates -u \"$@\" && npm install' --"
+    "update-dependencies": "bash -c 'npx npm-check-updates -u \"$@\" && npm install' --",
+    "update-peer-dependencies": "bash -c 'npx npm-check-updates --dep peer -u \"$@\" && npm install' --"
   },
   "dependencies": {
     "@alextheman/utility": "^2.15.1",
@@ -51,7 +52,6 @@
     "eslint-plugin-eslint-plugin": "^7.2.0",
     "globals": "^16.5.0",
     "husky": "^9.1.7",
-    "jiti": "^2.6.1",
     "prettier": "^3.6.2",
     "tsup": "^8.5.1",
     "tsx": "^4.20.6",
