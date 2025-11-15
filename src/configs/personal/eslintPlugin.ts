@@ -34,7 +34,8 @@ function createPersonalEslintPluginConfig(plugin: AlexPlugin): Linter.Config[] {
               }),
               {
                 importNames: ["default"],
-                message: 'Please import from "src/configs/helpers/reactHooks" instead.',
+                message:
+                  "Please import from \"src/configs/helpers/eslint-plugin-react-hooks\" instead so you don't have to deal with eslint-plugin-react-hooks' ridiculous plugin typing.",
                 name: "eslint-plugin-react-hooks",
               },
             ],
