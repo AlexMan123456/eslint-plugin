@@ -40,7 +40,10 @@ const useNormalizedImports = createRule({
     );
     return {
       ImportDeclaration(node) {
-        const normalizedPath = path.posix.normalize(node.source.value);
+        const normalizedPath = node.source.value.startsWith("./")
+          ? `./${path.posix.normalize(node.source.value)}`
+          : path.posix.normalize(node.source.value);
+
         if (node.source.value !== normalizedPath) {
           return context.report({
             node,
