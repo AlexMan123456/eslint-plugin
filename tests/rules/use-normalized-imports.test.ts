@@ -12,6 +12,9 @@ standardRuleTester.run("use-normalized-imports", rules["use-normalized-imports"]
     {
       code: 'import myFunction from "../utility/myFunction"',
     },
+    {
+      code: 'import myFunction from "./utility/myFunction"',
+    },
   ],
   invalid: [
     {
@@ -75,6 +78,19 @@ standardRuleTester.run("use-normalized-imports", rules["use-normalized-imports"]
           data: {
             nonNormalized: "src/./utility/myFunction",
             normalized: "src/utility/myFunction",
+          },
+        },
+      ],
+    },
+    {
+      code: 'import myFunction from ".//utility/myFunction"',
+      output: 'import myFunction from "./utility/myFunction"',
+      errors: [
+        {
+          messageId: "pathNotNormalized",
+          data: {
+            nonNormalized: ".//utility/myFunction",
+            normalized: "./utility/myFunction",
           },
         },
       ],
