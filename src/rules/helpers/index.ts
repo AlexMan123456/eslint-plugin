@@ -12,6 +12,7 @@ export type {
   TestFunction,
   ConsistentTestFunctionOptions,
 } from "src/rules/consistent-test-function";
+export type { RuleFixerFunction } from "src/rules/helpers/fixOnCondition";
 export type { NoNamespaceImportsOptions } from "src/rules/no-namespace-imports";
 export type { NoRelativeImportsOptions } from "src/rules/no-relative-imports";
 export type { StandardiseErrorMessagesOptions } from "src/rules/standardise-error-messages";
