@@ -1,10 +1,9 @@
-import path from "path";
-
 import z from "zod";
 
 import createRule from "src/rules/helpers/createRule";
 import fixOnCondition from "src/rules/helpers/fixOnCondition";
 import createRuleSchema from "src/utility/createRuleSchema";
+import normalizeImportPath from "src/utility/normalizeImportPath";
 
 const useNormalizedImportsOptionsSchema = z
   .object({
@@ -40,9 +39,7 @@ const useNormalizedImports = createRule({
     );
     return {
       ImportDeclaration(node) {
-        const normalizedPath = node.source.value.startsWith("./")
-          ? `./${path.posix.normalize(node.source.value)}`
-          : path.posix.normalize(node.source.value);
+        const normalizedPath = normalizeImportPath(node.source.value);
 
         if (node.source.value !== normalizedPath) {
           return context.report({
