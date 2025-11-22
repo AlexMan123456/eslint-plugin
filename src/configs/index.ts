@@ -2,8 +2,6 @@ import type { Linter } from "eslint";
 import type { AlexPlugin } from "src/alexPlugin";
 import type { ConfigKey } from "src/configs/AlexPluginConfigGroup";
 
-import packageJson from "eslint-plugin-package-json";
-
 import {
   combinedReactBaseConfig,
   createCombinedJavaScriptBaseConfig,
@@ -13,6 +11,7 @@ import {
   createCombinedTypeScriptReactBaseConfig,
 } from "src/configs/combined";
 import { javaScriptBase, reactBase, typeScriptBase } from "src/configs/general";
+import packageJsonConfig from "src/configs/general/packageJson";
 import {
   createPersonalEslintPluginConfig,
   createPersonalJavaScriptBaseConfig,
@@ -30,21 +29,16 @@ import createPluginConfigs from "src/utility/createPluginConfigs";
 function createAlexPluginConfigs(plugin: AlexPlugin): Record<ConfigKey, Linter.Config[]> {
   return createPluginConfigs({
     combined: {
-      javaScript: [...createCombinedJavaScriptBaseConfig(plugin), packageJson.configs.recommended],
-      javaScriptReact: [
-        ...createCombinedJavaScriptReactBaseConfig(plugin),
-        packageJson.configs.recommended,
-      ],
-      react: [...combinedReactBaseConfig, packageJson.configs.recommended],
-      tests: [...createCombinedTestsBaseConfig(plugin), packageJson.configs.recommended],
-      typeScript: [...createCombinedTypeScriptBaseConfig(plugin), packageJson.configs.recommended],
-      typeScriptReact: [
-        ...createCombinedTypeScriptReactBaseConfig(plugin),
-        packageJson.configs.recommended,
-      ],
+      javaScript: [...createCombinedJavaScriptBaseConfig(plugin), ...packageJsonConfig],
+      javaScriptReact: [...createCombinedJavaScriptReactBaseConfig(plugin), ...packageJsonConfig],
+      react: [...combinedReactBaseConfig, ...packageJsonConfig],
+      tests: [...createCombinedTestsBaseConfig(plugin), ...packageJsonConfig],
+      typeScript: [...createCombinedTypeScriptBaseConfig(plugin), ...packageJsonConfig],
+      typeScriptReact: [...createCombinedTypeScriptReactBaseConfig(plugin), ...packageJsonConfig],
     },
     general: {
       javaScript: javaScriptBase,
+      packageJson: packageJsonConfig,
       react: reactBase,
       typeScript: typeScriptBase,
     },
