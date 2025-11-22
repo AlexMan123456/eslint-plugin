@@ -1,7 +1,7 @@
 import type { Linter } from "eslint";
 import type { CamelToKebab } from "src/utility/camelToKebab";
 
-export type GeneralConfig = "javaScript" | "typeScript" | "react";
+export type GeneralConfig = "javaScript" | "typeScript" | "react" | "packageJson";
 export type PluginConfig = "base" | "tests";
 export type PersonalConfig =
   | "javaScript"
