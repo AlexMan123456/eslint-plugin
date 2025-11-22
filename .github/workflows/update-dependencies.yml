@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   update-dependencies:
+    if: ${{ github.repository == 'AlexMan123456/eslint-plugin' }}
     runs-on: ubuntu-latest
     env:
       HUSKY: 0
