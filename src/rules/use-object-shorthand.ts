@@ -5,7 +5,7 @@ import z from "zod";
 
 import createRule from "src/rules/helpers/createRule";
 import fixOnCondition from "src/rules/helpers/fixOnCondition";
-import createRuleSchema from "src/utility/createRuleSchema";
+import createRuleSchemaFromZodSchema from "src/utility/createRuleSchemaFromZodSchema";
 
 const useObjectShorthandOptionsSchema = z
   .object({
@@ -29,7 +29,7 @@ const useObjectShorthand = createRule({
     },
     type: "suggestion",
     fixable: "code",
-    schema: createRuleSchema(useObjectShorthandOptionsSchema),
+    schema: createRuleSchemaFromZodSchema(useObjectShorthandOptionsSchema),
   },
   defaultOptions: [{ fixable: true }],
   create(context) {

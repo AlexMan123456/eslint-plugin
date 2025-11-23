@@ -5,7 +5,7 @@ import z from "zod";
 
 import createRule from "src/rules/helpers/createRule";
 import fixOnCondition from "src/rules/helpers/fixOnCondition";
-import createRuleSchema from "src/utility/createRuleSchema";
+import createRuleSchemaFromZodSchema from "src/utility/createRuleSchemaFromZodSchema";
 import getImportSpecifiersAfterRemoving from "src/utility/getImportSpecifiersAfterRemoving";
 
 const validTestFunctionsSchema = z.enum(["test", "it"]);
@@ -38,7 +38,7 @@ const consistentTestFunction = createRule({
     },
     type: "suggestion",
     fixable: "code",
-    schema: createRuleSchema(consistentTestFunctionOptionsSchema),
+    schema: createRuleSchemaFromZodSchema(consistentTestFunctionOptionsSchema),
   },
   defaultOptions: [defaultOptions],
   create(context) {

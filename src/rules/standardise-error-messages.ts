@@ -5,7 +5,7 @@ import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 import z from "zod";
 
 import createRule from "src/rules/helpers/createRule";
-import createRuleSchema from "src/utility/createRuleSchema";
+import createRuleSchemaFromZodSchema from "src/utility/createRuleSchemaFromZodSchema";
 
 const standardiseErrorMessagesOptionsSchema = z
   .object({
@@ -19,7 +19,7 @@ export function parseStandardiseErrorMessagesOptions(
   return standardiseErrorMessagesOptionsSchema.parse(data);
 }
 
-const schema = createRuleSchema(standardiseErrorMessagesOptionsSchema);
+const schema = createRuleSchemaFromZodSchema(standardiseErrorMessagesOptionsSchema);
 
 const defaultErrorRegex = "^[A-Z]+(?:_[A-Z]+)*$";
 function checkCurrentNode(

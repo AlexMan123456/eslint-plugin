@@ -3,7 +3,7 @@ import z from "zod";
 
 import createRule from "src/rules/helpers/createRule";
 import fixOnCondition from "src/rules/helpers/fixOnCondition";
-import createRuleSchema from "src/utility/createRuleSchema";
+import createRuleSchemaFromZodSchema from "src/utility/createRuleSchemaFromZodSchema";
 
 const useNormalizedImportsOptionsSchema = z
   .object({
@@ -15,7 +15,7 @@ export function parseUseNormalizedImportsOptions(data: unknown) {
   return useNormalizedImportsOptionsSchema.parse(data);
 }
 
-const schema = createRuleSchema(useNormalizedImportsOptionsSchema);
+const schema = createRuleSchemaFromZodSchema(useNormalizedImportsOptionsSchema);
 
 const useNormalizedImports = createRule({
   name: "use-normalized-imports",

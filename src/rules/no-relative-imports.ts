@@ -1,7 +1,7 @@
 import z from "zod";
 
 import createRule from "src/rules/helpers/createRule";
-import createRuleSchema from "src/utility/createRuleSchema";
+import createRuleSchemaFromZodSchema from "src/utility/createRuleSchemaFromZodSchema";
 
 const noRelativeImportsOptionsSchema = z
   .object({
@@ -13,7 +13,7 @@ export function parseNoRelativeImportsOptions(data: unknown): NoRelativeImportsO
   return noRelativeImportsOptionsSchema.parse(data);
 }
 
-const schema = createRuleSchema(noRelativeImportsOptionsSchema);
+const schema = createRuleSchemaFromZodSchema(noRelativeImportsOptionsSchema);
 
 const noRelativeImports = createRule({
   name: "no-relative-imports",

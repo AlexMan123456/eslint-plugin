@@ -1,7 +1,7 @@
 import z from "zod";
 
 import createRule from "src/rules/helpers/createRule";
-import createRuleSchema from "src/utility/createRuleSchema";
+import createRuleSchemaFromZodSchema from "src/utility/createRuleSchemaFromZodSchema";
 
 const noNamespaceImportsOptionsSchema = z
   .object({
@@ -13,7 +13,7 @@ export function parseNoNamespaceImportsOptions(data: unknown): NoNamespaceImport
   return noNamespaceImportsOptionsSchema.parse(data);
 }
 
-const schema = createRuleSchema(noNamespaceImportsOptionsSchema);
+const schema = createRuleSchemaFromZodSchema(noNamespaceImportsOptionsSchema);
 
 const noNamespaceImports = createRule({
   name: "no-namespace-imports",
