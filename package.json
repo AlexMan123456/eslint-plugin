@@ -1,6 +1,6 @@
 {
   "name": "@alextheman/eslint-plugin",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A package to provide custom ESLint rules and configs",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
     "update-peer-dependencies": "bash -c 'npx npm-check-updates --dep peer -u \"$@\" && npm install' --"
   },
   "dependencies": {
-    "@alextheman/utility": "^2.19.0",
+    "@alextheman/utility": "^2.20.0",
     "@typescript-eslint/utils": "^8.47.0",
     "common-tags": "^1.8.2",
     "zod": "^4.1.12"
