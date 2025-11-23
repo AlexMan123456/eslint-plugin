@@ -1,9 +1,9 @@
+import { normalizeImportPath } from "@alextheman/utility";
 import z from "zod";
 
 import createRule from "src/rules/helpers/createRule";
 import fixOnCondition from "src/rules/helpers/fixOnCondition";
 import createRuleSchema from "src/utility/createRuleSchema";
-import normalizeImportPath from "src/utility/normalizeImportPath";
 
 const useNormalizedImportsOptionsSchema = z
   .object({
@@ -22,7 +22,7 @@ const useNormalizedImports = createRule({
   meta: {
     docs: {
       description:
-        "Enforce the usage of normalised imports (i.e. import paths that you would only get from path.posix.normalize())",
+        "Enforce the usage of normalized imports (i.e. import paths that you would only get from path.posix.normalize())",
     },
     messages: {
       pathNotNormalized:
