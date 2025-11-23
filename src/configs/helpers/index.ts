@@ -3,3 +3,4 @@ export { default as reactLanguageOptions } from "src/configs/helpers/reactLangua
 export { default as sortObjects } from "src/configs/helpers/sortObjects";
 export { default as typeScriptLanguageOptions } from "src/configs/helpers/typeScriptLanguageOptions";
 export { default as unusedVarsIgnorePatterns } from "src/configs/helpers/unusedVarsIgnorePatterns";
+export { default as vitestConfig } from "src/configs/helpers/vitestConfig";
