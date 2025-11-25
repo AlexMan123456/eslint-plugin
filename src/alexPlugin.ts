@@ -1,4 +1,4 @@
-import { name, version } from "package.json";
+import { name, version } from "package.json" with { type: "json" };
 
 import createAlexPluginConfigs from "src/configs";
 import rules from "src/rules";

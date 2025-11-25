@@ -1,5 +1,5 @@
-import { defineConfig } from "tsup";
-import packageInfo from "./package.json";
+import { defineConfig } from "tsdown";
+import packageInfo from "./package.json" with { type: "json" };
 
 export default defineConfig({
   entry: ["src/index.ts"],
@@ -7,4 +7,5 @@ export default defineConfig({
   dts: true,
   clean: true,
   external: [...Object.keys(packageInfo.peerDependencies), "@typescript-eslint/utils"],
+  fixedExtension: false,
 });
