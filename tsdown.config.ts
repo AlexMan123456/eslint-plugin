@@ -1,5 +1,5 @@
 import { defineConfig } from "tsdown";
-import packageInfo from "./package.json";
+import packageInfo from "./package.json" with { type: "json" };
 
 export default defineConfig({
   entry: ["src/index.ts"],
