@@ -37,10 +37,12 @@
     "test": "vitest run",
     "test-watch": "vitest",
     "update-dependencies": "bash -c 'npx npm-check-updates -u \"$@\" && npm install' --",
-    "update-peer-dependencies": "bash -c 'npx npm-check-updates --dep peer -u \"$@\" && npm install' --"
+    "update-peer-dependencies": "bash -c 'npx npm-check-updates --dep peer -u \"$@\" && npm install' --",
+    "use-live-utility": "npm uninstall @alextheman/utility && npm install @alextheman/utility",
+    "use-local-utility": "dotenv -e .env -- sh -c 'UTILITY_PATH=${LOCAL_UTILITY_PATH:-../utility}; npm --prefix \"$UTILITY_PATH\" run create-local-package && npm uninstall @alextheman/eslint-plugin && npm install \"$UTILITY_PATH\"/alextheman-utility-*.tgz'"
   },
   "dependencies": {
-    "@alextheman/utility": "^2.20.0",
+    "@alextheman/utility": "^2.21.0",
     "@typescript-eslint/utils": "^8.47.0",
     "common-tags": "^1.8.2",
     "zod": "^4.1.12"
@@ -51,6 +53,7 @@
     "@types/eslint-plugin-jsx-a11y": "^6.10.1",
     "@types/node": "^24.10.1",
     "@typescript-eslint/rule-tester": "^8.47.0",
+    "dotenv-cli": "^11.0.0",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
