@@ -15,7 +15,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup && tsx src/utility/hashConfigChanges.ts",
+    "build": "tsdown && tsx src/utility/hashConfigChanges.ts",
     "change-major": "npm version major -m \"Change version number to v%s\"",
     "change-minor": "npm version minor -m \"Change version number to v%s\"",
     "change-patch": "npm version patch -m \"Change version number to v%s\"",
@@ -69,7 +69,7 @@
     "husky": "^9.1.7",
     "jsdom": "^27.2.0",
     "prettier": "^3.6.2",
-    "tsup": "^8.5.1",
+    "tsdown": "^0.16.6",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.47.0",
