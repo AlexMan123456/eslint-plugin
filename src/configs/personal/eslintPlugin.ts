@@ -3,7 +3,7 @@ import type { AlexPlugin } from "src/index";
 
 import perfectionist from "eslint-plugin-perfectionist";
 
-import sortObjects from "src/configs/helpers/sortObjects";
+import sortObjects from "src/configs/helpers/sorting/sortObjects";
 
 function createPersonalEslintPluginConfig(plugin: AlexPlugin): Linter.Config[] {
   return [

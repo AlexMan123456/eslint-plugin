@@ -2,7 +2,7 @@ import type { Linter } from "eslint";
 
 import perfectionist from "eslint-plugin-perfectionist";
 
-import sortObjects from "src/configs/helpers/sortObjects";
+import sortObjects from "src/configs/helpers/sorting/sortObjects";
 
 const alexCLineConfig: Linter.Config[] = [
   {
