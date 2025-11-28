@@ -1,6 +1,6 @@
 {
   "name": "@alextheman/eslint-plugin",
-  "version": "4.2.2",
+  "version": "4.2.3",
   "description": "A package to provide custom ESLint rules and configs",
   "repository": {
     "type": "git",
