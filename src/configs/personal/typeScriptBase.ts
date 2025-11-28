@@ -5,7 +5,7 @@ import tseslint from "typescript-eslint";
 
 import typeScriptLanguageOptions from "src/configs/helpers/typeScriptLanguageOptions";
 
-function createPersonalTypeScriptBaseConfig(plugin: AlexPlugin): Linter.Config[] {
+function createPersonalTypeScriptBaseConfig(plugin: Readonly<AlexPlugin>): Linter.Config[] {
   return [
     {
       files: ["**/*.ts", "**/*.tsx"],

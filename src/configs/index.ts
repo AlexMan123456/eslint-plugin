@@ -26,7 +26,7 @@ import alexCLineConfig from "src/configs/personal/alexCLine";
 import { createPluginBaseConfig, createPluginTestsBaseConfig } from "src/configs/plugin";
 import createPluginConfigs from "src/utility/createPluginConfigs";
 
-function createAlexPluginConfigs(plugin: AlexPlugin): Record<ConfigKey, Linter.Config[]> {
+function createAlexPluginConfigs(plugin: Readonly<AlexPlugin>): Record<ConfigKey, Linter.Config[]> {
   return createPluginConfigs({
     combined: {
       javaScript: [...createCombinedJavaScriptBaseConfig(plugin), ...packageJsonConfig],

@@ -1,3 +1,4 @@
+import { deepFreeze } from "@alextheman/utility";
 import { name, version } from "package.json" with { type: "json" };
 
 import createAlexPluginConfigs from "src/configs";
@@ -23,6 +24,6 @@ const alexPlugin: AlexPlugin = {
   rules,
 };
 
-alexPlugin.configs = createAlexPluginConfigs(alexPlugin);
+alexPlugin.configs = createAlexPluginConfigs(deepFreeze({ ...alexPlugin }));
 
 export default alexPlugin;

@@ -1,7 +1,7 @@
 import type { Linter } from "eslint";
 import type { AlexPlugin, ConsistentTestFunctionOptions } from "src/index";
 
-function createPluginTestsBaseConfig(plugin: AlexPlugin): Linter.Config[] {
+function createPluginTestsBaseConfig(plugin: Readonly<AlexPlugin>): Linter.Config[] {
   return [
     {
       files: ["**/*.test.ts"],

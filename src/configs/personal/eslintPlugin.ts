@@ -5,7 +5,7 @@ import perfectionist from "eslint-plugin-perfectionist";
 
 import sortObjects from "src/configs/helpers/sorting/sortObjects";
 
-function createPersonalEslintPluginConfig(plugin: AlexPlugin): Linter.Config[] {
+function createPersonalEslintPluginConfig(plugin: Readonly<AlexPlugin>): Linter.Config[] {
   return [
     {
       name: "@alextheman/personal/eslint-plugin",
