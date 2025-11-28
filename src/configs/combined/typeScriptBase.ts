@@ -5,7 +5,7 @@ import createCombinedJavaScriptBaseConfig from "src/configs/combined/javaScriptB
 import { typeScriptBase } from "src/configs/general";
 import { createPersonalTypeScriptBaseConfig } from "src/configs/personal";
 
-function createCombinedTypeScriptBaseConfig(plugin: AlexPlugin): Linter.Config[] {
+function createCombinedTypeScriptBaseConfig(plugin: Readonly<AlexPlugin>): Linter.Config[] {
   return [
     { name: "@alextheman/combined/typescript" },
     ...createCombinedJavaScriptBaseConfig(plugin),
