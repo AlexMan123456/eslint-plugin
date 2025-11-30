@@ -1,8 +1,6 @@
 import { standardRuleTester } from "tests/rule-testers";
 
-import alexPlugin from "src/index";
-
-const { rules } = alexPlugin;
+import rules from "src/rules";
 
 standardRuleTester.run("standardise-error-messages", rules["standardise-error-messages"], {
   valid: [

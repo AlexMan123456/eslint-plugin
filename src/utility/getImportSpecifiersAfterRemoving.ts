@@ -1,17 +1,9 @@
 import type { TSESTree } from "@typescript-eslint/utils";
 import type { RuleContext } from "@typescript-eslint/utils/ts-eslint";
+import type { ConsistentTestFunctionOptions } from "src/rules/consistent-test-function";
 
 function getImportSpecifiersAfterRemoving(
-  context: Readonly<
-    RuleContext<
-      "message",
-      [
-        {
-          preference: string;
-        },
-      ]
-    >
-  >,
+  context: Readonly<RuleContext<"message", [ConsistentTestFunctionOptions]>>,
   specifiers: TSESTree.ImportClause[],
   importToRemove: string,
 ) {
