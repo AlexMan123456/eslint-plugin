@@ -1,9 +1,7 @@
 import { stripIndent } from "common-tags";
 import { standardRuleTester } from "tests/rule-testers";
 
-import alexPlugin from "src/index";
-
-const { rules } = alexPlugin;
+import rules from "src/rules";
 
 standardRuleTester.run("no-isolated-tests", rules["no-isolated-tests"], {
   valid: [

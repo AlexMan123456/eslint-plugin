@@ -15,11 +15,6 @@ function createPersonalEslintPluginConfig(plugin: Readonly<AlexPlugin>): Linter.
       },
       rules: {
         "@alextheman/no-plugin-configs-access-from-src-configs": "error",
-      },
-    },
-    {
-      files: ["src/configs/**"],
-      rules: {
         "no-restricted-imports": [
           "error",
           {

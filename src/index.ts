@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-imports */
 import alexPlugin from "src/alexPlugin";
 
 export * from "src/configs/helpers";

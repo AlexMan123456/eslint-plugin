@@ -25,7 +25,7 @@ export function parseConsistentTestFunctionOptions(data: unknown): ConsistentTes
   return consistentTestFunctionOptionsSchema.parse(data);
 }
 
-const defaultOptions = { preference: "test", fixable: true };
+const defaultOptions: ConsistentTestFunctionOptions = { preference: "test", fixable: true };
 
 const consistentTestFunction = createRule({
   name: "consistent-test-function",
@@ -42,8 +42,9 @@ const consistentTestFunction = createRule({
   },
   defaultOptions: [defaultOptions],
   create(context) {
-    const { preference = defaultOptions.preference, fixable = defaultOptions.fixable } =
-      parseConsistentTestFunctionOptions(context.options[0] ?? defaultOptions);
+    const { preference = "test", fixable = true } = parseConsistentTestFunctionOptions(
+      context.options[0] ?? {},
+    );
 
     return {
       CallExpression(node) {

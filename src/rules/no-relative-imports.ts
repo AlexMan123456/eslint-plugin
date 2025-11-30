@@ -30,9 +30,9 @@ const noRelativeImports = createRule({
     type: "suggestion",
     schema,
   },
-  defaultOptions: [{ depth: undefined }],
+  defaultOptions: [{ depth: 0 }],
   create(context) {
-    const { depth } = parseNoRelativeImportsOptions(context.options[0] ?? { depth: undefined });
+    const { depth = undefined } = parseNoRelativeImportsOptions(context.options[0] ?? {});
 
     return {
       ImportDeclaration(node) {
