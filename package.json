@@ -42,7 +42,7 @@
     "use-local-utility": "dotenv -e .env -- sh -c 'UTILITY_PATH=${LOCAL_UTILITY_PATH:-../utility}; npm --prefix \"$UTILITY_PATH\" run create-local-package && npm uninstall @alextheman/eslint-plugin && npm install \"$UTILITY_PATH\"/alextheman-utility-*.tgz'"
   },
   "dependencies": {
-    "@alextheman/utility": "^3.3.2",
+    "@alextheman/utility": "^3.4.0",
     "@typescript-eslint/utils": "^8.48.0",
     "common-tags": "^1.8.2",
     "zod": "^4.1.13"
