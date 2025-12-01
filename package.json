@@ -40,7 +40,7 @@
     "use-local-utility": "dotenv -e .env -- sh -c 'UTILITY_PATH=${LOCAL_UTILITY_PATH:-../utility}; pnpm --dir \"$UTILITY_PATH\" run create-local-package && pnpm uninstall @alextheman/utility && pnpm install \"$UTILITY_PATH\"/alextheman-utility-*.tgz'"
   },
   "dependencies": {
-    "@alextheman/utility": "^3.4.0",
+    "@alextheman/utility": "^3.4.1",
     "@typescript-eslint/utils": "^8.48.0",
     "common-tags": "^1.8.2",
     "zod": "^4.1.13"
@@ -68,9 +68,9 @@
     "globals": "^16.5.0",
     "husky": "^9.1.7",
     "jsdom": "^27.2.0",
-    "prettier": "^3.7.2",
+    "prettier": "^3.7.3",
     "tsdown": "^0.16.8",
-    "tsx": "^4.20.6",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.48.0",
     "vite-tsconfig-paths": "^5.1.4",
