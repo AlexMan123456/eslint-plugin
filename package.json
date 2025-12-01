@@ -16,30 +16,28 @@
   ],
   "scripts": {
     "build": "tsdown && tsx src/utility/hashConfigChanges.ts",
-    "change-major": "npm version major -m \"Change version number to v%s\"",
-    "change-minor": "npm version minor -m \"Change version number to v%s\"",
-    "change-patch": "npm version patch -m \"Change version number to v%s\"",
-    "create-local-package": "npm run build && rm -f alextheman-eslint-plugin-*.tgz && npm pack",
-    "format": "npm run format-prettier && npm run format-eslint",
-    "format-and-build": "tsx src/utility/checkConfigChanges.ts || npm run build && npm run format",
+    "change-major": "pnpm version major -m \"Change version number to v%s\"",
+    "change-minor": "pnpm version minor -m \"Change version number to v%s\"",
+    "change-patch": "pnpm version patch -m \"Change version number to v%s\"",
+    "create-local-package": "pnpm run build && rm -f alextheman-eslint-plugin-*.tgz && pnpm pack",
+    "format": "pnpm run format-prettier && pnpm run format-eslint",
+    "format-and-build": "tsx src/utility/checkConfigChanges.ts || pnpm run build && pnpm run format",
     "format-eslint": "eslint --fix --suppress-all \"src/**/*.ts\" \"tests/**/*.ts\" \"package.json\" && rm -f eslint-suppressions.json",
-    "format-prettier": "npm run format-prettier-typescript && npm run format-prettier-javascript",
+    "format-prettier": "pnpm run format-prettier-typescript && pnpm run format-prettier-javascript",
     "format-prettier-javascript": "prettier --write \"./**/*.js\"",
     "format-prettier-typescript": "prettier --write --parser typescript \"./**/*.ts\"",
-    "lint": "npm run lint-tsc && npm run lint-eslint && npm run lint-prettier",
-    "lint-and-build": "tsx src/utility/checkConfigChanges.ts || npm run build && npm run lint",
+    "lint": "pnpm run lint-tsc && pnpm run lint-eslint && pnpm run lint-prettier",
+    "lint-and-build": "tsx src/utility/checkConfigChanges.ts || pnpm run build && pnpm run lint",
     "lint-eslint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\" \"package.json\"",
-    "lint-prettier": "npm run lint-prettier-typescript && npm run lint-prettier-javascript",
+    "lint-prettier": "pnpm run lint-prettier-typescript && pnpm run lint-prettier-javascript",
     "lint-prettier-javascript": "prettier --check \"./**/*.js\"",
     "lint-prettier-typescript": "prettier --check --parser typescript \"./**/*.ts\"",
     "lint-tsc": "tsc --noEmit",
     "prepare": "husky",
     "test": "vitest run",
     "test-watch": "vitest",
-    "update-dependencies": "bash -c 'npx npm-check-updates -u \"$@\" && npm install' --",
-    "update-peer-dependencies": "bash -c 'npx npm-check-updates --dep peer -u \"$@\" && npm install' --",
-    "use-live-utility": "npm uninstall @alextheman/utility && npm install @alextheman/utility",
-    "use-local-utility": "dotenv -e .env -- sh -c 'UTILITY_PATH=${LOCAL_UTILITY_PATH:-../utility}; npm --prefix \"$UTILITY_PATH\" run create-local-package && npm uninstall @alextheman/eslint-plugin && npm install \"$UTILITY_PATH\"/alextheman-utility-*.tgz'"
+    "use-live-utility": "pnpm uninstall @alextheman/utility && pnpm install @alextheman/utility",
+    "use-local-utility": "dotenv -e .env -- sh -c 'UTILITY_PATH=${LOCAL_UTILITY_PATH:-../utility}; pnpm --dir \"$UTILITY_PATH\" run create-local-package && pnpm uninstall @alextheman/utility && pnpm install \"$UTILITY_PATH\"/alextheman-utility-*.tgz'"
   },
   "dependencies": {
     "@alextheman/utility": "^3.4.0",
@@ -48,6 +46,7 @@
     "zod": "^4.1.13"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
     "@types/common-tags": "^1.8.4",
     "@types/eslint": "^9.6.1",
     "@types/eslint-plugin-jsx-a11y": "^6.10.1",
@@ -78,6 +77,7 @@
     "vitest": "^4.0.14"
   },
   "peerDependencies": {
+    "@eslint/js": ">=9.0.0",
     "eslint": ">=9.0.0",
     "eslint-config-prettier": ">=10.0.0",
     "eslint-import-resolver-typescript": ">=4.0.0",
@@ -92,5 +92,6 @@
     "typescript-eslint": ">=8.0.0",
     "vite-tsconfig-paths": ">=5.1.4",
     "vitest": ">=4.0.13"
-  }
+  },
+  "packageManager": "pnpm@10.24.0+sha512.01ff8ae71b4419903b65c60fb2dc9d34cf8bb6e06d03bde112ef38f7a34d6904c424ba66bea5cdcf12890230bf39f9580473140ed9c946fef328b6e5238a345a"
 }
