@@ -36,6 +36,7 @@
     "prepare": "husky",
     "test": "vitest run",
     "test-watch": "vitest",
+    "update-dependencies": "bash -c 'pnpm update --latest $@ !tsdown' --",
     "use-live-utility": "pnpm uninstall @alextheman/utility && pnpm install @alextheman/utility",
     "use-local-utility": "dotenv -e .env -- sh -c 'UTILITY_PATH=${LOCAL_UTILITY_PATH:-../utility}; pnpm --dir \"$UTILITY_PATH\" run create-local-package && pnpm uninstall @alextheman/utility && pnpm install \"$UTILITY_PATH\"/alextheman-utility-*.tgz'"
   },
