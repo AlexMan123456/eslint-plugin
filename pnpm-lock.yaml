@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  tsdown: <0.17
+
 importers:
 
   .:
@@ -91,7 +94,7 @@ importers:
         specifier: ^3.7.3
         version: 3.7.3
       tsdown:
-        specifier: ^0.16.8
+        specifier: <0.17
         version: 0.16.8(synckit@0.11.11)(typescript@5.9.3)
       tsx:
         specifier: ^4.21.0
