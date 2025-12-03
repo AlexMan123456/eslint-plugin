@@ -43,8 +43,8 @@ jobs:
 
     - name: Update JavaScript dependencies
       run: |
-        pnpm update --latest
-        pnpm update
+        pnpm run update-dependencies
+        pnpm install --no-frozen-lockfile
 
     - name: Update GitHub Actions
       run: pnpx actions-up -y
