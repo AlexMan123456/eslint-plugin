@@ -38,9 +38,6 @@ jobs:
         corepack enable
         corepack prepare pnpm@latest --activate
 
-    - name: Install dependencies
-      run: pnpm install
-
     - name: Update JavaScript dependencies
       run: |
         pnpm run update-dependencies
