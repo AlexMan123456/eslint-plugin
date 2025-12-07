@@ -3,6 +3,7 @@ import type { AlexPlugin } from "src/index";
 
 import perfectionist from "eslint-plugin-perfectionist";
 
+import eslintPluginRestrictedImports from "src/configs/helpers/restrictedImports/eslintPluginRestrictedImports";
 import sortObjects from "src/configs/helpers/sorting/sortObjects";
 
 function createPersonalEslintPluginConfig(plugin: Readonly<AlexPlugin>): Linter.Config[] {
@@ -15,27 +16,7 @@ function createPersonalEslintPluginConfig(plugin: Readonly<AlexPlugin>): Linter.
       },
       rules: {
         "@alextheman/no-plugin-configs-access-from-src-configs": "error",
-        "no-restricted-imports": [
-          "error",
-          {
-            paths: [
-              ...["src/alexPlugin", "src/index", "src"].map((name) => {
-                return {
-                  importNames: ["default"],
-                  message:
-                    "Do not import the plugin directly from the config files. Please create a function that takes in the plugin and returns the config instead.",
-                  name,
-                };
-              }),
-              {
-                importNames: ["default"],
-                message:
-                  "Please import from \"src/configs/helpers/eslint-plugin-react-hooks\" instead so you don't have to deal with eslint-plugin-react-hooks' ridiculous plugin typing.",
-                name: "eslint-plugin-react-hooks",
-              },
-            ],
-          },
-        ],
+        "no-restricted-imports": ["error", eslintPluginRestrictedImports],
       },
     },
     {

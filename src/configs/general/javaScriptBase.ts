@@ -5,6 +5,7 @@ import prettierConfig from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
 
 import javaScriptLanguageOptions from "src/configs/helpers/javaScriptLanguageOptions";
+import generalRestrictedImports from "src/configs/helpers/restrictedImports/generalRestrictedImports";
 import unusedVarsIgnorePatterns from "src/configs/helpers/unusedVarsIgnorePatterns";
 
 const javaScriptBase: Linter.Config[] = [
@@ -27,17 +28,7 @@ const javaScriptBase: Linter.Config[] = [
       "no-lonely-if": "error",
       "no-new-wrappers": "error",
       "no-param-reassign": "error",
-      "no-restricted-imports": [
-        "error",
-        {
-          patterns: [
-            {
-              group: ["node_modules"],
-              message: "What on Earth are you doing? Leave poor node_modules alone!",
-            },
-          ],
-        },
-      ],
+      "no-restricted-imports": ["error", generalRestrictedImports],
       "no-undef": "error",
       "no-unused-vars": ["error", unusedVarsIgnorePatterns],
       "no-useless-rename": "error",
