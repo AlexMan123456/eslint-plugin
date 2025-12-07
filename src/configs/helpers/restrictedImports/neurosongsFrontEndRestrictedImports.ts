@@ -17,7 +17,7 @@ const neurosongsFrontEndRestrictedImports = {
     }),
   ],
   patterns: [
-    ...reactRestrictedImports.patterns,
+    ...(reactRestrictedImports.patterns ?? []),
     {
       group: ["@neurosongs/prisma-client"],
       message:

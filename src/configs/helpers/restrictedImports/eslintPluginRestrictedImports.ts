@@ -1,6 +1,8 @@
+import type { NoRestrictedImportsOptions } from "src/configs/helpers/restrictedImports/NoRestrictedImportsOptions";
+
 import generalRestrictedImports from "src/configs/helpers/restrictedImports/generalRestrictedImports";
 
-const eslintPluginRestrictedImports = {
+const eslintPluginRestrictedImports: NoRestrictedImportsOptions = {
   paths: [
     ...["src/alexPlugin", "src/index", "src"].map((name) => {
       return {

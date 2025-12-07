@@ -1,6 +1,8 @@
+import type { NoRestrictedImportsOptions } from "src/configs/helpers/restrictedImports/NoRestrictedImportsOptions";
+
 import generalRestrictedImports from "src/configs/helpers/restrictedImports/generalRestrictedImports";
 
-const testsRestrictedImports = {
+const testsRestrictedImports: NoRestrictedImportsOptions = {
   paths: [
     {
       message: "Use test functions from vitest instead.",

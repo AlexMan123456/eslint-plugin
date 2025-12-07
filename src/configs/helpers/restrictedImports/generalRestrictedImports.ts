@@ -1,4 +1,6 @@
-const generalRestrictedImports = {
+import type { NoRestrictedImportsOptions } from "src/configs/helpers/restrictedImports/NoRestrictedImportsOptions";
+
+const generalRestrictedImports: NoRestrictedImportsOptions = {
   patterns: [
     {
       group: ["node_modules"],

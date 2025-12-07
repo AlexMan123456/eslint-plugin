@@ -1,6 +1,8 @@
+import type { NoRestrictedImportsOptions } from "src/configs/helpers/restrictedImports/NoRestrictedImportsOptions";
+
 import generalRestrictedImports from "src/configs/helpers/restrictedImports/generalRestrictedImports";
 
-const neurosongsBackEndRestrictedImports = {
+const neurosongsBackEndRestrictedImports: NoRestrictedImportsOptions = {
   paths: [
     {
       importNames: ["setPrismaClient"],
