@@ -2,7 +2,7 @@ import type { Linter } from "eslint";
 
 import neurosongsFrontEndRestrictedImports from "src/configs/helpers/restrictedImports/neurosongsFrontEndRestrictedImports";
 
-const neurosongsFrontEndConfig: Linter.Config[] = [
+const personalNeurosongsFrontEnd: Linter.Config[] = [
   {
     name: "@alextheman/personal/neurosongs-front-end",
     rules: {
@@ -11,4 +11,4 @@ const neurosongsFrontEndConfig: Linter.Config[] = [
   },
 ];
 
-export default neurosongsFrontEndConfig;
+export default personalNeurosongsFrontEnd;

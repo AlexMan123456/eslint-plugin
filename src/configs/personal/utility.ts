@@ -2,7 +2,7 @@ import type { Linter } from "eslint";
 
 import tseslint from "typescript-eslint";
 
-const utilityConfig: Linter.Config[] = [
+const personalUtility: Linter.Config[] = [
   {
     name: "@alextheman/personal/utility",
     plugins: {
@@ -14,4 +14,4 @@ const utilityConfig: Linter.Config[] = [
   },
 ];
 
-export default utilityConfig;
+export default personalUtility;

@@ -8,7 +8,7 @@ import javaScriptLanguageOptions from "src/configs/helpers/javaScriptLanguageOpt
 import prettierRules from "src/configs/helpers/prettierRules";
 import { type AlexPlugin } from "src/index";
 
-function createPersonalJavaScriptBaseConfig(plugin: Readonly<AlexPlugin>): Linter.Config[] {
+function personalJavaScript(plugin: Readonly<AlexPlugin>): Linter.Config[] {
   return [
     {
       files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
@@ -47,4 +47,4 @@ function createPersonalJavaScriptBaseConfig(plugin: Readonly<AlexPlugin>): Linte
   ];
 }
 
-export default createPersonalJavaScriptBaseConfig;
+export default personalJavaScript;

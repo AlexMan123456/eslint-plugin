@@ -4,7 +4,7 @@ import globals from "globals";
 
 import testsRestrictedImports from "src/configs/helpers/restrictedImports/testsRestrictedImports";
 
-const personalTestsBaseConfig: Linter.Config[] = [
+const personalTests: Linter.Config[] = [
   {
     files: ["**/*.test.{js,ts}"],
     languageOptions: {
@@ -37,4 +37,4 @@ const personalTestsBaseConfig: Linter.Config[] = [
   },
 ];
 
-export default personalTestsBaseConfig;
+export default personalTests;

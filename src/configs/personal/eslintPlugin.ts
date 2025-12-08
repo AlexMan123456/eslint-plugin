@@ -6,7 +6,7 @@ import perfectionist from "eslint-plugin-perfectionist";
 import eslintPluginRestrictedImports from "src/configs/helpers/restrictedImports/eslintPluginRestrictedImports";
 import sortObjects from "src/configs/helpers/sorting/sortObjects";
 
-function createPersonalEslintPluginConfig(plugin: Readonly<AlexPlugin>): Linter.Config[] {
+function personalEslintPlugin(plugin: Readonly<AlexPlugin>): Linter.Config[] {
   return [
     {
       name: "@alextheman/personal/eslint-plugin",
@@ -28,4 +28,4 @@ function createPersonalEslintPluginConfig(plugin: Readonly<AlexPlugin>): Linter.
   ];
 }
 
-export default createPersonalEslintPluginConfig;
+export default personalEslintPlugin;

@@ -7,7 +7,7 @@ import reactHooks from "src/configs/helpers/eslint-plugin-react-hooks";
 import reactLanguageOptions from "src/configs/helpers/reactLanguageOptions";
 import reactRestrictedImports from "src/configs/helpers/restrictedImports/reactRestrictedImports";
 
-const personalReactBaseConfig: Linter.Config[] = [
+const personalReact: Linter.Config[] = [
   {
     languageOptions: reactLanguageOptions,
     name: "@alextheman/personal/react",
@@ -26,4 +26,4 @@ const personalReactBaseConfig: Linter.Config[] = [
   },
 ];
 
-export default personalReactBaseConfig;
+export default personalReact;

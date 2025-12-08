@@ -1,8 +1,9 @@
-export { default as createPersonalEslintPluginConfig } from "src/configs/personal/eslintPlugin";
-export { default as createPersonalJavaScriptBaseConfig } from "src/configs/personal/javaScriptBase";
-export { default as neurosongsBackEndConfig } from "src/configs/personal/neurosongsBackEnd";
-export { default as neurosongsFrontEndConfig } from "src/configs/personal/neurosongsFrontEnd";
-export { default as personalReactBaseConfig } from "src/configs/personal/reactBase";
-export { default as personalTestsBaseConfig } from "src/configs/personal/testsBase";
-export { default as createPersonalTypeScriptBaseConfig } from "src/configs/personal/typeScriptBase";
-export { default as utilityConfig } from "src/configs/personal/utility";
+export { default as personalAlexCLine } from "src/configs/personal/alexCLine";
+export { default as personalEslintPlugin } from "src/configs/personal/eslintPlugin";
+export { default as personalJavaScript } from "src/configs/personal/javaScriptBase";
+export { default as personalNeurosongsBackEnd } from "src/configs/personal/neurosongsBackEnd";
+export { default as personalNeurosongsFrontEnd } from "src/configs/personal/neurosongsFrontEnd";
+export { default as personalReact } from "src/configs/personal/react";
+export { default as personalTests } from "src/configs/personal/tests";
+export { default as personalTypeScript } from "src/configs/personal/typeScript";
+export { default as personalUtility } from "src/configs/personal/utility";

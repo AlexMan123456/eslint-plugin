@@ -2,13 +2,13 @@ import type { Linter } from "eslint";
 
 import tseslint from "typescript-eslint";
 
-import javaScriptBase from "src/configs/general/javaScriptBase";
+import generalJavaScript from "src/configs/general/javaScript";
 import typeScriptLanguageOptions from "src/configs/helpers/typeScriptLanguageOptions";
 import unusedVarsIgnorePatterns from "src/configs/helpers/unusedVarsIgnorePatterns";
 
-const typeScriptBase: Linter.Config[] = [
+const generalTypeScript: Linter.Config[] = [
   ...tseslint.configs.recommended,
-  ...javaScriptBase,
+  ...generalJavaScript,
   {
     files: ["**/*.ts", "**/*.tsx"],
     languageOptions: typeScriptLanguageOptions,
@@ -32,4 +32,4 @@ const typeScriptBase: Linter.Config[] = [
   },
 ];
 
-export default typeScriptBase;
+export default generalTypeScript;

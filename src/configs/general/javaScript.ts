@@ -8,7 +8,7 @@ import javaScriptLanguageOptions from "src/configs/helpers/javaScriptLanguageOpt
 import generalRestrictedImports from "src/configs/helpers/restrictedImports/generalRestrictedImports";
 import unusedVarsIgnorePatterns from "src/configs/helpers/unusedVarsIgnorePatterns";
 
-const javaScriptBase: Linter.Config[] = [
+const generalJavaScript: Linter.Config[] = [
   js.configs.recommended,
   prettierConfig,
   {
@@ -43,4 +43,4 @@ const javaScriptBase: Linter.Config[] = [
   },
 ];
 
-export default javaScriptBase;
+export default generalJavaScript;

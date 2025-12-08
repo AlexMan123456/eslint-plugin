@@ -1,2 +1,2 @@
-export { default as createPluginBaseConfig } from "src/configs/plugin/pluginBase";
-export { default as createPluginTestsBaseConfig } from "src/configs/plugin/testsBase";
+export { default as pluginBase } from "src/configs/plugin/base";
+export { default as pluginTests } from "src/configs/plugin/tests";
