@@ -2,6 +2,8 @@ import type { Linter } from "eslint";
 
 import globals from "globals";
 
+import testsRestrictedImports from "src/configs/helpers/restrictedImports/testsRestrictedImports";
+
 const personalTestsBaseConfig: Linter.Config[] = [
   {
     files: ["**/*.test.{js,ts}"],
@@ -30,17 +32,7 @@ const personalTestsBaseConfig: Linter.Config[] = [
           name: "expect",
         },
       ],
-      "no-restricted-imports": [
-        "error",
-        {
-          paths: [
-            {
-              message: "Use test functions from vitest instead.",
-              name: "node:test",
-            },
-          ],
-        },
-      ],
+      "no-restricted-imports": ["error", testsRestrictedImports],
     },
   },
 ];
