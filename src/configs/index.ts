@@ -3,59 +3,63 @@ import type { AlexPlugin } from "src/alexPlugin";
 import type { ConfigKey } from "src/configs/AlexPluginConfigGroup";
 
 import {
-  combinedReactBaseConfig,
-  createCombinedJavaScriptBaseConfig,
-  createCombinedJavaScriptReactBaseConfig,
-  createCombinedTestsBaseConfig,
-  createCombinedTypeScriptBaseConfig,
-  createCombinedTypeScriptReactBaseConfig,
+  combinedJavaScript,
+  combinedJavaScriptReact,
+  combinedReact,
+  combinedTests,
+  combinedTypeScript,
+  combinedTypeScriptReact,
 } from "src/configs/combined";
-import { javaScriptBase, reactBase, typeScriptBase } from "src/configs/general";
-import packageJsonConfig from "src/configs/general/packageJson";
 import {
-  createPersonalEslintPluginConfig,
-  createPersonalJavaScriptBaseConfig,
-  createPersonalTypeScriptBaseConfig,
-  neurosongsBackEndConfig,
-  neurosongsFrontEndConfig,
-  personalReactBaseConfig,
-  personalTestsBaseConfig,
-  utilityConfig,
+  generalJavaScript,
+  generalPackageJson,
+  generalReact,
+  generalTypeScript,
+} from "src/configs/general";
+import {
+  personalAlexCLine,
+  personalEslintPlugin,
+  personalJavaScript,
+  personalNeurosongsBackEnd,
+  personalNeurosongsFrontEnd,
+  personalReact,
+  personalTests,
+  personalTypeScript,
+  personalUtility,
 } from "src/configs/personal";
-import alexCLineConfig from "src/configs/personal/alexCLine";
-import { createPluginBaseConfig, createPluginTestsBaseConfig } from "src/configs/plugin";
+import { pluginBase, pluginTests } from "src/configs/plugin";
 import createPluginConfigs from "src/utility/createPluginConfigs";
 
 function createAlexPluginConfigs(plugin: Readonly<AlexPlugin>): Record<ConfigKey, Linter.Config[]> {
   return createPluginConfigs({
     combined: {
-      javaScript: [...createCombinedJavaScriptBaseConfig(plugin), ...packageJsonConfig],
-      javaScriptReact: [...createCombinedJavaScriptReactBaseConfig(plugin), ...packageJsonConfig],
-      react: [...combinedReactBaseConfig, ...packageJsonConfig],
-      tests: [...createCombinedTestsBaseConfig(plugin), ...packageJsonConfig],
-      typeScript: [...createCombinedTypeScriptBaseConfig(plugin), ...packageJsonConfig],
-      typeScriptReact: [...createCombinedTypeScriptReactBaseConfig(plugin), ...packageJsonConfig],
+      javaScript: [...combinedJavaScript(plugin), ...generalPackageJson],
+      javaScriptReact: [...combinedJavaScriptReact(plugin), ...generalPackageJson],
+      react: [...combinedReact, ...generalPackageJson],
+      tests: [...combinedTests(plugin), ...generalPackageJson],
+      typeScript: [...combinedTypeScript(plugin), ...generalPackageJson],
+      typeScriptReact: [...combinedTypeScriptReact(plugin), ...generalPackageJson],
     },
     general: {
-      javaScript: javaScriptBase,
-      packageJson: packageJsonConfig,
-      react: reactBase,
-      typeScript: typeScriptBase,
+      javaScript: generalJavaScript,
+      packageJson: generalPackageJson,
+      react: generalReact,
+      typeScript: generalTypeScript,
     },
     personal: {
-      alexCLine: alexCLineConfig,
-      eslintPlugin: createPersonalEslintPluginConfig(plugin),
-      javaScript: createPersonalJavaScriptBaseConfig(plugin),
-      neurosongsBackEnd: neurosongsBackEndConfig,
-      neurosongsFrontEnd: neurosongsFrontEndConfig,
-      react: personalReactBaseConfig,
-      tests: personalTestsBaseConfig,
-      typeScript: createPersonalTypeScriptBaseConfig(plugin),
-      utility: utilityConfig,
+      alexCLine: personalAlexCLine,
+      eslintPlugin: personalEslintPlugin(plugin),
+      javaScript: personalJavaScript(plugin),
+      neurosongsBackEnd: personalNeurosongsBackEnd,
+      neurosongsFrontEnd: personalNeurosongsFrontEnd,
+      react: personalReact,
+      tests: personalTests,
+      typeScript: personalTypeScript(plugin),
+      utility: personalUtility,
     },
     plugin: {
-      base: createPluginBaseConfig(plugin),
-      tests: createPluginTestsBaseConfig(plugin),
+      base: pluginBase(plugin),
+      tests: pluginTests(plugin),
     },
   });
 }

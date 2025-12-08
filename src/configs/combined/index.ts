@@ -1,6 +1,6 @@
-export { default as createCombinedJavaScriptBaseConfig } from "src/configs/combined/javaScriptBase";
-export { default as createCombinedJavaScriptReactBaseConfig } from "src/configs/combined/javaScriptReactBase";
-export { default as combinedReactBaseConfig } from "src/configs/combined/reactBase";
-export { default as createCombinedTestsBaseConfig } from "src/configs/combined/testsBase";
-export { default as createCombinedTypeScriptBaseConfig } from "src/configs/combined/typeScriptBase";
-export { default as createCombinedTypeScriptReactBaseConfig } from "src/configs/combined/typeScriptReactBase";
+export { default as combinedJavaScript } from "src/configs/combined/javaScript";
+export { default as combinedJavaScriptReact } from "src/configs/combined/javaScriptReact";
+export { default as combinedReact } from "src/configs/combined/react";
+export { default as combinedTests } from "src/configs/combined/tests";
+export { default as combinedTypeScript } from "src/configs/combined/typeScript";
+export { default as combinedTypeScriptReact } from "src/configs/combined/typeScriptReact";

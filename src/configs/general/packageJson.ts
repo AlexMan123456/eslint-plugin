@@ -2,11 +2,11 @@ import type { Linter } from "eslint";
 
 import packageJson from "eslint-plugin-package-json";
 
-const packageJsonConfig: Linter.Config[] = [
+const generalPackageJson: Linter.Config[] = [
   packageJson.configs.recommended,
   {
     plugins: {
-      "package-json": packageJson as any,
+      "package-json": packageJson,
     },
     rules: {
       "package-json/scripts-name-casing": "error",
@@ -14,4 +14,4 @@ const packageJsonConfig: Linter.Config[] = [
   },
 ];
 
-export default packageJsonConfig;
+export default generalPackageJson;

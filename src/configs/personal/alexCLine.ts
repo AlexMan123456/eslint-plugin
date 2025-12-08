@@ -4,7 +4,7 @@ import perfectionist from "eslint-plugin-perfectionist";
 
 import sortObjects from "src/configs/helpers/sorting/sortObjects";
 
-const alexCLineConfig: Linter.Config[] = [
+const personalAlexCLine: Linter.Config[] = [
   {
     files: ["src/commands/index.ts"],
     name: "@alextheman/personal/alex-c-line",
@@ -17,4 +17,4 @@ const alexCLineConfig: Linter.Config[] = [
   },
 ];
 
-export default alexCLineConfig;
+export default personalAlexCLine;
