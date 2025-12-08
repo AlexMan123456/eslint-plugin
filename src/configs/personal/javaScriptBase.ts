@@ -1,4 +1,5 @@
 import type { Linter } from "eslint";
+import type { AlexPlugin } from "src/index";
 
 import perfectionist from "eslint-plugin-perfectionist";
 import prettierPlugin from "eslint-plugin-prettier";
@@ -6,7 +7,6 @@ import prettierPlugin from "eslint-plugin-prettier";
 import { sortExports, sortImports } from "src/configs/helpers";
 import javaScriptLanguageOptions from "src/configs/helpers/javaScriptLanguageOptions";
 import prettierRules from "src/configs/helpers/prettierRules";
-import { type AlexPlugin } from "src/index";
 
 function personalJavaScript(plugin: Readonly<AlexPlugin>): Linter.Config[] {
   return [
