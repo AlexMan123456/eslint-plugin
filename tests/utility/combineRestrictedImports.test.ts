@@ -120,4 +120,71 @@ describe("combineRestrictedImports", () => {
       ],
     });
   });
+  test("Combines multiple restricted imports on both paths and patterns", () => {
+    const first: NoRestrictedImportsOptions = {
+      paths: [
+        {
+          name: "@alextheman/utility",
+          message: "Test restriction",
+        },
+      ],
+      patterns: [
+        {
+          group: ["node_modules"],
+          message: "Do not import from node_modules",
+        },
+      ],
+    };
+    const second: NoRestrictedImportsOptions = {
+      paths: [
+        {
+          name: "@alextheman/components",
+          message: "Second test restriction",
+        },
+      ],
+      patterns: [
+        {
+          regex: "^@mui/[^/]+$",
+          message: 'Please use `import Component from "@mui/[package]/Component"` instead.',
+        },
+      ],
+    };
+    const third: NoRestrictedImportsOptions = {
+      paths: [
+        {
+          name: "@alextheman/eslint-plugin",
+          importNames: ["default"],
+          message: "Third test restriction",
+        },
+      ],
+    };
+
+    expect(combineRestrictedImports(first, second, third)).toEqual({
+      paths: [
+        {
+          name: "@alextheman/utility",
+          message: "Test restriction",
+        },
+        {
+          name: "@alextheman/components",
+          message: "Second test restriction",
+        },
+        {
+          name: "@alextheman/eslint-plugin",
+          importNames: ["default"],
+          message: "Third test restriction",
+        },
+      ],
+      patterns: [
+        {
+          group: ["node_modules"],
+          message: "Do not import from node_modules",
+        },
+        {
+          regex: "^@mui/[^/]+$",
+          message: 'Please use `import Component from "@mui/[package]/Component"` instead.',
+        },
+      ],
+    });
+  });
 });
