@@ -1,10 +1,12 @@
+import type { NoNamespaceImportsOptions } from "src/index";
+
 import createRuleTester from "tests/rule-testers/createRuleTester";
 import { describe, test } from "vitest";
 
 import rules from "src/rules";
 
 describe("no-namespace-imports", () => {
-  const { valid, invalid } = createRuleTester({
+  const { valid, invalid } = createRuleTester<NoNamespaceImportsOptions[]>({
     name: "no-namespace-imports",
     rule: rules["no-namespace-imports"],
   });

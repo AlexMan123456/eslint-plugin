@@ -1,4 +1,7 @@
-import type { NoRestrictedImportsOptions } from "src/configs/helpers/restrictedImports/NoRestrictedImportsOptions";
+import type {
+  NoRestrictedImportsOptions,
+  RestrictedPathImport,
+} from "src/configs/helpers/restrictedImports/NoRestrictedImportsOptions";
 
 import generalRestrictedImports from "src/configs/helpers/restrictedImports/generalRestrictedImports";
 import { combineRestrictedImports } from "src/utility";
@@ -7,7 +10,7 @@ const eslintPluginRestrictedImports: NoRestrictedImportsOptions = combineRestric
   generalRestrictedImports,
   {
     paths: [
-      ...["src/alexPlugin", "src/index", "src"].map((name) => {
+      ...["src/alexPlugin", "src/index", "src"].map((name): RestrictedPathImport => {
         return {
           importNames: ["default"],
           message:
@@ -19,6 +22,12 @@ const eslintPluginRestrictedImports: NoRestrictedImportsOptions = combineRestric
         importNames: ["default"],
         message: 'Please import from "src/configs/helpers/eslint-plugin-react-hooks" instead.',
         name: "eslint-plugin-react-hooks",
+      },
+      {
+        importNames: ["createRuleTester"],
+        message:
+          'Please import createRuleTester from "tests/rule-testers/createRuleTester" instead.',
+        name: "eslint-vitest-rule-tester",
       },
     ],
   },
