@@ -34,11 +34,13 @@
     "lint-prettier-typescript": "prettier --check --parser typescript \"./**/*.ts\"",
     "lint-tsc": "tsc --noEmit",
     "prepare": "husky",
+    "prepare-live-utility": "pnpm uninstall @alextheman/utility && pnpm install @alextheman/utility",
+    "prepare-local-utility": "dotenv -e .env -- sh -c 'UTILITY_PATH=${LOCAL_UTILITY_PATH:-../utility}; pnpm --dir \"$UTILITY_PATH\" run build && pnpm uninstall @alextheman/utility && pnpm install file:\"$UTILITY_PATH\"'",
     "test": "vitest run",
     "test-watch": "vitest",
     "update-dependencies": "pnpm update --latest && pnpm update",
-    "use-live-utility": "pnpm uninstall @alextheman/utility && pnpm install @alextheman/utility",
-    "use-local-utility": "dotenv -e .env -- sh -c 'UTILITY_PATH=${LOCAL_UTILITY_PATH:-../utility}; pnpm --dir \"$UTILITY_PATH\" run create-local-package && pnpm uninstall @alextheman/utility && pnpm install \"$UTILITY_PATH\"/alextheman-utility-*.tgz'"
+    "use-live-utility": "pnpm run prepare-live-utility",
+    "use-local-utility": "pnpm run prepare-local-utility"
   },
   "dependencies": {
     "@alextheman/utility": "^3.4.2",
