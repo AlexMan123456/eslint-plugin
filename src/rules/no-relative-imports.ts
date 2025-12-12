@@ -1,7 +1,7 @@
 import z from "zod";
 
 import createRule from "src/rules/helpers/createRule";
-import createRuleSchemaFromZodSchema from "src/utility/createRuleSchemaFromZodSchema";
+import createRuleSchemaFromZodSchema from "src/utility/public/createRuleSchemaFromZodSchema";
 
 const noRelativeImportsOptionsSchema = z
   .object({

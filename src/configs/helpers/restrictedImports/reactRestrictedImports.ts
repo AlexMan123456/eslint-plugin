@@ -1,7 +1,7 @@
 import type { NoRestrictedImportsOptions } from "src/configs/helpers/restrictedImports/NoRestrictedImportsOptions";
 
 import generalRestrictedImports from "src/configs/helpers/restrictedImports/generalRestrictedImports";
-import { combineRestrictedImports } from "src/utility";
+import { combineRestrictedImports } from "src/utility/public";
 
 const reactRestrictedImports: NoRestrictedImportsOptions = combineRestrictedImports(
   generalRestrictedImports,

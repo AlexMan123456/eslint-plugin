@@ -3,7 +3,7 @@ import z from "zod";
 
 import createRule from "src/rules/helpers/createRule";
 import fixOnCondition from "src/rules/helpers/fixOnCondition";
-import createRuleSchemaFromZodSchema from "src/utility/createRuleSchemaFromZodSchema";
+import createRuleSchemaFromZodSchema from "src/utility/public/createRuleSchemaFromZodSchema";
 
 const useNormalizedImportsOptionsSchema = z
   .object({

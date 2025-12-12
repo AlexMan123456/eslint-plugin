@@ -1,5 +1,5 @@
 import reactRestrictedImports from "src/configs/helpers/restrictedImports/reactRestrictedImports";
-import { combineRestrictedImports } from "src/utility";
+import { combineRestrictedImports } from "src/utility/public";
 
 const neurosongsFrontEndRestrictedImports = combineRestrictedImports(reactRestrictedImports, {
   paths: [

@@ -1,6 +1,7 @@
 import type { Linter } from "eslint";
 import type { AlexPlugin } from "src/index";
 
+import jsdoc from "eslint-plugin-jsdoc";
 import perfectionist from "eslint-plugin-perfectionist";
 
 import eslintPluginRestrictedImports from "src/configs/helpers/restrictedImports/eslintPluginRestrictedImports";
@@ -12,10 +13,12 @@ function personalEslintPlugin(plugin: Readonly<AlexPlugin>): Linter.Config[] {
       name: "@alextheman/personal/eslint-plugin",
       plugins: {
         "@alextheman": plugin,
+        jsdoc,
         perfectionist,
       },
       rules: {
         "@alextheman/no-plugin-configs-access-from-src-configs": "error",
+        "jsdoc/require-jsdoc": "off",
         "no-restricted-imports": ["error", eslintPluginRestrictedImports],
       },
     },
@@ -23,6 +26,15 @@ function personalEslintPlugin(plugin: Readonly<AlexPlugin>): Linter.Config[] {
       files: ["src/rules/index.ts", "src/configs/**"],
       rules: {
         "perfectionist/sort-objects": ["error", sortObjects],
+      },
+    },
+    {
+      files: ["src/utility/public/**"],
+      rules: {
+        "jsdoc/require-jsdoc": [
+          "warn",
+          { enableFixer: false, require: { ClassDeclaration: true, MethodDefinition: true } },
+        ],
       },
     },
   ];

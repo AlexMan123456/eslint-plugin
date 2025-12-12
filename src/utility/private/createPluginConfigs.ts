@@ -1,7 +1,7 @@
 import type { Linter } from "eslint";
 import type { AlexPluginConfigGroup, ConfigKey } from "src/configs/AlexPluginConfigGroup";
 
-import createConfigGroup from "src/utility/createConfigGroup";
+import createConfigGroup from "src/utility/private/createConfigGroup";
 
 function createPluginConfigs(config: AlexPluginConfigGroup): Record<ConfigKey, Linter.Config[]> {
   const allConfigs = {} as Record<ConfigKey, Linter.Config[]>;

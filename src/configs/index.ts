@@ -30,7 +30,7 @@ import {
   personalUtility,
 } from "src/configs/personal";
 import { pluginBase, pluginTests } from "src/configs/plugin";
-import createPluginConfigs from "src/utility/createPluginConfigs";
+import createPluginConfigs from "src/utility/private/createPluginConfigs";
 
 function createAlexPluginConfigs(plugin: Readonly<AlexPlugin>): Record<ConfigKey, Linter.Config[]> {
   return createPluginConfigs({

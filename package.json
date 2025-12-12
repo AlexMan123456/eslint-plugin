@@ -15,7 +15,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsdown && tsx src/utility/hashConfigChanges.ts",
+    "build": "tsdown",
     "change-major": "pnpm version major -m \"Change version number to v%s\"",
     "change-minor": "pnpm version minor -m \"Change version number to v%s\"",
     "change-patch": "pnpm version patch -m \"Change version number to v%s\"",
