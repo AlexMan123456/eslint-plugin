@@ -12,14 +12,16 @@ export type PersonalConfig =
   | "neurosongsBackEnd"
   | "neurosongsFrontEnd"
   | "utility"
-  | "alexCLine";
+  | "alexCLine"
+  | "typeScriptPackage";
 export type CombinedConfig =
   | "javaScript"
   | "typeScript"
   | "react"
   | "tests"
   | "typeScriptReact"
-  | "javaScriptReact";
+  | "javaScriptReact"
+  | "typeScriptPackage";
 
 export interface AlexPluginConfigGroup {
   general: Record<GeneralConfig, Linter.Config[]>;

@@ -6,4 +6,5 @@ export { default as personalNeurosongsFrontEnd } from "src/configs/personal/neur
 export { default as personalReact } from "src/configs/personal/react";
 export { default as personalTests } from "src/configs/personal/tests";
 export { default as personalTypeScript } from "src/configs/personal/typeScript";
+export { default as personalTypeScriptPackage } from "src/configs/personal/typeScriptPackage";
 export { default as personalUtility } from "src/configs/personal/utility";

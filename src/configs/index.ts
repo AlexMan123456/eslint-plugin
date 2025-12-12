@@ -8,6 +8,7 @@ import {
   combinedReact,
   combinedTests,
   combinedTypeScript,
+  combinedTypeScriptPackage,
   combinedTypeScriptReact,
 } from "src/configs/combined";
 import {
@@ -25,6 +26,7 @@ import {
   personalReact,
   personalTests,
   personalTypeScript,
+  personalTypeScriptPackage,
   personalUtility,
 } from "src/configs/personal";
 import { pluginBase, pluginTests } from "src/configs/plugin";
@@ -38,6 +40,7 @@ function createAlexPluginConfigs(plugin: Readonly<AlexPlugin>): Record<ConfigKey
       react: [...combinedReact, ...generalPackageJson],
       tests: [...combinedTests(plugin), ...generalPackageJson],
       typeScript: [...combinedTypeScript(plugin), ...generalPackageJson],
+      typeScriptPackage: [...combinedTypeScriptPackage(plugin), ...generalPackageJson],
       typeScriptReact: [...combinedTypeScriptReact(plugin), ...generalPackageJson],
     },
     general: {
@@ -55,6 +58,7 @@ function createAlexPluginConfigs(plugin: Readonly<AlexPlugin>): Record<ConfigKey
       react: personalReact,
       tests: personalTests,
       typeScript: personalTypeScript(plugin),
+      typeScriptPackage: personalTypeScriptPackage,
       utility: personalUtility,
     },
     plugin: {
