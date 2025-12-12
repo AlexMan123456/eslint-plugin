@@ -1,5 +1,5 @@
 import type { Linter } from "eslint";
-import type { CamelToKebab } from "src/utility/camelToKebab";
+import type { CamelToKebab } from "src/utility/private/camelToKebab";
 
 export type GeneralConfig = "javaScript" | "typeScript" | "react" | "packageJson";
 export type PluginConfig = "base" | "tests";
@@ -12,14 +12,16 @@ export type PersonalConfig =
   | "neurosongsBackEnd"
   | "neurosongsFrontEnd"
   | "utility"
-  | "alexCLine";
+  | "alexCLine"
+  | "typeScriptPackage";
 export type CombinedConfig =
   | "javaScript"
   | "typeScript"
   | "react"
   | "tests"
   | "typeScriptReact"
-  | "javaScriptReact";
+  | "javaScriptReact"
+  | "typeScriptPackage";
 
 export interface AlexPluginConfigGroup {
   general: Record<GeneralConfig, Linter.Config[]>;

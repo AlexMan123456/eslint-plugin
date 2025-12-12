@@ -3,4 +3,5 @@ export { default as combinedJavaScriptReact } from "src/configs/combined/javaScr
 export { default as combinedReact } from "src/configs/combined/react";
 export { default as combinedTests } from "src/configs/combined/tests";
 export { default as combinedTypeScript } from "src/configs/combined/typeScript";
+export { default as combinedTypeScriptPackage } from "src/configs/combined/typeScriptPackage";
 export { default as combinedTypeScriptReact } from "src/configs/combined/typeScriptReact";

@@ -5,8 +5,8 @@ import z from "zod";
 
 import createRule from "src/rules/helpers/createRule";
 import fixOnCondition from "src/rules/helpers/fixOnCondition";
-import createRuleSchemaFromZodSchema from "src/utility/createRuleSchemaFromZodSchema";
-import getImportSpecifiersAfterRemoving from "src/utility/getImportSpecifiersAfterRemoving";
+import createRuleSchemaFromZodSchema from "src/utility/public/createRuleSchemaFromZodSchema";
+import getImportSpecifiersAfterRemoving from "src/utility/public/getImportSpecifiersAfterRemoving";
 
 const validTestFunctionsSchema = z.enum(["test", "it"]);
 export type TestFunction = z.infer<typeof validTestFunctionsSchema>;

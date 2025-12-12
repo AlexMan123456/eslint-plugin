@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-import hashFiles, { getFiles } from "src/utility/hashFiles";
+import hashFiles, { getFiles } from "src/utility/private/hashFiles";
 
 const currentHash = hashFiles(getFiles(path.resolve("src/configs")));
 

@@ -2,7 +2,7 @@ import type { NoRestrictedImportsOptions } from "src/configs/helpers/restrictedI
 
 import { describe, expect, test } from "vitest";
 
-import { combineRestrictedImports } from "src/utility";
+import { combineRestrictedImports } from "src/utility/public";
 
 describe("combineRestrictedImports", () => {
   test("Combines two restricted import groupings based on paths", () => {
