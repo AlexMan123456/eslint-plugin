@@ -1,4 +1,5 @@
 export { default as personalAlexCLine } from "src/configs/personal/alexCLine";
+export { default as personalComponents } from "src/configs/personal/components";
 export { default as personalEslintPlugin } from "src/configs/personal/eslintPlugin";
 export { default as personalJavaScript } from "src/configs/personal/javaScriptBase";
 export { default as personalNeurosongsBackEnd } from "src/configs/personal/neurosongsBackEnd";

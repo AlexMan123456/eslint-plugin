@@ -4,6 +4,7 @@ import type { AlexPlugin } from "src/index";
 import jsdoc from "eslint-plugin-jsdoc";
 import perfectionist from "eslint-plugin-perfectionist";
 
+import requireJsdocOptions from "src/configs/helpers/requireJsdocOptions";
 import eslintPluginRestrictedImports from "src/configs/helpers/restrictedImports/eslintPluginRestrictedImports";
 import sortObjects from "src/configs/helpers/sorting/sortObjects";
 
@@ -31,10 +32,7 @@ function personalEslintPlugin(plugin: Readonly<AlexPlugin>): Linter.Config[] {
     {
       files: ["src/utility/public/**"],
       rules: {
-        "jsdoc/require-jsdoc": [
-          "warn",
-          { enableFixer: false, require: { ClassDeclaration: true, MethodDefinition: true } },
-        ],
+        "jsdoc/require-jsdoc": ["warn", requireJsdocOptions],
       },
     },
   ];

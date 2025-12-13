@@ -13,7 +13,8 @@ export type PersonalConfig =
   | "neurosongsFrontEnd"
   | "utility"
   | "alexCLine"
-  | "typeScriptPackage";
+  | "typeScriptPackage"
+  | "components";
 export type CombinedConfig =
   | "javaScript"
   | "typeScript"

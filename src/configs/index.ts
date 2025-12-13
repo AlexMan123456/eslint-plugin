@@ -19,6 +19,7 @@ import {
 } from "src/configs/general";
 import {
   personalAlexCLine,
+  personalComponents,
   personalEslintPlugin,
   personalJavaScript,
   personalNeurosongsBackEnd,
@@ -51,6 +52,7 @@ function createAlexPluginConfigs(plugin: Readonly<AlexPlugin>): Record<ConfigKey
     },
     personal: {
       alexCLine: personalAlexCLine,
+      components: personalComponents,
       eslintPlugin: personalEslintPlugin(plugin),
       javaScript: personalJavaScript(plugin),
       neurosongsBackEnd: personalNeurosongsBackEnd,
