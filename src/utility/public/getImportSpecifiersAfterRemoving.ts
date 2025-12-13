@@ -3,7 +3,9 @@ import type { RuleContext } from "@typescript-eslint/utils/ts-eslint";
 
 /**
  * Returns a comma-separated string of import specifiers, excluding the specified import.
+ *
  * Useful for auto-fixable rules that remove a specific import from an import statement.
+ * @template RuleOptions - The type of the RuleOptions from the given context.
  * @param context - The current ESLint rule context.
  * @param specifiers - Array of import clause nodes.
  * @param importToRemove - The import name to remove from the list.
