@@ -32,7 +32,7 @@ function personalEslintPlugin(plugin: Readonly<AlexPlugin>): Linter.Config[] {
     {
       files: ["src/utility/public/**"],
       rules: {
-        "jsdoc/require-jsdoc": ["warn", requireJsdocOptions],
+        "jsdoc/require-jsdoc": ["error", requireJsdocOptions],
       },
     },
   ];
