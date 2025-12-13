@@ -1,4 +1,4 @@
-name: publish npm
+name: Publish to NPM Registry
 
 permissions:
   id-token: write
@@ -11,4 +11,4 @@ on:
 jobs:
   publish:
     if: ${{ github.repository == 'AlexMan123456/eslint-plugin' }}
-    uses: AlexMan123456/github-actions/.github/workflows/npm-registry-publish.yml@144e1dbe1c40a3c74cfca792352642614c03efc6 # v2.5.3
+    uses: AlexMan123456/github-actions/.github/workflows/npm-registry-publish.yml@9d6f9972beb8b7f9cf05ac673e4a198a482a109c # v2.8.4
