@@ -1,12 +1,19 @@
 import type { TSESTree } from "@typescript-eslint/utils";
 import type { RuleContext } from "@typescript-eslint/utils/ts-eslint";
-import type { ConsistentTestFunctionOptions } from "src/rules/consistent-test-function";
 
-function getImportSpecifiersAfterRemoving(
-  context: Readonly<RuleContext<"message", [ConsistentTestFunctionOptions]>>,
+/**
+ * Returns a comma-separated string of import specifiers, excluding the specified import.
+ * Useful for auto-fixable rules that remove a specific import from an import statement.
+ * @param context - The current ESLint rule context.
+ * @param specifiers - Array of import clause nodes.
+ * @param importToRemove - The import name to remove from the list.
+ * @returns A comma-separated string of import specifiers after removing the specified import.
+ */
+function getImportSpecifiersAfterRemoving<RuleOptions>(
+  context: Readonly<RuleContext<"message", [RuleOptions]>>,
   specifiers: TSESTree.ImportClause[],
   importToRemove: string,
-) {
+): string {
   return specifiers
     .filter((specifier) => {
       return !(
