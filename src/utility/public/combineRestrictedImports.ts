@@ -2,6 +2,11 @@ import type { NoRestrictedImportsOptions } from "src/configs/helpers";
 
 import { omitProperties } from "@alextheman/utility";
 
+/**
+ * Combines multiple option groups for the native ESLint `no-restricted-imports` rule, without overwriting previous configurations.
+ * @param groups - Option groups to combine, applied in the order provided.
+ * @returns A new object combining all paths and patterns from the given groups, suitable as an option to pass to `no-restricted-imports`.
+ */
 function combineRestrictedImports(
   ...groups: NoRestrictedImportsOptions[]
 ): NoRestrictedImportsOptions {
