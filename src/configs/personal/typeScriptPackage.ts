@@ -8,6 +8,7 @@ const personalTypeScriptPackage: Linter.Config[] = [
   jsdoc.configs["flat/recommended-typescript-error"],
   {
     rules: {
+      "jsdoc/check-tag-names": ["error", { definedTags: ["note"] }],
       "jsdoc/require-jsdoc": ["warn", requireJsdocOptions],
       "jsdoc/sort-tags": [
         "error",
