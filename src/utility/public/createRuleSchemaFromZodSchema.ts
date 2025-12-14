@@ -5,7 +5,9 @@ import z from "zod";
 
 /**
  * Converts a Zod schema to a JSON schema for usage in an ESLint rule.
+ *
  * @param schema - The Zod schema to convert.
+ *
  * @returns An array containing the resulting JSON Schema, formatted for ESLint rule schema compatibility.
  */
 function createRuleSchemaFromZodSchema(schema: z.ZodType): JSONSchema4[] {

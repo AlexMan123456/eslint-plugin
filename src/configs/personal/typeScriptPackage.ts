@@ -9,6 +9,18 @@ const personalTypeScriptPackage: Linter.Config[] = [
   {
     rules: {
       "jsdoc/require-jsdoc": ["warn", requireJsdocOptions],
+      "jsdoc/sort-tags": [
+        "error",
+        {
+          tagSequence: [
+            { tags: ["template"] },
+            { tags: ["param"] },
+            { tags: ["throws"] },
+            { tags: ["returns"] },
+          ],
+        },
+      ],
+      "jsdoc/tag-lines": ["error", "any", { startLines: 1 }],
     },
   },
 ];
