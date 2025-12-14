@@ -23,6 +23,6 @@ permissions:
 jobs:
   commit-version-change:
     if: ${{ github.repository == 'AlexMan123456/eslint-plugin' }}
-    uses: AlexMan123456/github-actions/.github/workflows/commit-version-change.yml@ffb5c5ac14fafd8d26aab6c1669e494b5372d65b # v2.9.3
+    uses: AlexMan123456/github-actions/.github/workflows/commit-version-change.yml@d01d6070a51aca6683cb35cba1fcdf757348186b # v2.11.1
     secrets:
       PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
