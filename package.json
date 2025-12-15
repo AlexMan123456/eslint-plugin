@@ -1,12 +1,12 @@
 {
   "name": "@alextheman/eslint-plugin",
-  "version": "4.8.4",
+  "version": "4.8.5",
   "description": "A package to provide custom ESLint rules and configs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlexMan123456/eslint-plugin.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "author": "alextheman",
   "type": "module",
   "main": "dist/index.js",
