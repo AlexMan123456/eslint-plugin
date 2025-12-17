@@ -1,5 +1,12 @@
 const sortImports = {
-  groups: ["type", "builtin", "external", "internal", "object"],
+  groups: [
+    "type-builtin",
+    "type-external",
+    "type-internal",
+    "value-external",
+    "value-builtin",
+    "value-internal",
+  ],
   ignoreCase: true,
   internalPattern: ["^src/.*"],
   newlinesBetween: 1,
