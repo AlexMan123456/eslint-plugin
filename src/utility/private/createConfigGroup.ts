@@ -1,4 +1,5 @@
 import type { Linter } from "eslint";
+
 import type { ConfigGroupName, ConfigKey } from "src/configs/AlexPluginConfigGroup";
 
 import camelToKebab from "src/utility/private/camelToKebab";

@@ -1,4 +1,5 @@
 import type { Linter } from "eslint";
+
 import type { AlexPlugin, ConsistentTestFunctionOptions } from "src/index";
 
 function pluginTests(plugin: Readonly<AlexPlugin>): Linter.Config[] {

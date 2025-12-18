@@ -1,4 +1,5 @@
 import type { Linter } from "eslint";
+
 import type { AlexPlugin } from "src/index";
 
 import combinedJavaScript from "src/configs/combined/javaScript";

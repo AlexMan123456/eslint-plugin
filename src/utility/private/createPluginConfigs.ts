@@ -1,4 +1,5 @@
 import type { Linter } from "eslint";
+
 import type { AlexPluginConfigGroup, ConfigKey } from "src/configs/AlexPluginConfigGroup";
 
 import createConfigGroup from "src/utility/private/createConfigGroup";

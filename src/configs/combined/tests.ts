@@ -1,4 +1,5 @@
 import type { Linter } from "eslint";
+
 import type { AlexPlugin } from "src/index";
 
 import personalTests from "src/configs/personal/tests";
