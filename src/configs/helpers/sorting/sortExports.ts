@@ -1,7 +1,7 @@
 const sortExports = {
   customGroups: [],
   fallbackSort: { type: "natural" },
-  groups: ["value-export", "type-export"],
+  groups: ["value-export", "wildcard-value-export", "type-export", "wildcard-type-export"],
   ignoreCase: true,
   newlinesBetween: 1,
   order: "asc",

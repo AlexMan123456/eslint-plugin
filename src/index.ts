@@ -6,6 +6,7 @@ export * from "src/rules/helpers";
 export * from "src/utility/public";
 
 export type { AlexPlugin } from "src/alexPlugin";
+
 export type * from "src/configs/AlexPluginConfigGroup";
 
 export default alexPlugin;
