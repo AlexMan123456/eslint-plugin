@@ -1,8 +1,9 @@
 import { deepCopy, deepFreeze } from "@alextheman/utility";
-import { name, version } from "package.json" with { type: "json" };
 
 import createAlexPluginConfigs from "src/configs";
 import rules from "src/rules";
+
+import { name, version } from "package.json" with { type: "json" };
 
 export interface AlexPlugin {
   meta: {
