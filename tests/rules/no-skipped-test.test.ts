@@ -1,4 +1,5 @@
 import { stripIndent } from "common-tags";
+
 import { standardRuleTester } from "tests/rule-testers";
 
 import rules from "src/rules";

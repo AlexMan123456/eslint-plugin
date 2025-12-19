@@ -1,8 +1,9 @@
 import type { ConsistentTestFunctionOptions } from "src/index";
 
 import { normaliseIndents } from "@alextheman/utility";
-import createRuleTester from "tests/rule-testers/createRuleTester";
 import { describe, test } from "vitest";
+
+import createRuleTester from "tests/rule-testers/createRuleTester";
 
 import rules from "src/rules";
 
