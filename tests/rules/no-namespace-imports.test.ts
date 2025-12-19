@@ -1,7 +1,8 @@
 import type { NoNamespaceImportsOptions } from "src/index";
 
-import createRuleTester from "tests/rule-testers/createRuleTester";
 import { describe, test } from "vitest";
+
+import createRuleTester from "tests/rule-testers/createRuleTester";
 
 import rules from "src/rules";
 
