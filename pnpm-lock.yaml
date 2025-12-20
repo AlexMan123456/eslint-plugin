@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@alextheman/utility':
-        specifier: ^3.10.1
-        version: 3.10.1
+        specifier: ^4.0.0
+        version: 4.0.0
       '@typescript-eslint/utils':
         specifier: ^8.50.0
         version: 8.50.0(eslint@9.39.2)(typescript@5.9.3)
@@ -43,8 +43,8 @@ importers:
         specifier: ^8.50.0
         version: 8.50.0
       alex-c-line:
-        specifier: ^1.9.0
-        version: 1.9.0
+        specifier: ^1.10.0
+        version: 1.10.0
       dotenv-cli:
         specifier: ^11.0.0
         version: 11.0.0
@@ -123,8 +123,8 @@ packages:
   '@acemir/cssom@0.9.29':
     resolution: {integrity: sha512-G90x0VW+9nW4dFajtjCoT+NM0scAfH9Mb08IcjgFHYbfiL/lU04dTF9JuVOi3/OH+DJCQdcIseSXkdCB9Ky6JA==}
 
-  '@alextheman/utility@3.10.1':
-    resolution: {integrity: sha512-0hVFGxGch5nUrNPtY2np7NU28M74qOtdYzyb7Nj8Q+Ofs2PWUKvEhWwYcXh2gfbbX7duGVfMmVNWorE54mrGXw==}
+  '@alextheman/utility@4.0.0':
+    resolution: {integrity: sha512-t0rFOzgvoKB0JCO5BehAQsRT3WaqJTuNsvHf4C8xDX/zsv98ZZ35IfKDAYt0ewTikh6yvLm90J4JcUv+DEE9ug==}
 
   '@altano/repository-tools@2.0.1':
     resolution: {integrity: sha512-YE/52CkFtb+YtHPgbWPai7oo5N9AKnMuP5LM+i2AG7G1H2jdYBCO1iDnkDE3dZ3C1MIgckaF+d5PNRulgt0bdw==}
@@ -951,8 +951,8 @@ packages:
   ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
 
-  alex-c-line@1.9.0:
-    resolution: {integrity: sha512-bGzIPbKoE8e9yWzUW11wk2s3L9tw7/1JUwxu9L1u3q/MYf9FpPTPMFsuaEAsu0O+o/oJBDttn1+py4wVtxIdCg==}
+  alex-c-line@1.10.0:
+    resolution: {integrity: sha512-uu7b4+VcLtmViSrSSYVCSpE4SE8DGZEHfCx264CU8HsvWywyVZmGw+3TvHDQ5NMyJMi6Ne7cgvB9Oa6bDN8RbQ==}
     hasBin: true
 
   ansi-align@3.0.1:
@@ -2836,7 +2836,7 @@ snapshots:
 
   '@acemir/cssom@0.9.29': {}
 
-  '@alextheman/utility@3.10.1':
+  '@alextheman/utility@4.0.0':
     dependencies:
       zod: 4.2.1
 
@@ -3569,9 +3569,9 @@ snapshots:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
 
-  alex-c-line@1.9.0:
+  alex-c-line@1.10.0:
     dependencies:
-      '@alextheman/utility': 3.10.1
+      '@alextheman/utility': 4.0.0
       commander: 14.0.2
       dotenv: 17.2.3
       dotenv-stringify: 3.0.1
