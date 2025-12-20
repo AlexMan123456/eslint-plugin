@@ -3,6 +3,7 @@ import type { Linter } from "eslint";
 import js from "@eslint/js";
 import prettierConfig from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
+import nodePlugin from "eslint-plugin-n";
 
 import javaScriptLanguageOptions from "src/configs/helpers/javaScriptLanguageOptions";
 import generalRestrictedImports from "src/configs/helpers/restrictedImports/generalRestrictedImports";
@@ -18,10 +19,12 @@ const generalJavaScript: Linter.Config[] = [
     name: "@alextheman/general/javascript",
     plugins: {
       import: importPlugin,
+      n: nodePlugin,
     },
     rules: {
       eqeqeq: "error",
       "import/no-unresolved": "error",
+      "n/prefer-node-protocol": "error",
       "no-cond-assign": "error",
       "no-console": ["error", { allow: ["warn", "error", "info"] }],
       "no-eval": "error",

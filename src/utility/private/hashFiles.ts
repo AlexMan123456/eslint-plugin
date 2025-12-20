@@ -1,6 +1,6 @@
-import { createHash } from "crypto";
-import { readdirSync, readFileSync } from "fs";
-import path from "path";
+import { createHash } from "node:crypto";
+import { readdirSync, readFileSync } from "node:fs";
+import path from "node:path";
 
 export function getFiles(dir: string): string[] {
   return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
