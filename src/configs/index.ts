@@ -1,7 +1,7 @@
 import type { Linter } from "eslint";
 
 import type { AlexPlugin } from "src/alexPlugin";
-import type { ConfigKey } from "src/configs/AlexPluginConfigGroup";
+import type { AlexConfigKey } from "src/configs/AlexPluginConfigGroup";
 
 import {
   combinedJavaScript,
@@ -34,7 +34,9 @@ import {
 import { pluginBase, pluginTests } from "src/configs/plugin";
 import createPluginConfigs from "src/utility/private/createPluginConfigs";
 
-function createAlexPluginConfigs(plugin: Readonly<AlexPlugin>): Record<ConfigKey, Linter.Config[]> {
+function createAlexPluginConfigs(
+  plugin: Readonly<AlexPlugin>,
+): Record<AlexConfigKey, Linter.Config[]> {
   return createPluginConfigs({
     combined: {
       javaScript: [...combinedJavaScript(plugin), ...generalPackageJson],
