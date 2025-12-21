@@ -1,6 +1,6 @@
 import type { Linter } from "eslint";
 
-import type { ConfigKey } from "src/utility/public/ConfigKey";
+import type { GetFlattenedConfigNames } from "src/utility/public/GetFlattenedConfigNames";
 
 export type GeneralConfig = "javaScript" | "typeScript" | "react" | "packageJson";
 export type PluginConfig = "base" | "tests";
@@ -34,5 +34,5 @@ export interface AlexPluginConfigObject {
 
 export type AlexConfigGroupName = keyof AlexPluginConfigObject;
 
-export type AlexConfigKey = ConfigKey<AlexPluginConfigObject>;
+export type AlexConfigKey = GetFlattenedConfigNames<AlexPluginConfigObject>;
 export type AlexPluginConfigFlattened = Record<AlexConfigKey, Linter.Config[]>;
