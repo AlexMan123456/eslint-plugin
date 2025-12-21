@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@alextheman/utility':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.0
+        version: 4.1.0
       '@typescript-eslint/utils':
         specifier: ^8.50.0
         version: 8.50.0(eslint@9.39.2)(typescript@5.9.3)
@@ -126,8 +126,8 @@ packages:
   '@acemir/cssom@0.9.29':
     resolution: {integrity: sha512-G90x0VW+9nW4dFajtjCoT+NM0scAfH9Mb08IcjgFHYbfiL/lU04dTF9JuVOi3/OH+DJCQdcIseSXkdCB9Ky6JA==}
 
-  '@alextheman/utility@4.0.0':
-    resolution: {integrity: sha512-t0rFOzgvoKB0JCO5BehAQsRT3WaqJTuNsvHf4C8xDX/zsv98ZZ35IfKDAYt0ewTikh6yvLm90J4JcUv+DEE9ug==}
+  '@alextheman/utility@4.1.0':
+    resolution: {integrity: sha512-GncZocPl/a1o8E7GmOImbP18vmk0DdgnpfMhINLVwqk0KGtmELwzIa1V772GdOJIGzk0s6TrMG20Bj7N2Gqw5g==}
 
   '@altano/repository-tools@2.0.1':
     resolution: {integrity: sha512-YE/52CkFtb+YtHPgbWPai7oo5N9AKnMuP5LM+i2AG7G1H2jdYBCO1iDnkDE3dZ3C1MIgckaF+d5PNRulgt0bdw==}
@@ -2874,7 +2874,7 @@ snapshots:
 
   '@acemir/cssom@0.9.29': {}
 
-  '@alextheman/utility@4.0.0':
+  '@alextheman/utility@4.1.0':
     dependencies:
       zod: 4.2.1
 
@@ -3609,7 +3609,7 @@ snapshots:
 
   alex-c-line@1.10.0:
     dependencies:
-      '@alextheman/utility': 4.0.0
+      '@alextheman/utility': 4.1.0
       commander: 14.0.2
       dotenv: 17.2.3
       dotenv-stringify: 3.0.1
