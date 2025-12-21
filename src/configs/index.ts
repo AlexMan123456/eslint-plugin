@@ -32,12 +32,12 @@ import {
   personalUtility,
 } from "src/configs/personal";
 import { pluginBase, pluginTests } from "src/configs/plugin";
-import createPluginConfigs from "src/utility/private/createPluginConfigs";
+import flattenConfigs from "src/utility/private/flattenConfigs";
 
 function createAlexPluginConfigs(
   plugin: Readonly<AlexPlugin>,
 ): Record<AlexConfigKey, Linter.Config[]> {
-  return createPluginConfigs({
+  return flattenConfigs({
     combined: {
       javaScript: [...combinedJavaScript(plugin), ...generalPackageJson],
       javaScriptReact: [...combinedJavaScriptReact(plugin), ...generalPackageJson],

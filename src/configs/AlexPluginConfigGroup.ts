@@ -1,6 +1,6 @@
 import type { Linter } from "eslint";
 
-import type { CamelToKebab } from "src/utility/private/camelToKebab";
+import type { ConfigKey } from "src/utility/public/ConfigKey";
 
 export type GeneralConfig = "javaScript" | "typeScript" | "react" | "packageJson";
 export type PluginConfig = "base" | "tests";
@@ -33,7 +33,5 @@ export interface AlexPluginConfigGroup {
 }
 
 export type AlexConfigGroupName = keyof AlexPluginConfigGroup;
-export type AlexConfigKey = {
-  [Group in AlexConfigGroupName &
-    string]: `${CamelToKebab<Group>}/${CamelToKebab<keyof AlexPluginConfigGroup[Group] & string>}`;
-}[AlexConfigGroupName & string];
+
+export type AlexConfigKey = ConfigKey<AlexPluginConfigGroup>;
