@@ -32,7 +32,7 @@ import {
   personalUtility,
 } from "src/configs/personal";
 import { pluginBase, pluginTests } from "src/configs/plugin";
-import flattenConfigs from "src/utility/private/flattenConfigs";
+import flattenConfigs from "src/utility/public/flattenConfigs";
 
 function createAlexPluginConfigs(
   plugin: Readonly<AlexPlugin>,
