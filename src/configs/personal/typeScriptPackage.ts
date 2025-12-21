@@ -18,6 +18,7 @@ const personalTypeScriptPackage: Linter.Config[] = [
             { tags: ["param"] },
             { tags: ["throws"] },
             { tags: ["returns"] },
+            { tags: ["example"] },
           ],
         },
       ],
