@@ -1,0 +1,54 @@
+import type { Linter } from "eslint";
+
+import type { ConfigKey } from "src/utility/public/ConfigKey";
+
+import createConfigGroup from "src/utility/private/createConfigGroup";
+
+/**
+ * Takes in a nested group of configs, and returns them flattened according to ESLint config naming conventions.
+ *
+ * @template ConfigObject - The type of the input config object.
+ *
+ * @param config - A doubly-nested config object to pass in, where the key of the top-level object is the config group name, and the key of the nested object is the name of the config within the group (e.g. `groupName.configName`).
+ *
+ * @returns A single-layered object with the key flattened down to be `group-name/config-name`.
+ *
+ * @example
+ *      flattenConfigs<AlexPluginConfigGroup>({
+ *          general: {
+ *              typeScript: generalTypeScriptConfig,
+ *              javaScript: generalJavaScriptConfig,
+ *              react: generalReactConfig,
+ *              // ...
+ *          }
+ *          plugin: {
+ *              base: pluginBaseConfig,
+ *              tests: pluginTestsConfig,
+ *              // ...
+ *          }
+ *      })
+ *
+ *      // Returns:
+ *      {
+ *          "general/typescript": generalTypeScriptConfig,
+ *          "general/javascript": generalJavaScriptConfig,
+ *          "general/react": generalReactConfig,
+ *          // ...,
+ *          "plugin/base": pluginBaseConfig,
+ *          "plugin/tests": pluginTestsConfig
+ *          // ...
+ *      }
+ */
+function flattenConfigs<
+  ConfigObject extends { [K in keyof ConfigObject]: Record<string, Linter.Config[]> },
+>(config: ConfigObject): Record<ConfigKey<ConfigObject>, Linter.Config[]> {
+  const allConfigs = {} as Record<ConfigKey<ConfigObject>, Linter.Config[]>;
+  for (const configGroupEntries of Object.entries(config) as Parameters<
+    typeof createConfigGroup<ConfigObject>
+  >[]) {
+    Object.assign(allConfigs, createConfigGroup<ConfigObject>(...configGroupEntries));
+  }
+  return allConfigs satisfies Record<ConfigKey<ConfigObject>, Linter.Config[]>;
+}
+
+export default flattenConfigs;
