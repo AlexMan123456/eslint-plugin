@@ -43,7 +43,7 @@
     "use-local-utility": "pnpm run prepare-local-utility"
   },
   "dependencies": {
-    "@alextheman/utility": "^4.0.0",
+    "@alextheman/utility": "^4.1.0",
     "@typescript-eslint/utils": "^8.50.0",
     "common-tags": "^1.8.2",
     "zod": "^4.2.1"
