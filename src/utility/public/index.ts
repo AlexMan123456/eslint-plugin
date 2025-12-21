@@ -4,4 +4,4 @@ export { default as createRuleSchemaFromZodSchema } from "src/utility/public/cre
 export { default as flattenConfigs } from "src/utility/public/flattenConfigs";
 export { default as getImportSpecifiersAfterRemoving } from "src/utility/public/getImportSpecifiersAfterRemoving";
 
-export type { ConfigKey } from "src/utility/public/ConfigKey";
+export type { GetFlattenedConfigNames as ConfigKey } from "src/utility/public/GetFlattenedConfigNames";

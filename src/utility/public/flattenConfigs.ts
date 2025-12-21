@@ -1,6 +1,6 @@
 import type { Linter } from "eslint";
 
-import type { ConfigKey } from "src/utility/public/ConfigKey";
+import type { GetFlattenedConfigNames } from "src/utility/public/GetFlattenedConfigNames";
 
 import createConfigGroup from "src/utility/private/createConfigGroup";
 
@@ -41,14 +41,14 @@ import createConfigGroup from "src/utility/private/createConfigGroup";
  */
 function flattenConfigs<
   ConfigObject extends { [K in keyof ConfigObject]: Record<string, Linter.Config[]> },
->(config: ConfigObject): Record<ConfigKey<ConfigObject>, Linter.Config[]> {
-  const allConfigs = {} as Record<ConfigKey<ConfigObject>, Linter.Config[]>;
+>(config: ConfigObject): Record<GetFlattenedConfigNames<ConfigObject>, Linter.Config[]> {
+  const allConfigs = {} as Record<GetFlattenedConfigNames<ConfigObject>, Linter.Config[]>;
   for (const configGroupEntries of Object.entries(config) as Parameters<
     typeof createConfigGroup<ConfigObject>
   >[]) {
     Object.assign(allConfigs, createConfigGroup<ConfigObject>(...configGroupEntries));
   }
-  return allConfigs satisfies Record<ConfigKey<ConfigObject>, Linter.Config[]>;
+  return allConfigs satisfies Record<GetFlattenedConfigNames<ConfigObject>, Linter.Config[]>;
 }
 
 export default flattenConfigs;
