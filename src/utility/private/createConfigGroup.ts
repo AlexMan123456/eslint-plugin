@@ -1,16 +1,18 @@
 import type { Linter } from "eslint";
 
-import type { ConfigGroupName, ConfigKey } from "src/configs/AlexPluginConfigGroup";
+import type { GetFlattenedConfigNames } from "src/utility/public/GetFlattenedConfigNames";
 
 import camelToKebab from "src/utility/private/camelToKebab";
 
-function createConfigGroup(
-  group: ConfigGroupName,
+function createConfigGroup<
+  ConfigObject extends { [K in keyof ConfigObject]: Record<string, Linter.Config[]> },
+>(
+  group: keyof ConfigObject,
   configs: Record<string, Linter.Config[]>,
-): Record<ConfigKey, Linter.Config[]> {
+): Record<GetFlattenedConfigNames<ConfigObject>, Linter.Config[]> {
   const newConfigs: Record<string, Linter.Config[]> = {};
   for (const key in configs) {
-    newConfigs[`${camelToKebab(group)}/${camelToKebab(key)}`] = configs[key];
+    newConfigs[`${camelToKebab(group as string)}/${camelToKebab(key)}`] = configs[key];
   }
   return newConfigs;
 }

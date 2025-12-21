@@ -1,12 +1,12 @@
 import type { Linter } from "eslint";
 
-import type { CamelToKebab } from "src/utility/private/camelToKebab";
+import type { GetFlattenedConfigNames } from "src/utility/public/GetFlattenedConfigNames";
 
-export type GeneralConfig = "javaScript" | "typeScript" | "react" | "packageJson";
+export type GeneralConfig = "javascript" | "typescript" | "react" | "packageJson";
 export type PluginConfig = "base" | "tests";
 export type PersonalConfig =
-  | "javaScript"
-  | "typeScript"
+  | "javascript"
+  | "typescript"
   | "react"
   | "tests"
   | "eslintPlugin"
@@ -14,26 +14,25 @@ export type PersonalConfig =
   | "neurosongsFrontEnd"
   | "utility"
   | "alexCLine"
-  | "typeScriptPackage"
+  | "typescriptPackage"
   | "components";
 export type CombinedConfig =
-  | "javaScript"
-  | "typeScript"
+  | "javascript"
+  | "typescript"
   | "react"
   | "tests"
-  | "typeScriptReact"
-  | "javaScriptReact"
-  | "typeScriptPackage";
+  | "typescriptReact"
+  | "javascriptReact"
+  | "typescriptPackage";
 
-export interface AlexPluginConfigGroup {
+export interface AlexPluginConfigObject {
   general: Record<GeneralConfig, Linter.Config[]>;
   plugin: Record<PluginConfig, Linter.Config[]>;
   personal: Record<PersonalConfig, Linter.Config[]>;
   combined: Record<CombinedConfig, Linter.Config[]>;
 }
 
-export type ConfigGroupName = keyof AlexPluginConfigGroup;
-export type ConfigKey = {
-  [Group in ConfigGroupName &
-    string]: `${CamelToKebab<Group>}/${CamelToKebab<keyof AlexPluginConfigGroup[Group] & string>}`;
-}[ConfigGroupName & string];
+export type AlexConfigGroupName = keyof AlexPluginConfigObject;
+
+export type AlexFlattenedConfigName = GetFlattenedConfigNames<AlexPluginConfigObject>;
+export type AlexPluginConfigFlattened = Record<AlexFlattenedConfigName, Linter.Config[]>;

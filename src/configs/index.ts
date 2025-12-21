@@ -1,7 +1,7 @@
 import type { Linter } from "eslint";
 
 import type { AlexPlugin } from "src/alexPlugin";
-import type { ConfigKey } from "src/configs/AlexPluginConfigGroup";
+import type { AlexFlattenedConfigName } from "src/configs/AlexPluginConfigGroup";
 
 import {
   combinedJavaScript,
@@ -32,36 +32,38 @@ import {
   personalUtility,
 } from "src/configs/personal";
 import { pluginBase, pluginTests } from "src/configs/plugin";
-import createPluginConfigs from "src/utility/private/createPluginConfigs";
+import flattenConfigs from "src/utility/public/flattenConfigs";
 
-function createAlexPluginConfigs(plugin: Readonly<AlexPlugin>): Record<ConfigKey, Linter.Config[]> {
-  return createPluginConfigs({
+function createAlexPluginConfigs(
+  plugin: Readonly<AlexPlugin>,
+): Record<AlexFlattenedConfigName, Linter.Config[]> {
+  return flattenConfigs({
     combined: {
-      javaScript: [...combinedJavaScript(plugin), ...generalPackageJson],
-      javaScriptReact: [...combinedJavaScriptReact(plugin), ...generalPackageJson],
+      javascript: [...combinedJavaScript(plugin), ...generalPackageJson],
+      javascriptReact: [...combinedJavaScriptReact(plugin), ...generalPackageJson],
       react: [...combinedReact, ...generalPackageJson],
       tests: [...combinedTests(plugin), ...generalPackageJson],
-      typeScript: [...combinedTypeScript(plugin), ...generalPackageJson],
-      typeScriptPackage: [...combinedTypeScriptPackage(plugin), ...generalPackageJson],
-      typeScriptReact: [...combinedTypeScriptReact(plugin), ...generalPackageJson],
+      typescript: [...combinedTypeScript(plugin), ...generalPackageJson],
+      typescriptPackage: [...combinedTypeScriptPackage(plugin), ...generalPackageJson],
+      typescriptReact: [...combinedTypeScriptReact(plugin), ...generalPackageJson],
     },
     general: {
-      javaScript: generalJavaScript,
+      javascript: generalJavaScript,
       packageJson: generalPackageJson,
       react: generalReact,
-      typeScript: generalTypeScript,
+      typescript: generalTypeScript,
     },
     personal: {
       alexCLine: personalAlexCLine,
       components: personalComponents,
       eslintPlugin: personalEslintPlugin(plugin),
-      javaScript: personalJavaScript(plugin),
+      javascript: personalJavaScript(plugin),
       neurosongsBackEnd: personalNeurosongsBackEnd,
       neurosongsFrontEnd: personalNeurosongsFrontEnd,
       react: personalReact,
       tests: personalTests,
-      typeScript: personalTypeScript(plugin),
-      typeScriptPackage: personalTypeScriptPackage,
+      typescript: personalTypeScript(plugin),
+      typescriptPackage: personalTypeScriptPackage,
       utility: personalUtility,
     },
     plugin: {
