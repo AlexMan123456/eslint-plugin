@@ -2,11 +2,11 @@ import type { Linter } from "eslint";
 
 import type { GetFlattenedConfigNames } from "src/utility/public/GetFlattenedConfigNames";
 
-export type GeneralConfig = "javaScript" | "typeScript" | "react" | "packageJson";
+export type GeneralConfig = "javascript" | "typescript" | "react" | "packageJson";
 export type PluginConfig = "base" | "tests";
 export type PersonalConfig =
-  | "javaScript"
-  | "typeScript"
+  | "javascript"
+  | "typescript"
   | "react"
   | "tests"
   | "eslintPlugin"
@@ -14,16 +14,16 @@ export type PersonalConfig =
   | "neurosongsFrontEnd"
   | "utility"
   | "alexCLine"
-  | "typeScriptPackage"
+  | "typescriptPackage"
   | "components";
 export type CombinedConfig =
-  | "javaScript"
-  | "typeScript"
+  | "javascript"
+  | "typescript"
   | "react"
   | "tests"
-  | "typeScriptReact"
-  | "javaScriptReact"
-  | "typeScriptPackage";
+  | "typescriptReact"
+  | "javascriptReact"
+  | "typescriptPackage";
 
 export interface AlexPluginConfigObject {
   general: Record<GeneralConfig, Linter.Config[]>;

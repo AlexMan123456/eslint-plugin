@@ -26,27 +26,6 @@ describe("flattenConfigs", () => {
     expect(configKeys).toContain("this-is/another-test");
   });
 
-  test("Does not convert the 's' in JavaScript and TypeScript", () => {
-    const inputObject = {
-      general: {
-        javaScript: [],
-      },
-      secondGroup: {
-        typeScript: [],
-      },
-      useTypeScript: {
-        insteadOfPureJavaScript: [],
-        becausePureJavaScriptIsNotTypeSafe: [],
-      },
-    };
-
-    const configKeys = Object.keys(flattenConfigs(inputObject));
-    expect(configKeys).toContain("general/javascript");
-    expect(configKeys).toContain("second-group/typescript");
-    expect(configKeys).toContain("use-typescript/instead-of-pure-javascript");
-    expect(configKeys).toContain("use-typescript/because-pure-javascript-is-not-type-safe");
-  });
-
   test("Does not converts consecutive capitals", () => {
     const inputObject = {
       backEnd: {
@@ -66,10 +45,6 @@ describe("flattenConfigs", () => {
       thisIs: {
         anotherTest: [],
       },
-      useTypeScript: {
-        insteadOfPureJavaScript: [],
-        becausePureJavaScriptIsNotTypeSafe: [],
-      },
       backEnd: {
         configAPI: [],
       },
@@ -77,11 +52,7 @@ describe("flattenConfigs", () => {
 
     const _flattenedObject = flattenConfigs(inputObject);
     expectTypeOf<keyof typeof _flattenedObject>().toEqualTypeOf<
-      | "hello/test-config"
-      | "this-is/another-test"
-      | "use-typescript/instead-of-pure-javascript"
-      | "use-typescript/because-pure-javascript-is-not-type-safe"
-      | "back-end/config-a-p-i"
+      "hello/test-config" | "this-is/another-test" | "back-end/config-a-p-i"
     >();
   });
 
@@ -96,15 +67,6 @@ describe("flattenConfigs", () => {
           },
         ] satisfies Linter.Config[],
       },
-      useTypeScript: {
-        insteadOfPureJavaScript: [
-          {
-            rules: {
-              "no-pure-javascript": ["error", { allow: "dist" }],
-            },
-          },
-        ] satisfies Linter.Config[],
-      },
     };
 
     const flattenedObject = flattenConfigs(inputObject);
@@ -112,13 +74,6 @@ describe("flattenConfigs", () => {
       {
         rules: {
           "no-restricted-imports": "error",
-        },
-      },
-    ]);
-    expect(flattenedObject["use-typescript/instead-of-pure-javascript"]).toEqual([
-      {
-        rules: {
-          "no-pure-javascript": ["error", { allow: "dist" }],
         },
       },
     ]);
