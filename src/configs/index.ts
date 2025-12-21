@@ -1,7 +1,7 @@
 import type { Linter } from "eslint";
 
 import type { AlexPlugin } from "src/alexPlugin";
-import type { AlexConfigKey } from "src/configs/AlexPluginConfigGroup";
+import type { AlexFlattenedConfigName } from "src/configs/AlexPluginConfigGroup";
 
 import {
   combinedJavaScript,
@@ -36,7 +36,7 @@ import flattenConfigs from "src/utility/public/flattenConfigs";
 
 function createAlexPluginConfigs(
   plugin: Readonly<AlexPlugin>,
-): Record<AlexConfigKey, Linter.Config[]> {
+): Record<AlexFlattenedConfigName, Linter.Config[]> {
   return flattenConfigs({
     combined: {
       javaScript: [...combinedJavaScript(plugin), ...generalPackageJson],
