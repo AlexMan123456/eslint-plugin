@@ -34,5 +34,5 @@ export interface AlexPluginConfigObject {
 
 export type AlexConfigGroupName = keyof AlexPluginConfigObject;
 
-export type AlexConfigKey = GetFlattenedConfigNames<AlexPluginConfigObject>;
-export type AlexPluginConfigFlattened = Record<AlexConfigKey, Linter.Config[]>;
+export type AlexFlattenedConfigName = GetFlattenedConfigNames<AlexPluginConfigObject>;
+export type AlexPluginConfigFlattened = Record<AlexFlattenedConfigName, Linter.Config[]>;
