@@ -1,4 +1,5 @@
 import { RuleTester } from "@typescript-eslint/rule-tester";
+import tseslint from "typescript-eslint";
 
 import path from "node:path";
 
@@ -11,8 +12,7 @@ export function getProjectRelativePath(pathname: string): string {
 const ruleTesterWithParser = new RuleTester({
   languageOptions: {
     ecmaVersion: "latest",
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    parser: require("@typescript-eslint/parser"),
+    parser: tseslint.parser,
     parserOptions: {
       tsconfigRootDir: basePath,
       project: `${basePath}/tsconfig.json`,

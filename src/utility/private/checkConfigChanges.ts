@@ -10,9 +10,11 @@ const previousHash = fs.existsSync(hashFile) ? fs.readFileSync(hashFile, "utf-8"
 
 if (currentHash === previousHash) {
   console.info("Configs unchanged. Skipping build.");
+  // eslint-disable-next-line n/no-process-exit
   process.exit(0);
 } else {
   fs.writeFileSync(hashFile, currentHash);
   console.info("Configs changed. Running build...");
+  // eslint-disable-next-line n/no-process-exit
   process.exit(1);
 }

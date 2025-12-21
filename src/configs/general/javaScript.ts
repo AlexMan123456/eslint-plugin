@@ -12,6 +12,7 @@ import unusedVarsIgnorePatterns from "src/configs/helpers/unusedVarsIgnorePatter
 const generalJavaScript: Linter.Config[] = [
   js.configs.recommended,
   prettierConfig,
+  nodePlugin.configs["flat/recommended"],
   {
     files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
     ignores: ["dist"],
@@ -24,6 +25,19 @@ const generalJavaScript: Linter.Config[] = [
     rules: {
       eqeqeq: "error",
       "import/no-unresolved": "error",
+      "n/file-extension-in-import": [
+        "error",
+        "always",
+        {
+          ".js": "never",
+          ".jsx": "never",
+          ".ts": "never",
+          ".tsx": "never",
+        },
+      ],
+      // Gives false positives and is already covered by import/no-unresolved (or the TypeScript compiler in TypeScript projects)
+      "n/no-missing-import": "off",
+      "n/no-path-concat": "error",
       "n/prefer-node-protocol": "error",
       "no-cond-assign": "error",
       "no-console": ["error", { allow: ["warn", "error", "info"] }],
