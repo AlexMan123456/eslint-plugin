@@ -14,6 +14,7 @@ const personalTypeScriptPackage: Linter.Config[] = [
         "error",
         {
           tagSequence: [
+            { tags: ["deprecated"] },
             { tags: ["template"] },
             { tags: ["param"] },
             { tags: ["throws"] },
