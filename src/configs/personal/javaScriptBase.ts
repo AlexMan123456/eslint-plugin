@@ -5,7 +5,7 @@ import type { AlexPlugin } from "src/index";
 import perfectionist from "eslint-plugin-perfectionist";
 import prettierPlugin from "eslint-plugin-prettier";
 
-import { sortExports, sortImports } from "src/configs/helpers";
+import { sortClasses, sortExports, sortImports } from "src/configs/helpers";
 import javaScriptLanguageOptions from "src/configs/helpers/javaScriptLanguageOptions";
 import prettierRules from "src/configs/helpers/prettierRules";
 
@@ -28,6 +28,7 @@ function personalJavaScript(plugin: Readonly<AlexPlugin>): Linter.Config[] {
         "no-else-return": "error",
         "no-implicit-coercion": ["error", { allow: ["!!"] }],
         "operator-assignment": ["error", "always"],
+        "perfectionist/sort-classes": ["error", sortClasses],
         "perfectionist/sort-exports": ["error", sortExports],
         "perfectionist/sort-imports": ["error", sortImports],
         "prefer-arrow-callback": ["error", { allowNamedFunctions: false }],
