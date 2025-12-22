@@ -8,12 +8,24 @@ const personalTypeScriptPackage: Linter.Config[] = [
   jsdoc.configs["flat/recommended-typescript-error"],
   {
     rules: {
-      "jsdoc/check-tag-names": ["error", { definedTags: ["note"] }],
+      "jsdoc/check-tag-names": ["error", { definedTags: ["category", "note"] }],
       "jsdoc/require-jsdoc": ["warn", requireJsdocOptions],
+      "jsdoc/require-tags": [
+        "error",
+        {
+          tags: ["ExportNamedDeclaration", "ExportDefaultDeclaration"].map((context) => {
+            return {
+              context,
+              tag: "category",
+            };
+          }),
+        },
+      ],
       "jsdoc/sort-tags": [
         "error",
         {
           tagSequence: [
+            { tags: ["category"] },
             { tags: ["deprecated"] },
             { tags: ["template"] },
             { tags: ["param"] },
