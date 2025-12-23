@@ -2,6 +2,7 @@ import type { TypeDocOptions } from "typedoc";
 import type { PluginOptions } from "typedoc-plugin-markdown";
 
 const typeDocConfig: TypeDocOptions & PluginOptions = {
+  disableSources: true,
   entryPoints: ["./src/index.ts"],
   excludeNotDocumented: true,
   includeVersion: true,
