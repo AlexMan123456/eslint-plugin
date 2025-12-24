@@ -1,6 +1,6 @@
 import type { Linter } from "eslint";
 
-import type { AlexPlugin } from "src/index";
+import type { AlexPlugin } from "src/alexPlugin";
 
 import jsdoc from "eslint-plugin-jsdoc";
 import perfectionist from "eslint-plugin-perfectionist";

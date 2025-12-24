@@ -1,4 +1,4 @@
-import type { ConsistentTestFunctionOptions } from "src/index";
+import type { ConsistentTestFunctionOptions } from "src/rules/consistent-test-function";
 
 import { normaliseIndents } from "@alextheman/utility";
 import { describe, test } from "vitest";

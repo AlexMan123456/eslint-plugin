@@ -1,6 +1,6 @@
 import type { Linter } from "eslint";
 
-import type { AlexPlugin } from "src/index";
+import type { AlexPlugin } from "src/alexPlugin";
 
 import combinedReact from "src/configs/combined/react";
 import combinedTypeScript from "src/configs/combined/typeScript";
