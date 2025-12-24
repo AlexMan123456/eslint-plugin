@@ -38,6 +38,8 @@ const generalJavaScript: Linter.Config[] = [
       // Gives false positives and is already covered by import/no-unresolved (or the TypeScript compiler in TypeScript projects)
       "n/no-missing-import": "off",
       "n/no-path-concat": "error",
+      // Was causing false positives with Prisma and dotenv.
+      "n/no-unpublished-import": "off",
       "n/prefer-node-protocol": "error",
       "no-cond-assign": "error",
       "no-console": ["error", { allow: ["warn", "error", "info"] }],
