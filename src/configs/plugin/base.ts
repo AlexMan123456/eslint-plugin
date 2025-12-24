@@ -1,6 +1,6 @@
 import type { Linter } from "eslint";
 
-import type { AlexPlugin } from "src/index";
+import type { AlexPlugin } from "src/alexPlugin";
 
 function pluginBase(plugin: Readonly<AlexPlugin>): Linter.Config[] {
   return [

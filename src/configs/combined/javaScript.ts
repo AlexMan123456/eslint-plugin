@@ -1,6 +1,6 @@
 import type { Linter } from "eslint";
 
-import type { AlexPlugin } from "src/index";
+import type { AlexPlugin } from "src/alexPlugin";
 
 import combinedTests from "src/configs/combined/tests";
 import generalJavaScript from "src/configs/general/javaScript";

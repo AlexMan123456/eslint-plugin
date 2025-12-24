@@ -1,4 +1,4 @@
-import type { NoNamespaceImportsOptions } from "src/index";
+import type { NoNamespaceImportsOptions } from "src/rules/no-namespace-imports";
 
 import { describe, test } from "vitest";
 

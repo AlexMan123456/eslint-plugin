@@ -10,11 +10,15 @@ const eslintPluginRestrictedImports: NoRestrictedImportsOptions = combineRestric
   generalRestrictedImports,
   {
     paths: [
-      ...["src/alexPlugin", "src/index", "src"].map((name): RestrictedPathImport => {
+      {
+        importNames: ["default"],
+        message:
+          "Do not import the plugin directly from the config files. Please create a function that takes in the plugin and returns the config instead.",
+        name: "src/alexPlugin",
+      },
+      ...["src/index", "src"].map((name): RestrictedPathImport => {
         return {
-          importNames: ["default"],
-          message:
-            "Do not import the plugin directly from the config files. Please create a function that takes in the plugin and returns the config instead.",
+          message: "Do not import directly from the index file.",
           name,
         };
       }),
