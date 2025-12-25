@@ -1,78 +1,71 @@
-import { stripIndent } from "common-tags";
+import { normaliseIndents } from "@alextheman/utility";
+import { describe, test } from "vitest";
 
-import { standardRuleTester } from "tests/rule-testers";
+import createRuleTester from "tests/rule-testers/createRuleTester";
 
 import rules from "src/rules";
 
-standardRuleTester.run("no-skipped-tests", rules["no-skipped-tests"], {
-  valid: [
-    {
-      code: stripIndent`
+describe("no-skipped-tests", () => {
+  const { valid, invalid } = createRuleTester({
+    name: "no-skipped-tests",
+    rule: rules["no-skipped-tests"],
+  });
+
+  describe("Valid", () => {
+    test("Allows non-skipped describe/test blocks", () => {
+      valid(normaliseIndents`
             describe("This is a non-skipped describe", () => {
                 test("This is a non-skipped test", () => {
                     expect(1).toBe(1);
                 })
             })
-            `,
-    },
-  ],
-  invalid: [
-    {
-      code: stripIndent`
-            describe.skip("This is an skipped describe", () => {
+            `);
+    });
+  });
+
+  describe("Invalid", () => {
+    test("Does not allow skipped describe blocks", () => {
+      invalid(normaliseIndents`
+            describe.skip("This is a skipped describe", () => {
                 test("This is a non-skipped test", () => {
                     expect(1).toBe(1);
                 })
             })
-            `,
-      errors: [
-        {
-          messageId: "message",
-          data: {
-            source: "describe",
-          },
-        },
-      ],
-    },
-    {
-      code: stripIndent`
+            `);
+    });
+    test("Does not allow skipped test blocks", () => {
+      invalid(normaliseIndents`
             describe("This is a non-skipped describe", () => {
-                test.skip("This is an skipped test", () => {
+                test.skip("This is a skipped test", () => {
+                    expect(1).toBe(1);
+                })
+            })
+            `);
+    });
+    test("Does not allow skipped test and describe blocks", () => {
+      invalid({
+        code: normaliseIndents`
+            describe.skip("This is a skipped describe", () => {
+                test.skip("This is a skipped test", () => {
                     expect(1).toBe(1);
                 })
             })
             `,
-      errors: [
-        {
-          messageId: "message",
-          data: {
-            source: "test",
+        errors: [
+          {
+            messageId: "message",
+            data: {
+              source: "describe",
+            },
           },
-        },
-      ],
-    },
-    {
-      code: stripIndent`
-            describe.skip("This is an skipped describe", () => {
-                test.skip("This is an skipped test", () => {
-                    expect(1).toBe(1);
-                })
-            })
-            `,
-      errors: [
-        {
-          messageId: "message",
-          data: {
-            source: "describe",
+          {
+            messageId: "message",
+            data: {
+              source: "test",
+            },
           },
-        },
-        {
-          messageId: "message",
-          data: {
-            source: "test",
-          },
-        },
-      ],
-    },
-  ],
+        ],
+      });
+    });
+  });
 });
