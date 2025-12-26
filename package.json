@@ -9,6 +9,20 @@
   "license": "MIT",
   "author": "alextheman",
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    },
+    "./utility": {
+      "types": "./dist/utility/index.d.ts",
+      "import": "./dist/utility/index.js",
+      "require": "./dist/utility/index.cjs",
+      "default": "./dist/utility/index.js"
+    }
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
