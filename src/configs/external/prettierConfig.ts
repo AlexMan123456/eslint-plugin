@@ -1,7 +1,7 @@
 import type { Config } from "prettier";
 
-const prettierRules: Config = {
+const prettierConfig: Config = {
   printWidth: 100,
 };
 
-export default prettierRules;
+export default prettierConfig;

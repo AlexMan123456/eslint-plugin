@@ -1,4 +1,4 @@
-import type { NoRestrictedImportsOptions } from "src/configs/helpers/restrictedImports/NoRestrictedImportsOptions";
+import type { NoRestrictedImportsOptions } from "src/utility/public/NoRestrictedImportsOptions";
 
 const generalRestrictedImports: NoRestrictedImportsOptions = {
   patterns: [

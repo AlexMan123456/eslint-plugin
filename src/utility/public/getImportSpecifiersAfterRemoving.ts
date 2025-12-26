@@ -6,6 +6,8 @@ import type { RuleContext } from "@typescript-eslint/utils/ts-eslint";
  *
  * Useful for auto-fixable rules that remove a specific import from an import statement.
  *
+ * @category Utility
+ *
  * @template RuleOptions - The type of the RuleOptions from the given context.
  *
  * @param context - The current ESLint rule context.

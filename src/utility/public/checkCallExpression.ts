@@ -5,6 +5,8 @@ import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 /**
  * Checks if a given node matches the expected object and property names.
  *
+ * @category Utility
+ *
  * @param node - The node to check.
  * @param objectName - The object name to compare against the node.
  * @param propertyName - The property name to compare against the node.

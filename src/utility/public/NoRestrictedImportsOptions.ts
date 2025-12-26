@@ -85,6 +85,11 @@ interface NoRestrictedImportsOptionsPathsAndPatterns {
   patterns: RestrictedPatternImport[];
 }
 
+/**
+ * Options for the built-in ESLint `no-restricted-imports` rule.
+ *
+ *  @category Rule Options
+ */
 export type NoRestrictedImportsOptions =
   | NoRestrictedImportsOptionsPathsOnly
   | NoRestrictedImportsOptionsPatternsOnly

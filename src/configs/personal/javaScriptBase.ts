@@ -5,9 +5,9 @@ import type { AlexPlugin } from "src/alexPlugin";
 import perfectionist from "eslint-plugin-perfectionist";
 import prettierPlugin from "eslint-plugin-prettier";
 
+import prettierConfig from "src/configs/external/prettierConfig";
 import { sortClasses, sortExports, sortImports } from "src/configs/helpers";
 import javaScriptLanguageOptions from "src/configs/helpers/javaScriptLanguageOptions";
-import prettierRules from "src/configs/helpers/prettierRules";
 
 function personalJavaScript(plugin: Readonly<AlexPlugin>): Linter.Config[] {
   return [
@@ -34,7 +34,7 @@ function personalJavaScript(plugin: Readonly<AlexPlugin>): Linter.Config[] {
         "prefer-arrow-callback": ["error", { allowNamedFunctions: false }],
         "prefer-destructuring": "error",
         "prefer-template": "error",
-        "prettier/prettier": ["warn", prettierRules],
+        "prettier/prettier": ["warn", prettierConfig],
         "sort-vars": "error",
       },
     },
