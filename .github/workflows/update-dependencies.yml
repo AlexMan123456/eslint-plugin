@@ -11,6 +11,6 @@ permissions:
 jobs:
   update-dependencies:
     if: ${{ github.repository == 'AlexMan123456/eslint-plugin' }}
-    uses: AlexMan123456/github-actions/.github/workflows/update-dependencies.yml@701bb82ccd8b7b289794c3b2f8c056ae0b31e359 # v3.0.2
+    uses: AlexMan123456/github-actions/.github/workflows/update-dependencies.yml@5144246069b920323a6a0719e22140a43fd3bdb6 # v3.1.1
     secrets:
       PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
