@@ -58,8 +58,8 @@
     "use-local-utility": "pnpm run prepare-local-utility"
   },
   "dependencies": {
-    "@alextheman/utility": "^4.1.0",
-    "@typescript-eslint/utils": "^8.50.0",
+    "@alextheman/utility": "^4.3.5",
+    "@typescript-eslint/utils": "^8.50.1",
     "common-tags": "^1.8.2",
     "zod": "^4.2.1"
   },
@@ -69,9 +69,9 @@
     "@types/eslint": "^9.6.1",
     "@types/eslint-plugin-jsx-a11y": "^6.10.1",
     "@types/node": "^25.0.3",
-    "@typescript-eslint/rule-tester": "^8.50.0",
-    "@typescript-eslint/types": "^8.50.0",
-    "alex-c-line": "^1.10.0",
+    "@typescript-eslint/rule-tester": "^8.50.1",
+    "@typescript-eslint/types": "^8.50.1",
+    "alex-c-line": "^1.10.2",
     "dotenv-cli": "^11.0.0",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
@@ -81,7 +81,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-package-json": "^0.85.0",
-    "eslint-plugin-perfectionist": "^5.0.0",
+    "eslint-plugin-perfectionist": "^5.1.0",
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
@@ -89,15 +89,15 @@
     "eslint-vitest-rule-tester": "^3.0.1",
     "globals": "^16.5.0",
     "husky": "^9.1.7",
-    "jsdom": "^27.3.0",
+    "jsdom": "^27.4.0",
     "prettier": "^3.7.4",
-    "tsdown": "^0.18.1",
+    "tsdown": "^0.18.3",
     "tsx": "^4.21.0",
     "typedoc": "^0.28.15",
     "typedoc-plugin-markdown": "^4.9.0",
     "typedoc-rhineai-theme": "^1.2.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.0",
+    "typescript-eslint": "^8.50.1",
     "vite-tsconfig-paths": "^6.0.3",
     "vitest": "^4.0.16"
   },
@@ -123,7 +123,7 @@
     "vite-tsconfig-paths": ">=5.1.4",
     "vitest": ">=4.0.13"
   },
-  "packageManager": "pnpm@10.26.1+sha512.664074abc367d2c9324fdc18037097ce0a8f126034160f709928e9e9f95d98714347044e5c3164d65bd5da6c59c6be362b107546292a8eecb7999196e5ce58fa",
+  "packageManager": "pnpm@10.26.2+sha512.0e308ff2005fc7410366f154f625f6631ab2b16b1d2e70238444dd6ae9d630a8482d92a451144debc492416896ed16f7b114a86ec68b8404b2443869e68ffda6",
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild",
