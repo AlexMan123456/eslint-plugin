@@ -11,4 +11,4 @@ on:
 jobs:
   publish:
     if: ${{ github.repository == 'AlexMan123456/eslint-plugin' }}
-    uses: AlexMan123456/github-actions/.github/workflows/npm-registry-publish.yml@5144246069b920323a6a0719e22140a43fd3bdb6 # v3.1.1
+    uses: AlexMan123456/github-actions/.github/workflows/npm-registry-publish.yml@134246f0ec5c5b7efad0b3e332a68c387132b84f # v3.1.2
