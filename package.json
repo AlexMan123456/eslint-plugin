@@ -30,6 +30,7 @@
   ],
   "scripts": {
     "build": "tsdown",
+    "create-feature-docs": "typedoc",
     "create-local-package": "pnpm run build && rm -f alextheman-eslint-plugin-*.tgz && pnpm pack",
     "create-release-note-major": "git pull origin main && alex-c-line create-release-note major",
     "create-release-note-minor": "git pull origin main && alex-c-line create-release-note minor",
