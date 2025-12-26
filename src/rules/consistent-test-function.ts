@@ -4,8 +4,8 @@ import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 import z from "zod";
 
 import createRule from "src/rules/helpers/createRule";
-import fixOnCondition from "src/rules/helpers/fixOnCondition";
 import createRuleSchemaFromZodSchema from "src/utility/public/createRuleSchemaFromZodSchema";
+import fixOnCondition from "src/utility/public/fixOnCondition";
 import getImportSpecifiersAfterRemoving from "src/utility/public/getImportSpecifiersAfterRemoving";
 
 const validTestFunctionsSchema = z.enum(["test", "it"]);
@@ -20,6 +20,7 @@ const consistentTestFunctionOptionsSchema = z
     fixable: z.boolean(),
   })
   .partial();
+
 export type ConsistentTestFunctionOptions = z.infer<typeof consistentTestFunctionOptionsSchema>;
 export function parseConsistentTestFunctionOptions(data: unknown): ConsistentTestFunctionOptions {
   return consistentTestFunctionOptionsSchema.parse(data);

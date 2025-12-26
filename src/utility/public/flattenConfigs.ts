@@ -7,6 +7,8 @@ import createConfigGroup from "src/utility/private/createConfigGroup";
 /**
  * Takes in a nested group of configs, and returns them flattened according to ESLint config naming conventions.
  *
+ * @category Utility
+ *
  * @template ConfigObject - The type of the input config object.
  *
  * @param config - A doubly-nested config object to pass in, where the key of the top-level object is the config group name, and the key of the nested object is the name of the config within the group (e.g. `groupName.configName`).

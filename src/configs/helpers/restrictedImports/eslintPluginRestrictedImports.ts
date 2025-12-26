@@ -1,7 +1,7 @@
 import type {
   NoRestrictedImportsOptions,
   RestrictedPathImport,
-} from "src/configs/helpers/restrictedImports/NoRestrictedImportsOptions";
+} from "src/utility/public/NoRestrictedImportsOptions";
 
 import generalRestrictedImports from "src/configs/helpers/restrictedImports/generalRestrictedImports";
 import { combineRestrictedImports } from "src/utility/public";
