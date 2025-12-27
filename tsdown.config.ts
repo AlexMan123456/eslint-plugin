@@ -9,6 +9,9 @@ export default defineConfig([
     clean: true,
     external: [...Object.keys(packageInfo.peerDependencies), "@typescript-eslint/utils"],
     fixedExtension: false,
+    outputOptions: {
+      exports: "named",
+    },
   },
   {
     entry: ["src/utility/public/index.ts"],
@@ -18,5 +21,8 @@ export default defineConfig([
     clean: true,
     external: [...Object.keys(packageInfo.peerDependencies), "@typescript-eslint/utils"],
     fixedExtension: false,
+    outputOptions: {
+      exports: "named",
+    },
   },
 ]);
