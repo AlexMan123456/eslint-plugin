@@ -43,8 +43,8 @@ importers:
         specifier: ^8.50.1
         version: 8.50.1
       alex-c-line:
-        specifier: ^1.10.2
-        version: 1.10.2
+        specifier: ^1.13.0
+        version: 1.13.0
       dotenv-cli:
         specifier: ^11.0.0
         version: 11.0.0
@@ -997,8 +997,8 @@ packages:
   ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
 
-  alex-c-line@1.10.2:
-    resolution: {integrity: sha512-VBQJL3Z39K9a3LxKMVplEbnln0oIyV38BSKdnelh6rGC6ZEnjOQlHJfqfocZLSV2aY6uFni+95tZ0mqYCsdCxQ==}
+  alex-c-line@1.13.0:
+    resolution: {integrity: sha512-TvgJryRwoKwLNWSjYdh9/g9AHlLJNrhqmmgG+nYoVPq7gSuc8JptcTwozwGIO3ScHZZbyVjOEAZo5Z8gDHoIHQ==}
     hasBin: true
 
   ansi-align@3.0.1:
@@ -3723,7 +3723,7 @@ snapshots:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
 
-  alex-c-line@1.10.2:
+  alex-c-line@1.13.0:
     dependencies:
       '@alextheman/utility': 4.3.5
       commander: 14.0.2
