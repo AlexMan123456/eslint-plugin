@@ -4,7 +4,7 @@
   "description": "A package to provide custom ESLint rules and configs.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlexMan123456/eslint-plugin.git"
+    "url": "git+https://github.com/alextheman231/eslint-plugin.git"
   },
   "license": "MIT",
   "author": "alextheman",
