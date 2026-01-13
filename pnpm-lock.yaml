@@ -46,8 +46,8 @@ importers:
         specifier: ^8.52.0
         version: 8.52.0
       alex-c-line:
-        specifier: ^1.16.1
-        version: 1.16.1
+        specifier: ^1.17.3
+        version: 1.17.3
       dotenv-cli:
         specifier: ^11.0.0
         version: 11.0.0
@@ -140,6 +140,10 @@ packages:
 
   '@alextheman/utility@4.4.2':
     resolution: {integrity: sha512-6gvcYgbIv2r6E3J2k56SVA+a3kzjQp2eGhIu4Leib10Qyb58906Kdyomr2anvrDdajoAIYYnVzVGvLX1hwrzjA==}
+    engines: {node: '>=22.0.0'}
+
+  '@alextheman/utility@4.6.0':
+    resolution: {integrity: sha512-zUk/0wwyTCQxggHR4xgdt6lh096fWknUY3wSG09bXzVWsJ/YJr28DDdWCw01kmy0rplqHnFz8DQCJRw6j1/DvQ==}
     engines: {node: '>=22.0.0'}
 
   '@altano/repository-tools@2.0.1':
@@ -1098,8 +1102,8 @@ packages:
   ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
 
-  alex-c-line@1.16.1:
-    resolution: {integrity: sha512-d6zlAkral36p85KJv9WA+zcm/zVhUnJTya4QOI3fUwwUj2iaS6yHzk4PHgfDsL0i0chsSlXHVlbijMxAPL244A==}
+  alex-c-line@1.17.3:
+    resolution: {integrity: sha512-kIziXwMK3yMAv+77Sp+Gw8ys3LMjJoulgpuVUdiOV2JbskEC+lIOKZEERxJFDHPixp0ryqIH3ZHKJXa+hdmdSw==}
     hasBin: true
 
   ansi-align@3.0.1:
@@ -2166,6 +2170,12 @@ packages:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
 
+  libsodium-wrappers@0.8.0:
+    resolution: {integrity: sha512-PVyXAtP1nmpQrDKAVnA8pir0f7bj7vmMGs7mb+0OCSJ+BOfLNBb5hPy2GHfrx6cQ+Co9fMliR5R0WRbVuMllNA==}
+
+  libsodium@0.8.0:
+    resolution: {integrity: sha512-GQ4Sg0/Z0Ui6ZvKeTd8bH7VAAqk1ZHZDAo/pcuSi0uPbIN6LYAAotR0GEYb8v+y4/tSsXZPr06D6hhqKd7tnoQ==}
+
   linkify-it@5.0.0:
     resolution: {integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==}
 
@@ -3072,6 +3082,12 @@ snapshots:
     dependencies:
       zod: 4.3.5
 
+  '@alextheman/utility@4.6.0':
+    dependencies:
+      dotenv: 17.2.3
+      libsodium-wrappers: 0.8.0
+      zod: 4.3.5
+
   '@altano/repository-tools@2.0.1': {}
 
   '@asamuzakjp/css-color@4.1.1':
@@ -3891,13 +3907,14 @@ snapshots:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
 
-  alex-c-line@1.16.1:
+  alex-c-line@1.17.3:
     dependencies:
-      '@alextheman/utility': 4.4.2
+      '@alextheman/utility': 4.6.0
       commander: 14.0.2
       dotenv: 17.2.3
       dotenv-stringify: 3.0.1
       execa: 9.6.1
+      libsodium-wrappers: 0.8.0
       update-notifier: 7.3.1
       zod: 4.3.5
 
@@ -5147,6 +5164,12 @@ snapshots:
     dependencies:
       prelude-ls: 1.2.1
       type-check: 0.4.0
+
+  libsodium-wrappers@0.8.0:
+    dependencies:
+      libsodium: 0.8.0
+
+  libsodium@0.8.0: {}
 
   linkify-it@5.0.0:
     dependencies:
